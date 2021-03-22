@@ -57,29 +57,30 @@ s=R\T
 
 file1=fopen('octave_tab_current.tex', 'w');
 
-fprintf(file1, '\n Current I1 & %f \\\\ \\hline ', i1);
-fprintf(file1, '\n Current Ib & %f \\\\ \\hline ', ib);
-fprintf(file1, '\n Current I3 & %f \\\\ \\hline ', i3);
-fprintf(file1, '\n Current I4 & %f \\\\ \\hline ', i4);
-fprintf(file1, '\n Current I5 & %f \\\\ \\hline ', i5);
-fprintf(file1, '\n Current Ic & %f \\\\ \\hline ', ic);
-fprintf(file1, '\n Current Ivc & %f \\\\ \\hline ', ivc);
-fprintf(file1, '\n Current Id & %f \\\\ \\hline ', idd);
+fprintf(file1, '\n Current I1 & %.11e \\\\ \\hline ', i1);
+fprintf(file1, '\n Current Ib & %.11e \\\\ \\hline ', ib);
+fprintf(file1, '\n Current I3 & %.11e \\\\ \\hline ', i3);
+fprintf(file1, '\n Current I4 & %.11e \\\\ \\hline ', i4);
+fprintf(file1, '\n Current I5 & %.11e \\\\ \\hline ', i5);
+fprintf(file1, '\n Current Ic & %.11e \\\\ \\hline ', ic);
+fprintf(file1, '\n Current Ivc & %.11e \\\\ \\hline ', ivc);
+fprintf(file1, '\n Current Id & %.11e \\\\ \\hline ', idd);
 
 fclose(file1);
 
 file2=fopen('octave_tab_voltage.tex', 'w');
 
-fprintf(file2, '\n Node Voltage 1 & %f \\\\ \\hline ', s(1));
-fprintf(file2, '\n Node Voltage 2 & %f \\\\ \\hline ', s(2));
-fprintf(file2, '\n Node Voltage 3 & %f \\\\ \\hline ', s(3));
-fprintf(file2, '\n Node Voltage 4 & %f \\\\ \\hline ', s(4));
-fprintf(file2, '\n Node Voltage 5 & %f \\\\ \\hline ', s(5));
-fprintf(file2, '\n Node Voltage 6 & %f \\\\ \\hline ', s(6));
-fprintf(file2, '\n Node Voltage 7 & %f \\\\ \\hline ', s(7));
+fprintf(file2, '\n Node Voltage 1 & %.11e \\\\ \\hline ', s(1));
+fprintf(file2, '\n Node Voltage 2 & %.11e \\\\ \\hline ', s(2));
+fprintf(file2, '\n Node Voltage 3 & %.11e \\\\ \\hline ', s(3));
+fprintf(file2, '\n Node Voltage 4 & %.11e \\\\ \\hline ', s(4));
+fprintf(file2, '\n Node Voltage 5 & %.11e \\\\ \\hline ', s(5));
+fprintf(file2, '\n Node Voltage 6 & %.11e \\\\ \\hline ', s(6));
+fprintf(file2, '\n Node Voltage 7 & %.11e \\\\ \\hline ', s(7));
 
 
 fclose(file2);
+
 
 
 
