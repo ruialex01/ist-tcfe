@@ -1,0 +1,46 @@
+*Title: T1 Circuit
+
+*  Netlist
+
+.options savecurrents
+ 
+Vaa   0  n3  5.02924600001
+
+Vab   n3  na   0
+
+Idd   n7  n5   1.03087754949m 
+
+R1   0  n1   1.04362094375k
+
+R2   n2  n1   2.01060713289k
+
+R3   n1  n4   3.1012701442k
+
+R4   n4  n3   4.18822801798k 
+
+R5   n5  n4   3.09414786857k 
+
+R6   na  n6   2.02739936235k
+
+R7   n6  n7   1.0022809037k 
+
+Hc   n4  n7   Vab  8.29575903566k
+
+Gb   n5  n2   n1  n4  7.2492497599m 
+
+.control
+op
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+
+echo  "op_TAB"
+print all
+
+echo  "op_END"
+
+quit
+.endc
+.end
+
