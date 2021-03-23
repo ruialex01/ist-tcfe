@@ -38,4 +38,126 @@ The implementation of the Node Voltage Method to analyse the circuit was done fo
     Solve for any currents you want to know using Ohm's Law.
 
 
+*************************************************
+%T=[0;va;idd;0;0;0;0;0;idd]
 
+%s=R\T
+*************************************************
+NODE VOLTAGE METHOD
+
+We start to apply the Node Voltage Method by starting to identify the nodes of the circuit. In this case, our circuit has 7 nodes and each one has a node voltage designated $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$, according to the related node. Then, we apply the KCL to each one of the nodes.
+
+\left\{\begin{matrix}
+Node 1: I_1 + I_2 = I-3\\
+Node 2: I_B=\frac{V_2-V_1}{R_2}\\
+Node 3: V_3=-V_A\\
+Node 4: V_4 - V_7 = V_C\\
+Node 5: I_B + I_5 = I_D\\
+Node 6: I_6 = I_7\\
+Node 7: V_4 - V_7 = V_C\\
+\end{matrix}\right.
+
+After that, we rewrite it into an equivalent system defining the currents in terms of node voltages.
+\left\{\begin{matrix}
+\frac{0-V_1}{R_1}}+\frac{V_2-V_1}{R_2}}=\frac{V_1-V_4}{R_3}}\\
+I_B=\frac{V_2-V_1}{R_2}\\
+V_3=-V_A\\
+V_4 - V_7 = V_C\\
+I_B+\frac{V_5-V_4}{R_5}}=I_D
+\frac{V_3-V_6}{R_6}}=\frac{V_6-V_7}{R_7}}\\
+V_4 - V_7 = V_C\\
+\end{matrix}\right.
+
+Now, we have a system of 6 equations (note that applying KCL to node 4 and node 7 generate the same exact equation). Between these two nodes, the circuit presents a voltage source $V_A$. Therefore, to obtain another equation to add to the system, we need to consider a supernode that includes both node 4 and node 7 and, after that, apply KCL to the supernode we just created.
+
+We obtain another equation: I_3 + I_5 + I_C = I_4 + I_D .
+
+Once again, we define the currents in terms of node voltages and obtain an equivalent equation:
+\frac{V_1-V_4}{R_3}+\frac{V_5-V_4}{R_5}+I_C = \frac{V_4-V_3}{R_4} + I_D
+
+At this point, we have a system with 7 equations. However, besides the node voltages $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$, we still have two more variables to determine its value, $I_B$ and $I_C$. So, we need to find two more equations to complete our system. We have to define the missing value currents in terms of node voltages and get the two extra equations.
+
+\left\{\begin{matrix}
+
+I_B = \frac{V_1-V_4}{K_B}}\\
+
+I_C = \frac{V_3-V_6}{R_6}}\\
+
+\end{matrix}\right.
+
+This takes us to our final system of equations, with 9 equations to find the values of 9 variables.
+
+\left\{\begin{matrix}
+V_{4} - V_{7} -K_{C}I_{C}=0\\
+
+-V_{3}=V_{A}\\ 
+
+-\frac{1}{R_{4}}V_{4}+\frac{1}{R_{5}}V_{5}+I_{B}=I_D\\
+
+-\frac{1}{R_{2}}V_{1}+\frac{1}{R_{2}}V_{2}-I_{B}=0\\ 
+
+\frac{1}{R_{6}}V_{3}+(-\frac{1}{R_{6}}-\frac{1}{R_{7}})V_{6}+\frac{1}{R_{7}}V_{7}=0\\ 
+
+(-\frac{1}{R_{1}}-\frac{1}{R_{2}}-\frac{1}{R_{3}})V_{1} + \frac{1}{R_{2}}V_{2}+\frac{1}{R_{3}}V_{4}=0\\
+
+K_{B}V_{1}-K_{B}V_{4}-I_{B}=0\\
+
+\frac{1}{R_{6}}V_{3}-\frac{1}{R_{6}}V_{6}-I_{C}=0\\ 
+
+\frac{1}{R_{3}}V_{1}+\frac{1}{R_{4}}V_{3}+(-\frac{1}{R_{3}}-\frac{1}{R_{4}}-\frac{1}{R_{5}})V_{4}+\frac{1}{R_{5}}V_{5}+I_C = I_D\\
+
+\end{matrix}\right.
+
+we can transform this system of equations and put it into a matrix form, ready to be solved in GNU Octave.
+
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & -kc\\
+0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & -\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 1 & 0\\
+-\frac{1}{r2} & \frac{1}{r2} & 0 & 0 & 0 & 0 & 0 & -1 & 0\\
+0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6}-\frac{1}{r7}&\frac{1}{r7} & 0 & 0\\ 
+-\frac{1}{r1}-\frac{1}{r2}-\frac{1}{r3} & \frac{1}{r2} & 0 & \frac{1}{r3} & 0 & 0 & 0 & 0 & 0\\ 
+kb & 0 & 0 & -kb & 0 & 0 & 0 & -1 & 0\\ 
+0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6} & 0 & 0 & -1\\ 
+\frac{1}{r3} & 0 & \frac{1}{r4} & -\frac{1}{r3}-\frac{1}{r4}-\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 0 & 1
+\end{bmatrix}
+
+These are the final values obtained with the appication of the Node Voltage Method:
+
+***************PRINT HERE TABLE WITH VALUES *********************
+
+\par The Mesh-Current Method is a method that uses simultaneous equations, Kirchhoff´s Voltage Law, and Ohm´s Law to determine unknown currents in a network.
+
+\par By apllying the Mesh-Current Method we get the following system of equations:
+
+\[
+	\systeme*{R_1*I_a+(I_a+I_b)*R_3+(I_a+I_c)*R_4=V_a, (I_a+I_c)*R_4+R_6*I_c*R_7*I_c-K_c*I_c}
+\]
+
+\par We can then rewrite the system:
+
+\[
+	\systeme*{(R_1+R_3+R_4)*I_a+R_3*I_b+R_4*I_c=V_a, R_4*I_a+(R_4+R_6+R_7-K_c)*I_c=0}
+\]
+
+\par Also, it´s important to note that: \[I_b+I_5=I_d\]
+
+\par From here, we can write a matrix equation and solve it on Octave:
+
+\begin{gather}
+	\[ \begin{bmatrix} R_1+R_3+R_4 & R_3 & 0 & 0 & 0 & R_4 & 0 \\ R_4 & 0 & 0 & 0 & 0 & R_4+R_6+R_7-K_c & 0 \\ 1 & 0 & 0 & -1 & 0 & 1 & 0 \\ 1/(1-K_b*R_3) & 0 & -1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 & -1 \\ 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ -1 & -1 & 1 & 0 & 0 & 0 & 0 \end{bmatrix}\] * b =
+
+		\[ \begin{bmatrix} V_a \\ 0 \\ 0 \\ 0 \\ I_{dd} \\ I_{dd} \\ 0 \end{bmatrix}\]
+\end{gather}
+
+
+\par The solution to this equation is the following:
+
+
+\begin{gather}
+	\[ \begin{bmatrix} I_1 \\ I_b \\ I_3 \\ I_4 \\ I_5 \\ I_c \\ I_{vc}\] 
+
+=
+
+		\[ \begin{bmatrix} 2.354320767953300e-04 \\ -2.463916416257620e-04 \\ -1.095956483043247e-05 \\ 1.150255598395380e-03 \\ 1.277269191115761e-03 \\ 9.148235216000503e-04 \\ -1.160540278899499e-04 \end{bmatrix}\]
+\end{gather}
