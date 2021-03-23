@@ -103,15 +103,15 @@ We can transform this system of equations and put it into a matrix form, ready t
 
 \[
 \begin{bmatrix}
-0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & -kc\\
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & -K_C\\
 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
-0 & 0 & 0 & -\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 1 & 0\\
--\frac{1}{r2} & \frac{1}{r2} & 0 & 0 & 0 & 0 & 0 & -1 & 0\\
-0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6}-\frac{1}{r7}&\frac{1}{r7} & 0 & 0\\ 
--\frac{1}{r1}-\frac{1}{r2}-\frac{1}{r3} & \frac{1}{r2} & 0 & \frac{1}{r3} & 0 & 0 & 0 & 0 & 0\\ 
-kb & 0 & 0 & -kb & 0 & 0 & 0 & -1 & 0\\ 
-0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6} & 0 & 0 & -1\\ 
-\frac{1}{r3} & 0 & \frac{1}{r4} & -\frac{1}{r3}-\frac{1}{r4}-\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 0 & 1
+0 & 0 & 0 & -\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 1 & 0\\
+-\frac{1}{R_2} & \frac{1}{R_2} & 0 & 0 & 0 & 0 & 0 & -1 & 0\\
+0 & 0 & \frac{1}{R_6} & 0 & 0 & -\frac{1}{R_6}-\frac{1}{R_7}&\frac{1}{R_7} & 0 & 0\\ 
+-\frac{1}{R_1}-\frac{1}{R_2}-\frac{1}{R_3} & \frac{1}{R_2} & 0 & \frac{1}{R_3} & 0 & 0 & 0 & 0 & 0\\ 
+K_B & 0 & 0 & -K_B & 0 & 0 & 0 & -1 & 0\\ 
+0 & 0 & \frac{1}{R_6} & 0 & 0 & -\frac{1}{R_6} & 0 & 0 & -1\\ 
+\frac{1}{R_3} & 0 & \frac{1}{R_4} & -\frac{1}{R_3}-\frac{1}{R_4}-\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
 V_1\\
@@ -141,8 +141,8 @@ I_D\\
 \paragraph{}
 These are the final values obtained with the appication of the Node Voltage Method:
 
-\paragraph{}
-  \begin{tabular}{|c||c|}
+\paragraph{} \centering
+  \begin{tabular}{|c||c|} 
     \hline    
     \multicolumn{2}{|c|}  {\bf Nodal Analysis Currents } \\
     \hline
