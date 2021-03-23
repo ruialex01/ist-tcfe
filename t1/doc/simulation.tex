@@ -22,6 +22,7 @@ under analysis.
 
 
 \paragraph{}As it can be seen, the table shows the values of the voltage in all nodes, the currents in all of the branches and also the currents in independent voltage sources. When looking at the simulation results there is one very interesting detail which is very important: Ngspice operates with the idea that the positive current flows from the positive pole to the negative in all components, sources included. This explains why, for example, in the the very same branch where resistor $R1$ and branch $Va$ are, the current given by ngspice in the whole branch is the symetric of the one given specifically in the voltage source $Va$.
+\paragraph{} Another important detail about this table is the node $na$ and a voltage source of 0V $Vab$, which are absent from the circuit's picture. This is because the Current-Controlled Voltage Source is dependent on current Ic, but Ngspice requires a voltage source where this current flows through, which made it necessary the usage of an auxiliary voltage source in series with $R6$ and thus, an auxiliary node.  
 
 
 \paragraph{} When the simulation results given by NGspice are compared to the theoretical ones obtained in the previous section, it is possible to highlight the fact that these are, in reality, extremely close to each other. Such observation can be explained by the fact that this is a very simple circuit with very simple components, thus not having a lot of chances to differ greatly.
