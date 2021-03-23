@@ -1,13 +1,147 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
+******************************************************************
 In this section, the circuit shown in Figure~\ref{fig:rc} is analysed
 theoretically, in terms of its time and frequency responses.
 
+\subsection{Mesh Current Method Analysis}
 
+TOMAS TOMAS TOMAS TOMAS TOMAS
 
-\begin{tabular}{ cc }
+   \begin{tabular}{|c||c|}
+      \hline    
+      \multicolumn{2}{|c|} {\bf Nodal Analysis Voltages} \\
+      \hline
+
+        \input{octave_tab_voltage}
+     
+      \end{tabular}
  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%NODAL%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Node Voltage Method Analysis}
+
+\paragraph{}
+We start to apply the Node Voltage Method by starting to identify the nodes of the circuit. In this case, our circuit has 7 nodes and each one has a node voltage designated $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$, according to the related node. Then, we apply the KCL to each one of the nodes.
+
+\[
+\left\{\begin{matrix}
+Node 1: I_1 + I_2 = I-3\\
+Node 2: I_B=\frac{V_2-V_1}{R_2}\\
+Node 3: V_3=-V_A\\
+Node 4: V_4 - V_7 = V_C\\
+Node 5: I_B + I_5 = I_D\\
+Node 6: I_6 = I_7\\
+Node 7: V_4 - V_7 = V_C\\
+\end{matrix}\right.
+\]
+
+\paragraph{}
+After that, we rewrite it into an equivalent system defining the currents in terms of node voltages.
+
+\[
+\left\{\begin{matrix}
+Node 1: \frac{0-V_1}{R_1}}+\frac{V_2-V_1}{R_2}}=\frac{V_1-V_4}{R_3}}\\
+Node 2: I_B=\frac{V_2-V_1}{R_2}\\
+Node 3: V_3=-V_A\\
+Node 4: V_4 - V_7 = V_C\\
+Node 5: I_B+\frac{V_5-V_4}{R_5}}=I_D\\
+Node 6: \frac{V_3-V_6}{R_6}}=\frac{V_6-V_7}{R_7}}\\
+Node 7: V_4 - V_7 = V_C\\
+\end{matrix}\right.
+\]
+
+\paragraph{}
+Now, we have a system of 6 equations (note that applying KCL to node 4 and node 7 generate the same exact equation). Between these two nodes, the circuit presents a voltage source $V_A$. Therefore, to obtain another equation to add to the system, we need to consider a supernode that includes both node 4 and node 7 and, after that, apply KCL to the supernode we just created.
+
+\paragraph{}
+We obtain another equation: $ I_3 + I_5 + I_C = I_4 + I_D $.
+
+\paragraph{}
+Once again, we define the currents in terms of node voltages and obtain an equivalent equation: $ \frac{V_1-V_4}{R_3}+\frac{V_5-V_4}{R_5}+I_C = \frac{V_4-V_3}{R_4} + I_D $.
+
+\paragraph{}
+At this point, we have a system with 7 equations. However, besides the node voltages $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$, we still have two more variables to determine its value, $I_B$ and $I_C$. So, we need to find two more equations to complete our system. We have to define the missing value currents in terms of node voltages and get the two extra equations.
+
+\[
+\left\{\begin{matrix}
+I_B = \frac{V_1-V_4}{K_B}} $\\
+I_C = \frac{V_3-V_6}{R_6}} $\\
+\end{matrix}\right.
+\]
+
+\paragraph{}
+This takes us to our final system of equations, with 9 equations to find the values of 9 variables.
+
+\[
+\left\{\begin{matrix}
+V_{4} - V_{7} -K_{C}I_{C}=0\\
+
+-V_{3}=V_{A}\\ 
+
+-\frac{1}{R_{4}}V_{4}+\frac{1}{R_{5}}V_{5}+I_{B}=I_D\\
+
+-\frac{1}{R_{2}}V_{1}+\frac{1}{R_{2}}V_{2}-I_{B}=0\\ 
+
+\frac{1}{R_{6}}V_{3}+(-\frac{1}{R_{6}}-\frac{1}{R_{7}})V_{6}+\frac{1}{R_{7}}V_{7}=0\\ 
+
+(-\frac{1}{R_{1}}-\frac{1}{R_{2}}-\frac{1}{R_{3}})V_{1} + \frac{1}{R_{2}}V_{2}+\frac{1}{R_{3}}V_{4}=0\\
+
+K_{B}V_{1}-K_{B}V_{4}-I_{B}=0\\
+
+\frac{1}{R_{6}}V_{3}-\frac{1}{R_{6}}V_{6}-I_{C}=0\\ 
+
+\frac{1}{R_{3}}V_{1}+\frac{1}{R_{4}}V_{3}+(-\frac{1}{R_{3}}-\frac{1}{R_{4}}-\frac{1}{R_{5}})V_{4}+\frac{1}{R_{5}}V_{5}+I_C = I_D\\
+
+\end{matrix}\right.
+\]
+
+\paragraph{}
+We can transform this system of equations and put it into a matrix form, ready to be solved in GNU Octave.
+
+\[
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & -kc\\
+0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & -\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 1 & 0\\
+-\frac{1}{r2} & \frac{1}{r2} & 0 & 0 & 0 & 0 & 0 & -1 & 0\\
+0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6}-\frac{1}{r7}&\frac{1}{r7} & 0 & 0\\ 
+-\frac{1}{r1}-\frac{1}{r2}-\frac{1}{r3} & \frac{1}{r2} & 0 & \frac{1}{r3} & 0 & 0 & 0 & 0 & 0\\ 
+kb & 0 & 0 & -kb & 0 & 0 & 0 & -1 & 0\\ 
+0 & 0 & \frac{1}{r6} & 0 & 0 & -\frac{1}{r6} & 0 & 0 & -1\\ 
+\frac{1}{r3} & 0 & \frac{1}{r4} & -\frac{1}{r3}-\frac{1}{r4}-\frac{1}{r5} & \frac{1}{r5} & 0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+V_1\\
+V_2\\
+V_3\\
+V_4\\
+V_5\\
+V_6\\
+V_7\\
+I_B\\
+I_C\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+V_A\\
+I_D\\
+0\\
+0\\
+0\\
+0\\
+0\\
+I_D\\
+\end{bmatrix}
+\]
+
+\paragraph{}
+These are the final values obtained with the appication of the Node Voltage Method:
+
+\paragraph{}
   \begin{tabular}{|c||c|}
     \hline    
     \multicolumn{2}{|c|}  {\bf Nodal Analysis Currents } \\
@@ -16,21 +150,3 @@ theoretically, in terms of its time and frequency responses.
         \input{octave_tab_current}
      
   \end{tabular}
-  
-  \label{octave_tab_current}
-
-  \hspace{5ex}
-  
-      \begin{tabular}{|c||c|}
-      \hline    
-      \multicolumn{2}{|c|} {\bf Nodal Analysis Voltages} \\
-      \hline
-
-        \input{octave_tab_voltage}
-     
-      \end{tabular}
-  
-       \label{octave_tab_voltage}
-\end{tabular}
-
-

@@ -1,39 +1,19 @@
 \section{Introduction}
 \label{sec:introduction}
 
-\par The Mesh-Current Method is a method that uses simultaneous equations, Kirchhoff´s Voltage Law, and Ohm´s Law to determine unknown currents in a network.
+% state the learning objective 
+The objective of this laboratory assignment is to study a circuit containing a voltage source $V_A$, a current-controlled voltage source $V_C$, a current source $I_D$ and a voltage-controlled current source $I_B$ connected to different fixed value resistors $R_1$, $R_2$, $R_3$, $R_4$, $R_5$, $R_6$, $R_7$. The circuit can be seen in Figure~\ref{fig:rc}.
 
-\par By apllying the Mesh-Current Method we get the following system of equations:
+**************************
+In Section~\ref{sec:analysis}, a theoretical analysis of the circuit is
+presented. In Section~\ref{sec:simulation}, the circuit is analysed by
+simulation, and the results are compared to the theoretical results obtained in
+Section~\ref{sec:analysis}. The conclusions of this study are outlined in
+Section~\ref{sec:conclusion}.
 
-\[
-	\systeme*{R_1*I_a+(I_a+I_b)*R_3+(I_a+I_c)*R_4=V_a, (I_a+I_c)*R_4+R_6*I_c*R_7*I_c-K_c*I_c}
-\]
-
-\par We can then rewrite the system:
-
-\[
-	\systeme*{(R_1+R_3+R_4)*I_a+R_3*I_b+R_4*I_c=V_a, R_4*I_a+(R_4+R_6+R_7-K_c)*I_c=0}
-\]
-
-\par Also, it´s important to note that: \[I_b+I_5=I_d\]
-
-\par From here, we can write a matrix equation and solve it on Octave:
-
-\begin{gather}
-	\[ \begin{bmatrix} R_1+R_3+R_4 & R_3 & 0 & 0 & 0 & R_4 & 0 \\ R_4 & 0 & 0 & 0 & 0 & R_4+R_6+R_7-K_c & 0 \\ 1 & 0 & 0 & -1 & 0 & 1 & 0 \\ 1/(1-K_b*R_3) & 0 & -1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 & -1 \\ 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ -1 & -1 & 1 & 0 & 0 & 0 & 0 \end{bmatrix}\] * b =
-
-		\[ \begin{bmatrix} V_a \\ 0 \\ 0 \\ 0 \\ I_{dd} \\ I_{dd} \\ 0 \end{bmatrix}\]
-\end{gather}
-
-
-\par The solution to this equation is the following:
-
-
-\begin{gather}
-	\[ \begin{bmatrix} I_1 \\ I_b \\ I_3 \\ I_4 \\ I_5 \\ I_c \\ I_{vc}\] 
-
-=
-
-		\[ \begin{bmatrix} 2.354320767953300e-04 \\ -2.463916416257620e-04 \\ -1.095956483043247e-05 \\ 1.150255598395380e-03 \\ 1.277269191115761e-03 \\ 9.148235216000503e-04 \\ -1.160540278899499e-04 \end{bmatrix}\]
-\end{gather}
-
+\begin{figure}[h] \centering
+\includegraphics[width=0.4\linewidth]{circuit.pdf}
+\caption{Voltage driven serial RC circuit.}
+\label{fig:rc}
+\end{figure}
+**************************
