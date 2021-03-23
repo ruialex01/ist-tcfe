@@ -3,9 +3,15 @@
 
 \subsection{Operating Point Analysis}
 
-Table~\ref{tab:op} shows the simulated operating point results for the circuit
-under analysis. Compared to the theoretical analysis results, one notices the
-following differences: describe and explain the differences.
+\paragraph{}Ngspice is a circuit-simulation program that makes it possible to have an accurate representation of how the circuit would behave if it was actually mounted. Table~\ref{tab:op} shows the simulated operating point results for the circuit
+under analysis.
+
+
+\paragraph{}As it can be seen, the table shows the values of the voltage in all nodes, the currents in all of the branches and also the currents in independent voltage sources. When looking at the simulation results there is one very interesting detail which is very important: Ngspice operates with the idea that the positive current flows from the positive pole to the negative in all components, sources included. This explains why, for example, in the the very same branch where resistor $R1$ and branch $Va$ are, the current given by ngspice in the whole branch is the symetric of the one given specifically in the voltage source $Va$.
+
+
+\paragraph{} When the simulation results given by NGspice are compared to the theoretical ones obtained in the previous section, it is possible to highlight the fact that these are, in reality, extremely close to each other. Such observation can be explained by the fact that this is a very simple circuit with very simple components, thus not having a lot of chances to differ greatly.
+
 
 \begin{table}[h]
   \centering
