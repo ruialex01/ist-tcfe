@@ -7,7 +7,63 @@ theoretically, in terms of its time and frequency responses.
 
 \subsection{Mesh Current Method Analysis}
 
-TOMAS TOMAS TOMAS TOMAS TOMAS
+\paragraph{}
+By analysing the circuit, identifying the meshes and assigning currents that work as variables, finally we can write a system of equations to help us solve the circuit through KVL:
+
+\[
+\left\{\begin{matrix}
+Mesh A: R_1 \times I_a+(I_a+I_b) \times R_3+(I_a+I_c) \times R_4=V_a\\
+Mesh B:	(I_a+I_c) \times R_4+R_6 \times I_c+R_7 \times I_c-K_c \times I_c=0\\
+\end{matrix}\right.
+\]
+
+\paragraph{}
+From here, we can rewrite the system:
+\[
+\left\{\begin{matrix}
+Mesh A: (R_1+R_3+R_4) \times I_a+R_3 \times I_b+R_4 \times I_c=V_a\\
+Mesh B: R_4 \times I_a+(R_4+R_6+R_7-K_c) \times I_c=0\\
+\end{matrix}\right.
+\]
+
+\paragraph{}
+It´s also important to note that $ I_b+I_5=I_d $.
+
+\paragraph{}
+From here, we can write a matrix equation that ca ne solved in GNU Octave:
+\[
+\begin{bmatrix}
+R_1+R_3+R_4 & R_3 & 0 & 0 & 0 & R_4 & 0\\
+R_4 & 0 & 0 & 0 & 0 & R_4+R_6+R_7-K_c & 0\\ 
+1 & 0 & 0 & -1 & 0 & 1 & 0\\
+\frac{1}{1-K_b \times R_3} & 0 & -1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 1 & -1\\
+0 & 1 & 0 & 0 & 1 & 0 & 0\\ 
+-1 & -1 & 1 & 0 & 0 & 0 & 0\\ 
+\end{bmatrix}
+\begin{bmatrix}
+I_a\\
+I_b\\
+I_3\\
+I_4\\
+I_5\\
+I_c\\
+I_{vc}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+V_a\\
+0\\
+0\\
+0\\
+I_{dd}\\
+I_{dd}\\
+0\\
+\end{bmatrix}
+\]
+
+\paragraph{}
+The solution to the equation is presented in the following table:
 
    \begin{tabular}{|c||c|}
       \hline    
