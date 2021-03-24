@@ -92,13 +92,52 @@ fclose(file2);
 
 
 
+%%The following lines until the end of the document have the sole purpose of calculating the rekative errors
+
+%%These are the Ngspice values used to calculate the relative error
+
+%%The symetric of hc#branch was applied due to reasons explained in the report
 
 
+y=[ 2.354321e-04,
+   -2.46392e-04 ,
+   -1.09596e-05 ,
+   1.150256e-03 ,
+   1.277269e-03 ,
+   9.148235e-04,
+ -1.160540e-04 ,
+ -2.45702e-01,
+ -7.41099e-01,
+ -5.02925e+00,
+ -2.11713e-01,
+ 3.740346e+00,
+ -6.88396e+00,
+ -7.80087e+00]
+
+z=[ia, ib, i3, i4, i5, ic, ivc, s(1), s(2), s(3), s(4), s(5), s(6), s(7)]
 
 
+	for i=1:14 
+	x(i) = (abs(y(i)-z(i))/abs(y(i)))*100
+	endfor
 
 
-
+file3=fopen('error_tab.tex', 'w');
+     fprintf(file3,'\n Current $I_A$ & %.11e \\\\ \\hline ', x(1));
+     fprintf(file3,'\n Current $I_B$ & %.11e \\\\ \\hline ', x(2));
+     fprintf(file3,'\n Current $I_3$ & %.11e \\\\ \\hline ', x(3));
+     fprintf(file3,'\n Current $I_4$ & %.11e \\\\ \\hline ', x(4));
+     fprintf(file3,'\n Current $I_5$ & %.11e \\\\ \\hline ', x(5));
+     fprintf(file3,'\n Current $I_C$ & %.11e \\\\ \\hline ', x(6));
+     fprintf(file3,'\n Current $I_{Vc}$ & %.11e \\\\ \\hline ', x(7));
+     fprintf(file3,'\n Node 1 & %.11e \\\\ \\hline ', x(8));
+     fprintf(file3,'\n Node 2 & %.11e \\\\ \\hline ', x(9));
+     fprintf(file3,'\n Node 3 & %.11e \\\\ \\hline ', x(10));
+     fprintf(file3,'\n Node 4 & %.11e \\\\ \\hline ', x(11));
+     fprintf(file3,'\n Node 5 & %.11e \\\\ \\hline ', x(12));
+     fprintf(file3,'\n Node 6 & %.11e \\\\ \\hline ', x(13));
+     fprintf(file3,'\n Node 7 & %.11e \\\\ \\hline ', x(14));
+fclose(file3)
 
 
 

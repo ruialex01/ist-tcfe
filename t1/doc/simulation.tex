@@ -20,9 +20,28 @@
 under analysis.
 
 
-\paragraph{}As it can be seen, the table shows the values of the voltage in all nodes, the currents in all of the branches and also the currents in independent voltage sources. When looking at the simulation results there is one very interesting detail which is very important: Ngspice operates with the idea that the positive current flows from the positive pole to the negative in all components, sources included. This explains why, for example, in the the very same branch where resistor $R1$ and branch $Va$ are, the current given by ngspice in the whole branch is the symetric of the one given specifically in the voltage source $Va$.
+\paragraph{}As it can be seen, the table shows the values of the voltage in all nodes, the currents in all of the branches and also the currents in independent voltage sources. When looking at the simulation results there is one very interesting detail which is very important: Ngspice operates with the idea that the positive current flows from the positive pole to the negative in all components, sources included. This explains why, for example, in the the very same branch where resistor $R1$ and branch $Va$ are, the current given by ngspice in the whole branch is the symetric of the one given specifically in the voltage source $Va$. The same thing happens with the current-controlled voltage source $Vc$.
 \paragraph{} Another important detail about this table is the node $na$ and a voltage source of 0V $Vab$, which are absent from the circuit's picture. This is because the Current-Controlled Voltage Source is dependent on current Ic, but Ngspice requires a voltage source where this current flows through, which made it necessary the usage of an auxiliary voltage source in series with $R6$ and thus, an auxiliary node.  
 
 
-\paragraph{} When the simulation results given by NGspice are compared to the theoretical ones obtained in the previous section, it is possible to highlight the fact that these are, in reality, extremely close to each other. Such observation can be explained by the fact that this is a very simple circuit with very simple components, thus not having a lot of chances to differ greatly.
+
+\subsection{Error Analysis}
+
+
+
+\paragraph{}
+\begin{center}
+\begin{tabular}{|c||c|}
+      \hline    
+      \multicolumn{2}{|c|} {\bf Error Table (in \% )} \\
+      \hline
+
+	\input{error_tab}
+     
+      \end{tabular}
+\end{center}
+
+\paragraph{} When the simulation results given by Ngspice are compared to the theoretical ones obtained in the previous section, it is possible to highlight the fact that these are, in reality, extremely close to each other. As it can be seen, the highest error in percentual value is in the order of $10^{-4}$, which is negligible.Such result can be explained by the fact that this is a very simple circuit with very simple components, thus not having a lot of chances to differ greatly.
+
+\paragraph{}For reasons explained in the previous subsection, the value considered for $I_A$ was the one given by the resistor $R1$ and the value considered for $I_{Vc}$ was the symetric of the one given by Ngspice.
 
