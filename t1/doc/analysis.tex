@@ -2,13 +2,13 @@
 \label{sec:analysis}
 
 \paragraph{}
- This circuit is carefully analysed according to two of the most efficient ways to solve a circuit: the Mesh Current Method and the Node Voltage Method.
+ This circuit is carefully analysed according to two of the most efficient ways to solve a circuit: the Mesh Current Method, in Subsection~\ref{subsec:mesh}, and the Node Voltage Method, in Subsection~\ref{subsec:node}.
 
 \subsection{Mesh Current Method Analysis}
+\label{subsec:mesh}
 
 \paragraph{}
-By analysing the circuit, identifying the meshes and assigning currents that work as variables, finally we can write a system of equations to help us solve the circuit through KVL:
-
+By analysing the circuit, identifying the meshes and assigning currents that work as variables, we can start to write a system of equations with KVL that help us solve the circuit:
 
 \[
 \left\{\begin{matrix}
@@ -18,7 +18,7 @@ Mesh C:	(I_a+I_c) \times R_4+R_6 \times I_c+R_7 \times I_c-K_c \times I_c =0\\
 \]
 
 \paragraph{}
-From here, we can rewrite the system, adding a few equations to make it a system of 7 equations:
+From here, we can rewrite the system into an equivalent, adding a few equations to make it a system of 7 equations with 7 variables:
 \[
 \left\{\begin{matrix}
 Mesh A: (R_1+R_3+R_4) \times I_a+R_3 \times I_b+R_4 \times I_c=V_a\\
@@ -65,8 +65,7 @@ I_{d}\\
 \]
 
 \paragraph{}
-The solution to the equation is presented in the following table:
-\paragraph{}
+The table below presents the solution to the system of equations from the Mesh Current Method:
 \begin{center}
 \begin{tabular}{|c||c|}
       \hline    
@@ -76,22 +75,25 @@ The solution to the equation is presented in the following table:
 	\input{octave_tab_current}
      
       \end{tabular}
+      %\caption{The values of mesh currents $I_A$, $I_B$, $I_C$, $I_D$ and branch currents $I_A$, $I_B$, $I_3$, $I_4$, $I_5$, $I_C$, $I_D$ obtained through the aplication of the Node Voltage Method.}
+      
 \end{center}
-
-
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%NODAL%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \subsection{Node Voltage Method Analysis}
+\label{subsec:node}
 
 \paragraph{}
 We start to apply the Node Voltage Method by starting to identify the nodes of the circuit. In this case, our circuit has 7 nodes and each one has a node voltage designated $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$, according to the related node. Then, we apply the KCL to each one of the nodes.
 
 \[
 \left\{\begin{matrix}
-Node 1: I_1 + I_2 = I-3\\
-Node 2: I_B=\frac{V_2-V_1}{R_2}\\
+Node 1: I_1 + I_2 = I_3\\
+Node 2: I_B=I_2\\
 Node 3: V_3=-V_A\\
 Node 4: V_4 - V_7 = V_C\\
 Node 5: I_B + I_5 = I_D\\
@@ -143,7 +145,7 @@ V_{4} - V_{7} -K_{C}I_{C}=0\\
 
 -V_{3}=V_{A}\\ 
 
--\frac{1}{R_{4}}V_{4}+\frac{1}{R_{5}}V_{5}+I_{B}=I_D\\
+-\frac{1}{R_{5}}V_{4}+\frac{1}{R_{5}}V_{5}+I_{B}=I_D\\
 
 -\frac{1}{R_{2}}V_{1}+\frac{1}{R_{2}}V_{2}-I_{B}=0\\ 
 
@@ -201,8 +203,7 @@ I_D\\
 \]
 
 \paragraph{}
-These are the final values obtained with the appication of the Node Voltage Method:
-\paragraph{}
+These are the final values obtained with the application of the Node Voltage Method:
 \begin{center}
    \begin{tabular}{|c||c|}
       \hline    
@@ -210,6 +211,6 @@ These are the final values obtained with the appication of the Node Voltage Meth
       \hline
 
         \input{octave_tab_voltage}
-     
    \end{tabular}
+   % \caption{The values of voltages $V_1$, $V_2$, $V_3$, $V_4$, $V_5$, $V_6$ and $V_7$ obtained through the aplication of the Node Voltage Method.}
 \end{center}   
