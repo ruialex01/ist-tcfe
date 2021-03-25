@@ -4,6 +4,9 @@
 
 .options savecurrents
  
+*The circuit components are defined below
+*An auxiliary voltage source vab and an auxiliary node na were included for reasons explained in the report
+ 
 Vaa   0  n3  5.02924600001
 
 Vab   n3  na   0
@@ -28,6 +31,9 @@ Hc   n4  n7   Vab  8.29575903566k
 
 Gb   n5  n2   n1  n4  7.2492497599m 
 
+
+*It will now simulate the circuit
+
 .control
 op
 
@@ -35,7 +41,12 @@ echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
 
+*The lines below print a table with all the values
+
 echo  "op_TAB"
+print i(vaa)
+print i(vab)
+print i(hc)
 print all
 
 echo  "op_END"

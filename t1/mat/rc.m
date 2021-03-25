@@ -1,5 +1,7 @@
 format long
 
+%%These are the given values of all of the circuits' components
+
 r1 = 1.04362094375e3
 r2 = 2.01060713289e3  
 r3 = 3.1012701442e3  
@@ -12,7 +14,7 @@ idd = 1.03087754949e-3
 kb = 7.2492497599e-3  
 kc = 8.29575903566e3 
 
-
+%%In this first part, the values of the currents will be calculated using the mesh analysis method
 
 A=[r1+r3+r4,r3,0,0,0,r4,0;
 r4,0,0,0,0,r4+r6+r7-kc,0;
@@ -34,7 +36,7 @@ ic=b(6)
 ivc=b(7)
 
 
-
+%%In this second part, all of the node voltages will be calculated using the Nodal Analysis Method
 
 R=[0,0,0,1,0,0,-1,0,-kc;
  0,0,-1,0,0,0,0,0,0;
@@ -59,6 +61,7 @@ T=[0;va;idd;0;0;0;0;0;idd]
 s=R\T
 
 
+%%This will print the results of the Mesh Analysis in a table
 
 file1=fopen('octave_tab_current.tex', 'w');
 
@@ -77,6 +80,9 @@ fprintf(file1, '\n Branch Current Id & %.11e \\\\ \\hline ', idd);
 
 fclose(file1);
 
+
+%%This will print the results of the Nodal Analysis in a table
+
 file2=fopen('octave_tab_voltage.tex', 'w');
 
 fprintf(file2, '\n Node Voltage 1 & %.11e \\\\ \\hline ', s(1));
@@ -92,12 +98,11 @@ fclose(file2);
 
 
 
-%%The following lines until the end of the document have the sole purpose of calculating the rekative errors
+%%The following lines until the end of the document have the sole purpose of calculating the relative errors
 
-%%These are the Ngspice values used to calculate the relative error
-
-%%The symetric of hc#branch was applied due to reasons explained in the report
-
+%%Matrix y is made of the Ngspice values used to calculate the relative error
+%%The symetric of hc#branch was considered due to reasons explained in the report
+%%Matrix z are the matching values calculated by octave
 
 y=[ 2.354321e-04,
    -2.46392e-04 ,
@@ -116,11 +121,16 @@ y=[ 2.354321e-04,
 
 z=[ia, ib, i3, i4, i5, ic, ivc, s(1), s(2), s(3), s(4), s(5), s(6), s(7)]
 
+%%This cycle will calculate the relative error in percentage
+
 
 	for i=1:14 
 	x(i) = (abs(y(i)-z(i))/abs(y(i)))*100
 	endfor
 
+
+
+%%This wil print the relative errors in a latex table on the report
 
 file3=fopen('error_tab.tex', 'w');
      fprintf(file3,'\n Current $I_A$ & %.11e \\\\ \\hline ', x(1));
