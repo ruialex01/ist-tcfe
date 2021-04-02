@@ -1,0 +1,74 @@
+*Title: T1 Circuit
+
+*  Netlist
+
+.options savecurrents
+ 
+*The circuit components are defined below
+
+ 
+Vs   n1  0  0.0 ac 1.0 sin(0 1 1k)
+
+Vab   0  na   0
+
+R1   n1  n2   1.04362094375k
+
+R2   n3  n2   2.01060713289k
+
+R3   n2  n5   3.1012701442k
+
+R4   n5  0   4.18822801798k 
+
+R5   n6  n5   3.09414786857k 
+
+R6   na  n7   2.02739936235k
+
+R7   n7  n8   1.0022809037k 
+
+Hd   n5  n8   Vab  8.29575903566k
+
+Gb   n6  n3   n2  n5  7.2492497599m 
+
+C1   n6  n8    1.03087754949u
+
+.control
+op
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+
+
+tran 1e-5 20e-3
+
+hardcopy trans.ps v(n6)
+echo trans_FIG
+
+
+
+quit
+.endc
+.end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
