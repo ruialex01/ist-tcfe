@@ -130,7 +130,7 @@ Phase = angle(Cgain)
 
 
 
-v6f=sin(w*t)*(1-exp(-t/tau));
+v6f=sin(w*t).*(1-e.^(-t/tau));
 
 %vs=j(pi/2-w*t);
 
@@ -144,6 +144,9 @@ print (hf, "forced.eps", "-depsc");
 
 %%%%%%%%%%%%%%%%%%%%%%%TOTAL
 
+t=-5e-3:1e-6:20e-3;
+
+
 v6t=v6n+v6f
 
 ht=figure ();
@@ -151,7 +154,7 @@ plot(t,v6t,"p");
 
 xlabel ("t[ms]");
 ylabel ("v6t(t) [V]");
-print (hf, "total.eps", "-depsc");
+print (ht, "total.eps", "-depsc");
 
 
 
