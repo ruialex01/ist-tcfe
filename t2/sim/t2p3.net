@@ -5,7 +5,8 @@
 .options savecurrents
 
 
-.ic v(n6)=8.351525 v(n8)=0
+*.ic v(n6)=8.351525 v(n8)=0
+.INCLUDE ../mat/datafrom2.txt
  
 *The circuit components are defined below
 

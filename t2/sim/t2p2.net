@@ -3,6 +3,13 @@
 *  Netlist
 
 .options savecurrents
+
+
+.INCLUDE ../mat/datafrom1.txt
+
+
+
+*.ic Vx=v(n6)-v(n8)
  
 *The circuit components are defined below
 
@@ -27,7 +34,8 @@ Hd   n5  n8   Vab  8.29575903566k
 
 Gb   n6  n3   n2  n5  7.2492497599m 
 
-Vx   n6  n8   8.351525
+
+*8.351525
 
 
 

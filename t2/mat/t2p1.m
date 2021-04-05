@@ -60,6 +60,17 @@ fprintf(file1, '\n Node Voltage 8 & %.11e \\\\ \\hline ', s(7));
 
 fclose(file1);
 
+vaux=s(5)-s(7) 
+
+file2=fopen('datafrom1.txt', 'w');
+
+fprintf(file2, 'Vx n6 n8 %.11e\n', vaux);
+
+fclose(file2);
+
+
+
+
 
 Vs=0
 Vx=s(5)-s(7)
@@ -110,7 +121,11 @@ xlabel ("t[ms]");
 ylabel ("v6n(t) [V]");
 print (hn, "natural.eps", "-depsc");
 
+file3=fopen('datafrom2.txt', 'w');
 
+fprintf(file3, '.ic v(n6)=%.11e v(n8)=%.11e\n', w(5), w(7));
+
+fclose(file3);
 %%%%%%%%%%%%%%%%%%%%%%FORCED%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
