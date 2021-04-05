@@ -60,6 +60,7 @@ fprintf(file1, '\n Node Voltage 8 & %.11e \\\\ \\hline ', s(7));
 
 fclose(file1);
 
+
 vaux=s(5)-s(7) 
 
 file2=fopen('datafrom1.txt', 'w');
@@ -68,6 +69,7 @@ fprintf(file2, 'Vx n6 n8 %.11e\n', vaux);
 
 fclose(file2);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -109,6 +111,9 @@ tau=req*C
 printf("A Constante do Tempo equivalente é %f \n", tau)
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%NATURAL%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 t=0:1e-6:20e-3;
 
 v6n=Vx*exp(-t/tau);
@@ -121,18 +126,16 @@ xlabel ("t[ms]");
 ylabel ("v6n(t) [V]");
 print (hn, "natural.eps", "-depsc");
 
+
+
 file3=fopen('datafrom2.txt', 'w');
 
 fprintf(file3, '.ic v(n6)=%.11e v(n8)=%.11e\n', w(5), w(7));
 
 fclose(file3);
+
+
 %%%%%%%%%%%%%%%%%%%%%%FORCED%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-t=0:1e-6:20e-3;
-
 
 f = 1000 %Hz
 w = 2*pi*f; %rad/s
@@ -142,16 +145,34 @@ Zc = 1/(j*w*C)
 Cgain = Zc/(req+Zc)
 Gain = abs(Cgain)
 Phase = angle(Cgain)
+vs=j*(pi/2-w*(20e-3));
 
+K=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
 
+1/r1 , (-1/r1 -1/r2 -1/r3) , 1/r2 , 0 , 1/r3 , 0 , 0 , 0 , 0, 0;
+
+0 , 1/r2 , -1/r2 , 0 , 0 , 0 , 0 , 1 , 0, 0;
+
+0 , 0 , 0 , 1 , 0 , 0 , -1 , 0 , 0, -Kd;
+
+0 , 0 , 0 , -1/r5 , 1/r5 , 0 , 0 , 1 , 1, 0;
+
+0 , 0 , 1 , 0 ,  0 , 1/r7, -1/r7 , 0 , 0, 1;
+
+0 , -1/Kb , 0 , 1/Kb , 0 , 0 , 0 , 1 , 0, 0;
+
+0 , 1/r3 , 0 , (-1/r3-1/r4-1/r5) , 1/r5 , 0, 0 , 0 , 1 , 1;
+
+0 , 0 , 0 , 0 , 0 , 1/r6 , 0 , 0, 0, 0;
+0 , 0 , 0 , 0 , 0 , 0    , 0 , 0, 1, 0 ]
+
+M=[Vs;0;0;0;0;0;0;0;0;Vx/Zc]
+
+l=K\M
 
 v6f=sin(w*t).*(1-e.^(-t/tau));
-
-%vs=j(pi/2-w*t);
-
 hf = figure ();
 plot(t,v6f,"r");
-
 xlabel ("t[ms]");
 ylabel ("v6f(t) [V]");
 print (hf, "forced.eps", "-depsc");
@@ -159,38 +180,13 @@ print (hf, "forced.eps", "-depsc");
 
 %%%%%%%%%%%%%%%%%%%%%%%TOTAL
 
-t=-5e-3:1e-6:20e-3;
 
-
-v6t=v6n+v6f
-
+v6t=v6n+v6f;
 ht=figure ();
 plot(t,v6t,"p");
-
 xlabel ("t[ms]");
 ylabel ("v6t(t) [V]");
 print (ht, "total.eps", "-depsc");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
