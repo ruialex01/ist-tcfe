@@ -11,3 +11,7 @@ ngspice.log: t2p1.net t2p2.net t2p3.net t2p4.net t2p5.net
 	ngspice -b  t2p3.net -o $@
 	ngspice -b  t2p4.net -o $@
 	ngspice -b  t2p5.net -o $@
+clean:
+	@rm -f ngspice.log *.tex *.pdf *.ps *~
+
+.PHONY: all clean

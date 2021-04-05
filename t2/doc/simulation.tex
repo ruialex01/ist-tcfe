@@ -4,17 +4,6 @@
 \subsection{Operating Point Analysis}
 \label{subsec:opa}
 
-\begin{table}[h] \centering
-  \begin{tabular}{|l|r|}
-    \hline    
-    {\bf Node/Component} & {\bf Value [A or V]} \\ \hline
-    \input{op_tab}
-  \end{tabular}
-  \caption*{Operating point. A variable preceded by @ is of type {\em current}
-    and expressed in Ampere; other variables are of type {\it voltage} and expressed in
-    Volts.}
-  \label{tab:op}
-\end{table}
 
 
 
@@ -29,17 +18,6 @@ under analysis.
 
 \subsection{Relative Error Analysis}
 
-\paragraph{}
-\begin{center}
-\begin{tabular}{|c||c|}
-      \hline    
-      \multicolumn{2}{|c|} {\bf Error Table (in \% )} \\
-      \hline
-
-	\input{error_tab}
-     
-      \end{tabular}
-\end{center}
 
 \paragraph{} When the simulation results given by Ngspice are compared to the theoretical ones obtained in  Section~\ref{sec:analysis}, it is possible to highlight the fact that these are, in reality, extremely close to each other. As it can be seen, the highest error in percentual value is in the order of $10^{-4}$, which is negligible. Such result can be explained by the fact that this is a very simple circuit with very simple components, thus not having a lot of chances to differ greatly.
 
