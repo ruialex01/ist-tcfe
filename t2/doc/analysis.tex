@@ -54,7 +54,7 @@ At this point, we have a system with 7 equations. However, besides the node volt
 
 \[
 \left\{\begin{matrix}
-I_B = \frac{V_2-V_5}{K_B} \\
+I_B = (V_2-V_5)*K_B \\
 I_D = \frac{0-V_7}{R_6} \\
 \end{matrix}\right.
 \]
@@ -74,8 +74,8 @@ I_D + \frac{V_2-V_5}{R_3} + \frac{V_6-V_5}{R_5} - \frac{V_5}{R_4} = 0\\
 
 I_D + \frac{1}{R_3}V_2 + (-\frac{1}{R_3} -\frac{1}{R_4} -\frac{1}{R_5})V_5 + \frac{1}{R_5}V_6 = 0\\
 
-I_B - \frac{1}{K_B}V_2 + \frac{1}{K_B}V_5 = 0\\
-I_D + \frac{1}{R_6}V_7 = 0\\
+I_B - -K_B*V_2 + K_B*V_5 = 0\\
+I_D + \frac{V_7}{R_6} = 0\\
 \end{matrix}\right.
 \]
 
