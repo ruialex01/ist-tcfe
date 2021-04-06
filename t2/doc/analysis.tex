@@ -86,21 +86,23 @@ We can transform this system of equations and put it into a matrix form, ready t
 \begin{bmatrix}
 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
 
-\frac{1}{R_1} & -\frac{1}{R_1} -\frac{1}{R_2} -\frac{1}{R_3} & \frac{1}{R_2} & 0 & \frac{1}{R_3} & 0 & 0 & 0 & 0\\
+\frac{1}{R_1} & -\frac{1}{R_1} -\frac{1}{R_2} -\frac{1}{R_3} & \frac{1}{R_2} & \frac{1}{R_3} & 0 & 0 & 0 & 0 & 0 & 0\\
 
-0 & \frac{1}{R_2} & -\frac{1}{R_2} & 0 & 0 & 0 & 0 & 1 & 0\\
+0 & \frac{1}{R_2} & -\frac{1}{R_2} & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
 
-0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & -K_D\\
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & -K_D\\
 
-0 & 0 & 0 & -\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & -\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 1 & 1 & 0\\
 
-0 & 0 & 1 & 0 & 0 & 0 & 0 & -\frac{1}{R_7} & 1\\
+0 & 0 & 0 & 0 & 0 & \frac{1}{R_7} & -\frac{1}{R_7} & 0 & 0 & -1\\
 
-0 & -\frac{1}{K_B} & 0 & \frac{1}{K_B} & 0 & 0 & 0 & 1 & 0\\
+0 & -K_B & 0 & K_B & 0 & 0 & 0 & 1 & 0 & 0\\
 
-0 & \frac{1}{R_3} & 0 & -\frac{1}{R_3}-\frac{1}{R_4}-\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 0 & 0\\
+0 & \frac{1}{R_3} & 0 & -\frac{1}{R_3}-\frac{1}{R_4}-\frac{1}{R_5} & \frac{1}{R_5} & 0 & 0 & 0 & 1 & 1\\
 
-0 & 0 & 0 & 0 & 0 & \frac{1}{R_6} & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & \frac{1}{R_6} & 0 & 0 & 0 & 1\\
+
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
 \end{bmatrix}
 \begin{bmatrix}
 V_1\\
@@ -111,11 +113,13 @@ V_6\\
 V_7\\
 V_8\\
 I_B\\
+I_C\\
 I_D\\
 \end{bmatrix}
 =
 \begin{bmatrix}
 V_S\\
+0\\
 0\\
 0\\
 0\\
@@ -139,7 +143,7 @@ These are the final values obtained with the application of the Node Voltage Met
    \end{tabular}
  \end{center}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Theoretical - Topic II: Node Voltage Method Analysis w/ $Vs=0V$ and $Vx=V(6)-V(8)$}
 \label{subsec:second_topic}
@@ -181,12 +185,6 @@ These are the final values obtained with the application of the Node Voltage Met
  
  \paragraph
  FALTA AQUI UMA TABELA COM AS AMPLITUDES!
- 
-\begin{figure}[h] \centering
-\includegraphics[width=0.8\linewidth]{forced.eps}
-\caption{LALALAALALALALALALAL.}
-\label{fig:LALALAAL}
-\end{figure}
  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
