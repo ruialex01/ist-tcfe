@@ -254,6 +254,48 @@ ylabel ("v6t(t) [V]");
 print (hph, "phase.eps", "-depsc");
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%1º ERRO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%The following lines until the end of the document have the sole purpose of calculating the relative errors
+
+%%Matrix y is made of the Ngspice values used to calculate the relative error
+%%The symetric of hc#branch was considered due to reasons explained in the report
+%%Matrix z are the matching values calculated by octave
+
+e=[ 5.029246e+00,
+4.783544e+00,
+4.288147e+00,
+4.817533e+00,
+5.579905e+00,
+-1.85471e+00,
+-2.77162e+00]
+
+
+
+f=[s(1), s(2), s(3), s(4), s(5), s(6), s(7)]
+
+%%This cycle will calculate the relative error in percentage
+
+
+	for i=1:7 
+	g(i) = (abs(e(i)-f(i))/abs(e(i)))*100
+	endfor
+
+
+
+%%This wil print the relative errors in a latex table on the report
+
+file6=fopen('error_tab1.tex', 'w');
+     fprintf(file6,'\n Node 1 & 5.029246e+00         & %.11e & %.11e \\\\ \\hline ', s(1), g(1));
+          fprintf(file6,'\n Node 2 & 4.783544e+00         & %.11e & %.11e \\\\ \\hline ', s(2), g(2));
+               fprintf(file6,'\n Node 3 & 4.288147e+00        & %.11e & %.11e \\\\ \\hline ', s(3), g(3));
+                    fprintf(file6,'\n Node 4 & 4.817533e+00         & %.11e & %.11e \\\\ \\hline ', s(4), g(4));
+                         fprintf(file6,'\n Node 5 & 5.579905e+00         & %.11e & %.11e \\\\ \\hline ', s(5), g(5));
+                              fprintf(file6,'\n Node 6 & -1.85471e+00         & %.11e & %.11e \\\\ \\hline ', s(6), g(6));
+                                   fprintf(file6,'\n Node 7 & -2.77162e+00         & %.11e & %.11e \\\\ \\hline ', s(7), g(7));
+fclose(file6)
+
 
 
 
