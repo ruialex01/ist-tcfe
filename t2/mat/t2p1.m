@@ -60,7 +60,7 @@ vaux=s(5)-s(7)
 
 file2=fopen('datafrom1.txt', 'w');
 
-fprintf(file2, 'Vx n6 n8 %.11e\n', vaux);
+fprintf(file2, 'Vx n8 n6 %.11e\n', vaux);
 
 fclose(file2);
 
@@ -204,12 +204,55 @@ fclose(file5);
 %%%%%%%%%%%%%%%%%%%%%%%TOTAL
 %%%%%%%%%%THEO - P5%%%%%%%%%%
 
-v6t=v6n+v6f;
+%t=(-5e-3):1e-6:20e-3;
+
+%%%%%%%%%%%%ATENÇAO AO INTERVALO DE TEMPO!!!!!%%%%%%%%%
+
+v6t=v6n.+v6f;
 ht=figure ();
 plot(t,v6t,"p");
 xlabel ("t[ms]");
 ylabel ("v6t(t) [V]");
 print (ht, "total.eps", "-depsc");
+
+
+%%%%%%%%%%%%%%%FREQUENCY%%%
+
+f=logspace(-1,6,7*5);
+
+w=2*pi*f;
+
+vsfq=j*(pi/2-w*(20e-3));
+
+v6fq=Vx.*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
+
+v8fq=s(7).*exp(-20e-3/tau).+vsfq*(1-exp(-20e-3/tau));
+
+vcfq=v6fq.-v8fq;
+
+
+
+hm=figure ();
+plot(f,abs(v6fq),"p",abs(vcfq),"r",abs(vsfq),"g" );
+xlabel ("f[Hz]");
+ylabel ("v6f(t) [V]");
+print (hm, "magnitude.eps", "-depsc");
+
+hph=figure ();
+plot(f,arg(v6fq),"p",arg(vcfq),"r",arg(vsfq),"g");
+xlabel ("f[Hz]");
+ylabel ("v6t(t) [V]");
+print (hph, "phase.eps", "-depsc");
+
+
+
+
+
+
+
+
+
+
 
 
 

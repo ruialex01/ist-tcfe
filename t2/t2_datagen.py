@@ -66,7 +66,7 @@ class DataSet:
 
 def main():
     #init test
-    number = input("\n\nPlease enter the lowest student number in your group: \n")
+    number = 95844
     print
     print
     dataset = DataSet(number)
