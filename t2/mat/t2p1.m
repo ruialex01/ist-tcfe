@@ -131,6 +131,7 @@ v6n=Vx*exp(-t/tau);
 hn = figure ();
 plot(t,v6n,"g");
 
+
 xlabel ("t[ms]");
 ylabel ("v6n(t) [V]");
 print (hn, "natural.eps", "-depsc");
@@ -155,7 +156,12 @@ Zc = 1/(j*w*C)
 Cgain = Zc/(req+Zc)
 Gain = abs(Cgain)
 Phase = angle(Cgain)
-vs=j*(pi/2-w*(20e-3));
+
+
+%Vs=sin(wt)=cos(pi/2-wt)=e.^j(pi/2-w*(20e-3))=e.^j(pi/2-40*pi)=e.^j(pi/2) 
+
+
+Vs=e.^(j*(pi/2));
 
 K=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
 
@@ -181,37 +187,39 @@ M=[Vs;0;0;0;0;0;0;0;0;Vx/Zc]
 
 l=K\M
 
-v6f=sin(w*t).*(1-e.^(-t/tau));
-hf = figure ();
-plot(t,v6f,"r");
-xlabel ("t[ms]");
-ylabel ("v6f(t) [V]");
-print (hf, "forced.eps", "-depsc");
+%v6f=j*((pi/2)-w*t).*(1-e.^(-t/tau));
+
 
 file5=fopen('theo_fourth.tex', 'w');
 
-fprintf(file5, '\n Node Voltage 1 & %.11e \\\\ \\hline ', l(1));
-fprintf(file5, '\n Node Voltage 2 & %.11e \\\\ \\hline ', l(2));
-fprintf(file5, '\n Node Voltage 3 & %.11e \\\\ \\hline ', l(3));
-fprintf(file5, '\n Node Voltage 5 & %.11e \\\\ \\hline ', l(4));
-fprintf(file5, '\n Node Voltage 6 & %.11e \\\\ \\hline ', l(5));
-fprintf(file5, '\n Node Voltage 7 & %.11e \\\\ \\hline ', l(6));
-fprintf(file5, '\n Node Voltage 8 & %.11e \\\\ \\hline ', l(7));
+fprintf(file5, '\n Amplitude of Node Voltage 1 & %.11e \\\\ \\hline ', angle(l(1)));
+fprintf(file5, '\n Amplitude of Node Voltage 2 & %.11e \\\\ \\hline ', angle(l(2)));
+fprintf(file5, '\n Amplitude of Node Voltage 3 & %.11e \\\\ \\hline ', angle(l(3)));
+fprintf(file5, '\n Amplitude of Node Voltage 5 & %.11e \\\\ \\hline ', angle(l(4)));
+fprintf(file5, '\n Amplitude of Node Voltage 6 & %.11e \\\\ \\hline ', angle(l(5)));
+fprintf(file5, '\n Amplitude of Node Voltage 7 & %.11e \\\\ \\hline ', angle(l(6)));
+fprintf(file5, '\n Amplitude of Node Voltage 8 & %.11e \\\\ \\hline ', angle(l(7)));
 
 fclose(file5);
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%TOTAL
 %%%%%%%%%%THEO - P5%%%%%%%%%%
 
-%t=(-5e-3):1e-6:20e-3;
+
 
 %%%%%%%%%%%%ATENÇAO AO INTERVALO DE TEMPO!!!!!%%%%%%%%%
 
-v6t=v6n.+v6f;
+taux=(-5e-3):1e-6:20e-3;
+
+v6ft=sin(w*taux).*(1-e.^(-taux/tau));
+
+v6nt=Vx*exp(-taux/tau);
+
+
+v6t=v6nt.+v6ft;
 ht=figure ();
-plot(t,v6t,"p");
+plot(taux,v6t,"p");
 xlabel ("t[ms]");
 ylabel ("v6t(t) [V]");
 print (ht, "total.eps", "-depsc");
@@ -240,7 +248,7 @@ ylabel ("v6f(t) [V]");
 print (hm, "magnitude.eps", "-depsc");
 
 hph=figure ();
-plot(f,arg(v6fq),"p",arg(vcfq),"r",arg(vsfq),"g");
+plot(f,angle(v6fq),"p",angle(vcfq),"r",angle(vsfq),"g");
 xlabel ("f[Hz]");
 ylabel ("v6t(t) [V]");
 print (hph, "phase.eps", "-depsc");

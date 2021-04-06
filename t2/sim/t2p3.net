@@ -4,14 +4,12 @@
 
 .options savecurrents
 
-
-*.ic v(n6)=8.351525 v(n8)=0
 .INCLUDE ../mat/datafrom2.txt
  
 *The circuit components are defined below
 
- 
-Vs   n1  0  5.02924600001
+*Se é a solução natural, Vs=0
+
 
 Vab   0  na   0
 
