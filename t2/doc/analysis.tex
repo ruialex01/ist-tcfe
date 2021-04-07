@@ -2,8 +2,7 @@
 \label{sec:analysis}
 
 \paragraph{}
-***INTRO HERE***
-
+In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig GNU octave and the section is dividid in six different subsections - Subsection ~\ref{subsec:first_topic}, Subsection ~\ref{subsec:second_topic}, Subsection ~\ref{subsec:third_topic}, Subsection ~\ref{subsec:fourth_topic}, Subsection ~\ref{subsec:fifth_topic} and Subsection ~\ref{subsec:sixth_topic} -, one for each topic of the theoretical analysis.
 
 \subsection{Theoretical - Topic I}
 \label{subsec:first_topic}
@@ -150,10 +149,13 @@ These are the final values obtained with the application of the Node Voltage Met
 
 \[
 \left\{\begin{matrix}
-V_s=0V\\
-V_x=V(6)-V(8)\
+v_s=0V\\
+V_x=V_6-V_8\\
 \end{matrix}\right.
 \]
+
+\paragraph{}
+To analyze an RC circuit more complex than simple series (given that we are dealing with a complex electric circuit with different dependent sources), we can convert the circuit into a Thévenin equivalent, applying Thévenin's theorem. Then, we treat the capacitor as the "load” and reduce everything else to an equivalent circuit of one voltage source and one series resistor. After that, we are able to analyze what happens over time with the universal time constant formula. Our time constant for this circuit will be equal to the Thévenin' resistance, $R_{eq} $, times the capacitance $C$.
 
 \begin{center}
    \begin{tabular}{|c||c|}
@@ -164,14 +166,18 @@ V_x=V(6)-V(8)\
    \end{tabular}
  \end{center}
  
- where $ R_{eq} = \frac{V_x}{I_x} $ is expressed in Ohms $(\Omega)$.
- 
- EXPLAIN WHY WE NEED TO DO THAT!
- Ix se calhar adicionamos uma coluna na tabela?
+ where $ R_{eq} = \frac{V_x}{I_x} $ is expressed in Ohms $(\Omega)$ and \\
+ the time constant $\tau$ is expressed in seconds (s). 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Theoretical - Topic III}
 \label{subsec:third_topic}
+
+\paragraph{}
+The natural response tells us what the circuit does as its internal stored energy (the initial voltage on the capacitor, calculated in the previous topic, $V_x$) is allowed to dissipate. It does this by ignoring the forcing input and considering only the initial voltage and the equivalent resistance and time constant, determined in the previous topic.
+
+\paragraph{}
+$ v_n(t)=V_x e^{-\frac{t}{\tau}}=V_x e^{-\frac{t}{RC}} $
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{natural.eps}
@@ -181,38 +187,44 @@ V_x=V(6)-V(8)\
 
 where $t$ is expressed in seconds (s) along the x-axis and \\
 $V6_n(t)$, the natural solution, is expressed in Volts (V) along the y-axis.
+
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Theoretical - Topic IV}
 \label{subsec:fourth_topic}
 
+\paragraph{}
+The forced response is where the output (the voltage on the capacitor) is going to end up in the long run after all stored energy eventually dissipates. This occors by ignoring the presence of energy storage elements (in our circuit analysis, it ignores the capacitor and its initial voltage, $V_x$). As suggested, plotting the amplitude and phase shift of a sinusoid in a complex plane, we get a complex number in polar form that we can apply to the circuit analysis: a phasor voltage source, $V_s$ = 1. Besides that, we also replaced $C$ with its impedance $Z_C=\frac{1}{\omega C}$.
+
+
 \[
 \left\{\begin{matrix}
-V_s = 1 \\
 f = 1 kHz = 1000 Hz \\
 t = 20 ms = 0.020 s \\
-C --> Z_C=\frac{1}{\omega C} \\
 \end{matrix}\right.
 \]
 
-$ v_s=sin(\omega t)=cos(\frac{\pi}{2}-\omega t)=e^{i(\frac{\pi}{2}-\omega t)} $ \\
 
 \begin{center}
    \begin{tabular}{|c||c|}
       \hline    
-      \multicolumn{2}{|c|} {\bf SEE HERE WHAT'S MISSING Nodal Analysis Voltages [in Volts]} \\
+      \multicolumn{2}{|c|} {\bf Nodal Analysis of Phasors [in Volts]} \\
       \hline
         \input{theo_fourth}
    \end{tabular}
  \end{center}
-  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Theoretical - Topic V}
 \label{subsec:fifth_topic}
 
+\paragraph{}
+The natural response considers the internal initial conditions. The forced response considers the external inputs. Given that, we get the total response by summing the two respondes, natural and forced. In fact, this is the principle of superposition in action.
+
 \[
 \left\{\begin{matrix}
+v_t=v_n+v_f\\
 f = 1 kHz = 1000 Hz \\
 \end{matrix}\right.
 \]
@@ -226,6 +238,10 @@ f = 1 kHz = 1000 Hz \\
 
 where $t$ is expressed in seconds (s) along the x-axis and \\
 $V6(t)$, the total solution, and $v_s$ are expressed in Volts (V) along the y-axis.
+
+ %TOTAL = NATURAL + FORCED
+ % constante para -5,0 circuito com corrente contínua
+
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

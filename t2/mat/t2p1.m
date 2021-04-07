@@ -211,14 +211,22 @@ fclose(file5);
 
 taux=0:1e-6:20e-3;
 
-v6ft=v6_mod*cos(w*taux-v6_phase);
+vst_2=sin(w*taux);
+v6ft_2=v6_mod*cos(w*taux-v6_phase);
+v6nt_2=Vx*exp(-taux/tau);
 
-v6nt=Vx*exp(-taux/tau);
+%taux_1=-5e-3:1e-6:0;
+
+%v6_1=s(5);
+%vs_1=Vs
+
+v6t_2=v6nt_2.+v6ft_2;
+%v6t_1=v6nt_1.+v6ft_1;
 
 
-v6t=v6nt.+v6ft;
 ht=figure ();
-plot(taux,v6t,"p");
+plot(taux, v6t_2,"g");
+%plot(taux_1,v6_1, "p", vs_1, "r" )
 xlabel ("t[s]");
 ylabel ("v6t(t) [V]");
 print (ht, "total.eps", "-depsc");
@@ -234,7 +242,7 @@ vsfq=j*(pi/2-w*(20e-3));
 
 v6fq=Vx.*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
 
-v8fq=s(7).*exp(-20e-3/tau).+vsfq*(1-exp(-20e-3/tau));
+v8fq=s(7).*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
 
 vcfq=v6fq.-v8fq;
 
@@ -294,12 +302,6 @@ file6=fopen('error_tab1.tex', 'w');
                               fprintf(file6,'\n Node 6 & -1.85471e+00         & %.11e & %.11e \\\\ \\hline ', s(6), g(6));
                                    fprintf(file6,'\n Node 7 & -2.77162e+00         & %.11e & %.11e \\\\ \\hline ', s(7), g(7));
 fclose(file6)
-
-
-
-
-
-
 
 
 
