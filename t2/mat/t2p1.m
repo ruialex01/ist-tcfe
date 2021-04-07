@@ -2,17 +2,28 @@ format long
 
 %%These are the given values of all of the circuits' components
 
-r1 = 1.04362094375e3 
-r2 = 2.01060713289e3 
-r3 = 3.1012701442e3
-r4 = 4.18822801798e3 
-r5 = 3.09414786857e3 
-r6 = 2.02739936235e3 
-r7 = 1.0022809037e3 
-Vs = 5.02924600001 
-C = 1.03087754949e-6
-Kb = 7.2492497599e-3 
-Kd = 8.29575903566e3
+filename = "data.txt";
+fid = fopen (filename, "r");
+
+
+data=textscan(fid, '%s = %f', 'headerlines', 6)
+
+
+
+r1=data{2}(1)*1000
+r2=data{2}(2)*1000
+r3=data{2}(3)*1000
+r4=data{2}(4)*1000
+r5=data{2}(5)*1000
+r6=data{2}(6)*1000
+r7=data{2}(7)*1000
+Vs=data{2}(8)
+C=data{2}(9)*0.000001
+Kb=data{2}(10)*0.001
+Kd=data{2}(11)*1000
+
+fclose(fid);
+
 
 %%%%%%%%%%THEO - P1%%%%%%%%%%
 
@@ -208,6 +219,13 @@ fclose(file5);
 
 
 %%%%%%%%%%%%ATENÇAO AO INTERVALO DE TEMPO!!!!!%%%%%%%%%
+%This part is divided in two
+
+
+taux_1=-5e-3:1e-6:0;
+
+v6_1=s(5);
+vs_1=Vs;
 
 taux=0:1e-6:20e-3;
 
@@ -215,51 +233,55 @@ vst_2=sin(w*taux);
 v6ft_2=v6_mod*cos(w*taux-v6_phase);
 v6nt_2=Vx*exp(-taux/tau);
 
-%taux_1=-5e-3:1e-6:0;
-
-%v6_1=s(5);
-%vs_1=Vs
-
 v6t_2=v6nt_2.+v6ft_2;
-%v6t_1=v6nt_1.+v6ft_1;
-
 
 ht=figure ();
+hold on;
 plot(taux, v6t_2,"g");
-%plot(taux_1,v6_1, "p", vs_1, "r" )
-xlabel ("t[s]");
-ylabel ("v6t(t) [V]");
-print (ht, "total.eps", "-depsc");
+plot(taux, vst_2,"r"); 
 
+
+
+line([-5e-3 0], [vs_1 vs_1], "linestyle", "-", "color", "r")
+line([-5e-3 0], [v6_1 v6_1], "linestyle", "-", "color", "g")
+
+
+xlabel ("t[s]");
+ylabel ("v6t(t)-green vs(t)-red [V]");
+print (ht, "total.eps", "-depsc");
+hold off;
 
 %%%%%%%%%%%%%%%FREQUENCY%%%
 
-f=logspace(-1,6,7*5);
+f=logspace(-1,6,400);
 
 w=2*pi*f;
 
 vsfq=j*(pi/2-w*(20e-3));
 
-v6fq=Vx.*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
+v6fq=Vx.exp(-20e-3/tau).+vsfq.(1-exp(-20e-3/tau));
 
-v8fq=s(7).*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
+v8fq=s(7).exp(-20e-3/tau).+vsfq(1-exp(-20e-3/tau));
 
 vcfq=v6fq.-v8fq;
 
 
 
 hm=figure ();
-plot(f,abs(v6fq),"p",abs(vcfq),"r",abs(vsfq),"g" );
+hold on;
+semilogx(f,20*log10(abs(v6fq)),"m",f,20*log10(abs(vcfq)),"r",f,20*log10(abs(vsfq)),"g" );
 xlabel ("f[Hz]");
-ylabel ("v6f(t) [V]");
+ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Decibel]");
 print (hm, "magnitude.eps", "-depsc");
+hold off;
 
 hph=figure ();
-plot(f,angle(v6fq),"p",angle(vcfq),"r",angle(vsfq),"g");
+hold on;
+semilogx(f,(180/pi)*angle(v6fq),"m", f,(180/pi)*angle(vcfq),"r",f,(180/pi)*angle(vsfq),"g");
 xlabel ("f[Hz]");
-ylabel ("v6t(t) [V]");
+ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Degrees]");
 print (hph, "phase.eps", "-depsc");
-
+hold off;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%1º ERRO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,12 +324,3 @@ file6=fopen('error_tab1.tex', 'w');
                               fprintf(file6,'\n Node 6 & -1.85471e+00         & %.11e & %.11e \\\\ \\hline ', s(6), g(6));
                                    fprintf(file6,'\n Node 7 & -2.77162e+00         & %.11e & %.11e \\\\ \\hline ', s(7), g(7));
 fclose(file6)
-
-
-
-
-
-
-
-
-
