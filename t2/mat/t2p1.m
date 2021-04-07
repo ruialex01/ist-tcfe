@@ -132,7 +132,7 @@ hn = figure ();
 plot(t,v6n,"g");
 
 
-xlabel ("t[ms]");
+xlabel ("t[s]");
 ylabel ("v6n(t) [V]");
 print (hn, "natural.eps", "-depsc");
 
@@ -153,14 +153,8 @@ w = 2*pi*f; %rad/s
 
 
 Zc = 1/(j*w*C)
-Cgain = Zc/(req+Zc)
-Gain = abs(Cgain)
-Phase = angle(Cgain)
 
-
-%Vs=sin(wt)=cos(pi/2-wt)=e.^j(pi/2-w*(20e-3))=e.^j(pi/2-40*pi)=e.^j(pi/2) 
-
-
+%This is the phasor Vs
 Vs=e.^(j*(pi/2));
 
 K=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
@@ -181,24 +175,29 @@ K=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
 
 0 , 0 , 0 , 0 , 0 , 1/r6 , 0 , 0, 0, 1;
 
-0 , 0 , 0 , 0 , 0 , 0    , 0 , 0, 1, 0 ]
+0 , 0 , 0 , 0 , 1 , 0    , -1 , 0, -Zc, 0 ]
 
-M=[Vs;0;0;0;0;0;0;0;0;Vx/Zc]
+M=[Vs;0;0;0;0;0;0;0;0;0]
 
 l=K\M
 
-%v6f=j*((pi/2)-w*t).*(1-e.^(-t/tau));
+
+v6_mod=abs(l(5));
+v6_phase=-angle(l(5));
+
+v8_mod=abs(l(7));
+v8_phase=-angle(l(7));
 
 
 file5=fopen('theo_fourth.tex', 'w');
 
-fprintf(file5, '\n Amplitude of Node Voltage 1 & %.11e \\\\ \\hline ', angle(l(1)));
-fprintf(file5, '\n Amplitude of Node Voltage 2 & %.11e \\\\ \\hline ', angle(l(2)));
-fprintf(file5, '\n Amplitude of Node Voltage 3 & %.11e \\\\ \\hline ', angle(l(3)));
-fprintf(file5, '\n Amplitude of Node Voltage 5 & %.11e \\\\ \\hline ', angle(l(4)));
-fprintf(file5, '\n Amplitude of Node Voltage 6 & %.11e \\\\ \\hline ', angle(l(5)));
-fprintf(file5, '\n Amplitude of Node Voltage 7 & %.11e \\\\ \\hline ', angle(l(6)));
-fprintf(file5, '\n Amplitude of Node Voltage 8 & %.11e \\\\ \\hline ', angle(l(7)));
+fprintf(file5, '\n Phasor of Node 1 & %.11e+i%.11e \\\\ \\hline ',real(l(1)), angle(l(1)));
+fprintf(file5, '\n Phasor of Node 2 & %.11e+i%.11e \\\\ \\hline ',real(l(2)), angle(l(2)));
+fprintf(file5, '\n Phasor of Node 3 & %.11e+i%.11e \\\\ \\hline ',real(l(3)), angle(l(3)));
+fprintf(file5, '\n Phasor of Node 5 & %.11e+i%.11e \\\\ \\hline ',real(l(4)), angle(l(4)));
+fprintf(file5, '\n Phasor of Node 6 & %.11e+i%.11e \\\\ \\hline ',real(l(5)), angle(l(5)));
+fprintf(file5, '\n Phasor of Node 7 & %.11e+i%.11e \\\\ \\hline ',real(l(6)), angle(l(6)));
+fprintf(file5, '\n Phasor of Node 8 & %.11e+i%.11e \\\\ \\hline ',real(l(7)), angle(l(7)));
 
 fclose(file5);
 
@@ -210,9 +209,9 @@ fclose(file5);
 
 %%%%%%%%%%%%ATENÇAO AO INTERVALO DE TEMPO!!!!!%%%%%%%%%
 
-taux=(-5e-3):1e-6:20e-3;
+taux=0:1e-6:20e-3;
 
-v6ft=sin(w*taux).*(1-e.^(-taux/tau));
+v6ft=v6_mod*cos(w*taux-v6_phase);
 
 v6nt=Vx*exp(-taux/tau);
 
@@ -220,7 +219,7 @@ v6nt=Vx*exp(-taux/tau);
 v6t=v6nt.+v6ft;
 ht=figure ();
 plot(taux,v6t,"p");
-xlabel ("t[ms]");
+xlabel ("t[s]");
 ylabel ("v6t(t) [V]");
 print (ht, "total.eps", "-depsc");
 

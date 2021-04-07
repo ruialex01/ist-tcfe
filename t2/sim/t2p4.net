@@ -4,6 +4,8 @@
 
 .options savecurrents
  
+ 
+ .INCLUDE ../mat/datafrom2.txt
 *The circuit components are defined below
 
  
@@ -49,7 +51,7 @@ set color6=rgb:4/0/0
 
 
 echo "********************************************"
-echo  "Operating point"
+echo  "tran of total solution"
 echo "********************************************"
 
 
