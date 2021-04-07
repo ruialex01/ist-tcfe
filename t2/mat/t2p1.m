@@ -259,9 +259,9 @@ w=2*pi*f;
 
 vsfq=j*(pi/2-w*(20e-3));
 
-v6fq=Vx.exp(-20e-3/tau).+vsfq.(1-exp(-20e-3/tau));
+v6fq=Vx.*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
 
-v8fq=s(7).exp(-20e-3/tau).+vsfq(1-exp(-20e-3/tau));
+v8fq=s(7).*exp(-20e-3/tau).+vsfq*(1-exp(-20e-3/tau));
 
 vcfq=v6fq.-v8fq;
 
