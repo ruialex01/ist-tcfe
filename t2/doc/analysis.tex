@@ -84,7 +84,7 @@ We can transform this system of equations and put it into a matrix form, ready t
 
 \[
 \begin{bmatrix}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
 
 \frac{1}{R_1} & -\frac{1}{R_1} -\frac{1}{R_2} -\frac{1}{R_3} & \frac{1}{R_2} & \frac{1}{R_3} & 0 & 0 & 0 & 0 & 0 & 0\\
 
@@ -148,7 +148,12 @@ These are the final values obtained with the application of the Node Voltage Met
 \subsection{Theoretical - Topic II}
 \label{subsec:second_topic}
 
-$Vs=0V$ and $Vx=V(6)-V(8)$
+\[
+\left\{\begin{matrix}
+V_s=0V\\
+V_x=V(6)-V(8)\
+\end{matrix}\right.
+\]
 
 \begin{center}
    \begin{tabular}{|c||c|}
@@ -159,6 +164,10 @@ $Vs=0V$ and $Vx=V(6)-V(8)$
    \end{tabular}
  \end{center}
  
+ where $ R_{eq} = \frac{V_x}{I_x} $ is expressed in Ohms $(\Omega)$.
+ 
+ EXPLAIN WHY WE NEED TO DO THAT!
+ Ix se calhar adicionamos uma coluna na tabela?
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Theoretical - Topic III}
@@ -166,20 +175,32 @@ $Vs=0V$ and $Vx=V(6)-V(8)$
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{natural.eps}
-\caption{LALALAALALALALALALAL.}
-\label{fig:LALALAAL}
+\caption{The natural solution, $V6_n(t)$, during time interval [0, 20] ms.}
+\label{fig:theo_third}
 \end{figure}
 
-
+where $t$ is expressed in seconds (s) along the x-axis and \\
+$V6_n(t)$, the natural solution, is expressed in Volts (V) along the y-axis.
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Theoretical - Topic IV}
 \label{subsec:fourth_topic}
 
+\[
+\left\{\begin{matrix}
+V_s = 1 \\
+f = 1 kHz = 1000 Hz \\
+t = 20 ms = 0.020 s \\
+C --> Z_C=\frac{1}{\omega C} \\
+\end{matrix}\right.
+\]
+
+$ v_s=sin(\omega t)=cos(\frac{\pi}{2}-\omega t)=e^{i(\frac{\pi}{2}-\omega t)} $ \\
+
 \begin{center}
    \begin{tabular}{|c||c|}
       \hline    
-      \multicolumn{2}{|c|} {\bf Nodal Analysis Voltages [in Volts]} \\
+      \multicolumn{2}{|c|} {\bf SEE HERE WHAT'S MISSING Nodal Analysis Voltages [in Volts]} \\
       \hline
         \input{theo_fourth}
    \end{tabular}
@@ -190,29 +211,50 @@ $Vs=0V$ and $Vx=V(6)-V(8)$
 \subsection{Theoretical - Topic V}
 \label{subsec:fifth_topic}
 
+\[
+\left\{\begin{matrix}
+f = 1 kHz = 1000 Hz \\
+\end{matrix}\right.
+\]
+
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{total.eps}
-\caption{LALALAALALALALALALAL.}
-\label{fig:LALALAAL}
+\caption{The final total solution, $V6(t)$,  and $v_s(t)$ during time interval [-5, 20] ms.}
+\label{fig:theo_fifth}
 \end{figure}
 
+
+where $t$ is expressed in seconds (s) along the x-axis and \\
+$V6(t)$, the total solution, and $v_s$ are expressed in Volts (V) along the y-axis.
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Theoretical - Topic VI}
 \label{subsec:sixth_topic}
 
+\[
+\left\{\begin{matrix}
+f =\in [0.1 , 1] MHz \\
+v_c(f)=v_6(f)-v_8(f) \\
+\end{matrix}\right.
+\]
+
+
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{magnitude.eps}
-\caption{LALALAALALALALALALAL.}
+\caption{Magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
 \label{fig:LALALAAL}
 \end{figure}
+
+where $f$ is expressed in Hertz (Hz) along the x-axis and \\
+the magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed with a logscale decibel (dB) along the y-axis.
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{phase.eps}
-\caption{LALALAALALALALALALAL.}
+\caption{Phase $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
 \label{fig:LALALAAL}
 \end{figure}
 
-
-\pagebreak
+where $f$ is expressed in Hertz (Hz) along the x-axis and \\
+the phase of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed in degrees along the y-axis.
 
