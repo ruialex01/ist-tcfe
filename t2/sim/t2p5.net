@@ -51,7 +51,7 @@ echo "********************************************"
 echo  "Frequency analysis"
 echo "********************************************"
 
-ac dec 10 0.1 10MEG
+ac dec 10 0.1 1MEG
 
 hardcopy acm.ps db(v(n6)) db(v(n1))
 echo acm_FIG

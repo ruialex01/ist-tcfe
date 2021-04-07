@@ -166,7 +166,7 @@ w = 2*pi*f; %rad/s
 Zc = 1/(j*w*C)
 
 %This is the phasor Vs
-Vs=e.^(j*(pi/2));
+Vs=e.^(j*(-pi/2));
 
 K=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
 
@@ -253,23 +253,58 @@ hold off;
 
 %%%%%%%%%%%%%%%FREQUENCY%%%
 
-f=logspace(-1,6,400);
+freq=logspace(-1,6,400);
 
-w=2*pi*f;
+Vs=e.^(j*(-pi/2));
 
-vsfq=j*(pi/2-w*(20e-3));
 
-v6fq=Vx.*exp(-20e-3/tau).+vsfq.*(1-exp(-20e-3/tau));
 
-v8fq=s(7).*exp(-20e-3/tau).+vsfq*(1-exp(-20e-3/tau));
 
-vcfq=v6fq.-v8fq;
+for o = 1:400
+
+w(o)=2*pi*freq(o);
+Z(o)= 1/(j*w(o)*C);
+
+
+
+G=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
+
+1/r1 , (-1/r1 -1/r2 -1/r3) , 1/r2 , 1/r3, 0 , 0 , 0 , 0 , 0, 0;
+
+0 , 1/r2 , -1/r2 , 0 , 0 , 0 , 0 , 1 , 0, 0;
+
+0 , 0 , 0 , 1 , 0 , 0 , -1 , 0 , 0, -Kd;
+
+0 , 0 , 0 , -1/r5 , 1/r5 , 0 , 0 , 1 , 1, 0;
+
+0 , 0 , 0 , 0 ,  0 , 1/r7, -1/r7 , 0 , 0, -1;
+
+0 , -Kb , 0 , Kb , 0 , 0 , 0 , 1 , 0, 0;
+
+0 , 1/r3 , 0 , (-1/r3-1/r4-1/r5) , 1/r5 , 0 , 0 , 0 , 1 , 1;
+
+0 , 0 , 0 , 0 , 0 , 1/r6 , 0 , 0, 0, 1;
+
+0 , 0 , 0 , 0 , 1 , 0   , -1 , 0, -Z(o), 0 ]
+
+I=[Vs;0;0;0;0;0;0;0;0;0]
+
+
+h=G\I
+
+v6fq(o)=h(5);
+v8fq(o)=h(7);
+
+vcfq(o)=v6fq(o)-v8fq(o);
+
+endfor
 
 
 
 hm=figure ();
 hold on;
-semilogx(f,20*log10(abs(v6fq)),"m",f,20*log10(abs(vcfq)),"r",f,20*log10(abs(vsfq)),"g" );
+semilogx(freq,20*log10(abs(v6fq)),"m",freq,20*log10(abs(vcfq)),"r",freq,20*log10(abs(Vs)),"g" );
+ylim([-8,5]);
 xlabel ("f[Hz]");
 ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Decibel]");
 print (hm, "magnitude.eps", "-depsc");
@@ -277,7 +312,7 @@ hold off;
 
 hph=figure ();
 hold on;
-semilogx(f,(180/pi)*angle(v6fq),"m", f,(180/pi)*angle(vcfq),"r",f,(180/pi)*angle(vsfq),"g");
+semilogx(freq,(-180/pi)*angle(v6fq),"m", freq,(-180/pi)*angle(vcfq),"r",freq,-(180/pi)*angle(Vs),"g");
 xlabel ("f[Hz]");
 ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Degrees]");
 print (hph, "phase.eps", "-depsc");
@@ -324,3 +359,47 @@ file6=fopen('error_tab1.tex', 'w');
                               fprintf(file6,'\n Node 6 & -1.85471e+00         & %.11e & %.11e \\\\ \\hline ', s(6), g(6));
                                    fprintf(file6,'\n Node 7 & -2.77162e+00         & %.11e & %.11e \\\\ \\hline ', s(7), g(7));
 fclose(file6)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%2º ERRO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%The following lines until the end of the document have the sole purpose of calculating the relative errors
+
+%%Matrix y is made of the Ngspice values used to calculate the relative error
+%%The symetric of hc#branch was considered due to reasons explained in the report
+%%Matrix z are the matching values calculated by octave
+
+h=[ 0.000000e+00,
+0.000000e+00,
+0.000000e+00,
+0.000000e+00,
+8.351528e+00,
+0.000000e+00,
+0.000000e+00]
+
+
+
+j=[w(1), w(2), w(3), w(4), w(5), w(6), w(7)]
+
+%%This cycle will calculate the relative error in percentage
+
+
+	for i=1:7 
+	n(i) = (abs(h(i)-w(i))/abs(h(i)))*100
+	endfor
+
+
+
+%%This wil print the relative errors in a latex table on the report
+
+file7=fopen('error_tab2.tex', 'w');
+     fprintf(file7,'\n Node 1 & 0.000000e+00        & %.11e & %.11e \\\\ \\hline ', j(1), n(1));
+          fprintf(file7,'\n Node 2 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(2), n(2));
+               fprintf(file7,'\n Node 3 & 0.000000e+00        & %.11e & %.11e \\\\ \\hline ', j(3), n(3));
+                    fprintf(file7,'\n Node 5 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(4), n(4));
+                         fprintf(file7,'\n Node 6 & 8.351528e+00       & %.11e & %.11e \\\\ \\hline ', j(5), n(5));
+                              fprintf(file7,'\n Node 7 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(6), n(6));
+                                   fprintf(file7,'\n Node 8 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(7), n(7));
+fclose(file7)
