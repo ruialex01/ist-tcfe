@@ -3,7 +3,7 @@
 
 
 \paragraph{}
-The Node Voltage Method is another way to analyze a circuit. This method is based on Kirchhoff's Current Law (KCL). To apply this method, we need to define what node voltage is. When we use the term node voltage, we are referring to the potential difference between two nodes of a circuit. We select one of the nodes in our circuit to be the reference node and, therefore, all the other node voltages are measured with respect to the referenced one. This reference node is called the ground node and, as it gets the ground symbol in Figure~\ref{fig:circuit}, corresponds to the node between resistor $R_1$ and voltage source $V_A$. The potential of the ground node is defined to be $0 V$ and the potentials of all the other nodes are measured relative to ground.
+The Node Voltage Method is a way to analyze a circuit. This method is based on Kirchhoff's Current Law (KCL). To apply this method, we need to define what node voltage is. When we use the term node voltage, we are referring to the potential difference between two nodes of a circuit. We select one of the nodes in our circuit to be the reference node and, therefore, all the other node voltages are measured with respect to the referenced one. This reference node is called the ground node and, as it gets the ground symbol in Figure~\ref{fig:circuit}, corresponds to the node between resistor $R_1$ and voltage source $V_A$. The potential of the ground node is defined to be $0 V$ and the potentials of all the other nodes are measured relative to ground.
 
 \paragraph{}
 The implementation of the Node Voltage Method to analyse the circuit was done following the common sequence of steps, summarized below.
@@ -16,10 +16,15 @@ The implementation of the Node Voltage Method to analyse the circuit was done fo
     \item Solve for any currents you want to know using Ohm's Law.
 \end{itemize}
 
-\paragraph
-An RC circuit (also known as an RC filter or RC network) stands for a resistor-capacitor circuit. An RC circuit is defined as an electrical circuit composed of the passive circuit components of a resistor (R) and capacitor (C), driven by a voltage source or current source.
-Due to the presence of a resistor in the ideal form of the circuit, an RC circuit will consume energy, akin to an RL circuit or RLC circuit.
-This is unlike the ideal form of an LC circuit, which will consume no energy due to the absence of a resistor. Although this is only in the ideal form of the circuit, and in practice, even an LC circuit will consume some energy because of the non-zero resistance of the components and connecting wires.
+\vspace{0.1cm}
 
+We use this method to determine the voltages in all the nodes and the currents in all the branches.
+
+\paragraph{}
+A RC circuit (also known as an RC filter or RC network) stands for a resistor-capacitor circuit. A RC circuit is defined as an electrical circuit composed of the passive circuit components of a resistor (R) and capacitor (C), driven by a voltage source or current source.
+Due to the presence of a resistor in the ideal form of the circuit, a RC circuit will consume energy, akin to a RL circuit or RLC circuit.
+This is unlike the ideal form of a LC circuit, which will consume no energy due to the absence of a resistor. Although this is only in the ideal form of the circuit, and in practice, even a LC circuit will consume some energy because of the non-zero resistance of the components and connecting wires.
+
+\paragraph{}
 Circuits manipulate electrical signals. Signals convey energy, information or both (vital functions) and these signals can be decomposed into series or
 integrals of basic signals. Through this, we can use the equation presented to make a transient analysis of the circuit.
