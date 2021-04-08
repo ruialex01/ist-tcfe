@@ -37,7 +37,7 @@ For topic 1 of the simulation analysis section, we can see, in this table, the r
     {\bf Node/Component} & {\bf Value [A or V]} \\ \hline
     \input{op2_TAB}
   \end{tabular}
-  \caption*{Voltages and currets obtained by simulating the operating point for $vs(0)=0$ and replacing the capacitor with a voltage source}
+  \caption*{Voltages and currents obtained by simulating the operating point for $vs(0)=0$ and replacing the capacitor with a voltage source}
  \label{tab:op1}
 \end{table}
 
@@ -50,7 +50,7 @@ For topic 2, by simulating the operating point for $vs(0)=0$, and replacing the 
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{trans1.pdf}
-\caption{Natural response of the circuit}
+\caption{Natural response of the circuit.}
 \label{fig:natural}
 \end{figure}
 
@@ -64,7 +64,7 @@ For topic 3, by using the boundary conditions V(6) and V(8) obtained in topic 2,
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{trans2.pdf}
-\caption{Total response of the circuit}
+\caption{Total response of the circuit.}
 \label{fig:total}
 \end{figure}
 
@@ -78,16 +78,20 @@ Regarding topic 4, the above figure is ploted by simulating the total response o
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{acm.pdf}
-\caption{Frequency response for $V_s(f)$}
+\caption{Magnitude of $v_s(f)$ and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
 \label{fig:$V_s(f)$}
 \end{figure}
 
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.4\textwidth]{acp.pdf}
-\caption{Frequency response for $V_6(f)$}
+\caption{Phase of $v_s(f)$ and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
 \label{fig:$V_6(f)$}
 \end{figure}
 
 \paragraph{}
-Furthermore, in topic 5, we simulate the frequency response in node 6 (it is important to note that the frequency is presented in a logarithmic scale, the magnitude in dB and the phase in degrees) for the frequency range of 0.1 Hz to 1 MHz. Finally, we plot both vs(f) and v6(f), as presented in the figures above. By analysing both the plots, we can conclude that they are ... (FALTAM COISAS AQUI escrever análise aqui). This happens because they correspond to different nodes and diferent voltages.
+Furthermore, in topic 5, we simulate the frequency response in node 6 (it is important to note that the frequency is presented in a logarithmic scale, the magnitude in dB and the phase in degrees) for the frequency range of 0.1 Hz to 1 MHz. Finally, we plot both vs(f) and v6(f), as presented in the figures above. The differences between the magnitude and phase of the two voltages are explained because they correspond to different nodes.
+
+\paragraph{}
+By analysing both the plots, we can conclude that the function that describe each one of the node voltages are, in fact, similar in the representation of its magnitude and phase. As it can be seen, the magnitude of $v_s$ is null and it remains constant till the end of the time interval. The magnitude of node voltage $V_6$ is represented by a curve that shows variation through frequency. This magnitude is described by a descent of the node voltage values, which start with a constant value around 1 db and tends to stabilize near -5 db in the final section of the interval. As previously stated for the magnitude, also the phase of $v_s$ is null and remains constant till the end of the time interval. On the other hand, the phase of node voltage $V_6$ is also null in the beggining of the time interval. However, as we can see, the phase of this node voltage is represented by a curve that shows a descent variation through time. This phase can be described by this curve with an inflexion point in the middle value of the time interval that tends to stabilize near -100 degrees. 
+
