@@ -249,8 +249,9 @@ line([-5e-3 0], [vs_1 vs_1], "linestyle", "-", "color", "r")
 line([-5e-3 0], [v6_1 v6_1], "linestyle", "-", "color", "g")
 
 
-xlabel ("t[s]");
-ylabel ("v6t(t)-green vs(t)-red [V]");
+xlabel ("v6t(t)-green vs(t)-red        t[s]");
+ylabel (" [V]");
+legend("v6t_2","vst_2");
 print (ht, "total.eps", "-depsc");
 hold off;
 
@@ -303,21 +304,33 @@ vcfq(o)=v6fq(o)-v8fq(o);
 endfor
 
 
+v6magn=20*log10(abs(v6fq))
+vcmagn=20*log10(abs(vcfq))
+vsmagn=20*log10(abs(Vs))
+
+
+v6phase=(180/pi)*angle(v6fq)+90;
+vcphase=(180/pi)*angle(vcfq)+90;
+vsphase=(180/pi)*angle(Vs)+90;
+
+
 
 hm=figure ();
 hold on;
-semilogx(freq,20*log10(abs(v6fq)),"m",freq,20*log10(abs(vcfq)),"r",freq,20*log10(abs(Vs)),"g" );
+semilogx(freq,v6magn ,"m",freq, vcmagn,"r",freq,vsmagn,"g" );
 ylim([-8,5]);
-xlabel ("f[Hz]");
-ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Decibel]");
+xlabel ("     f[Hz]");
+ylabel ("[Decibel]");
+legend("v6magn","vcmagn","vsmagn");
 print (hm, "magnitude.eps", "-depsc");
 hold off;
 
 hph=figure ();
 hold on;
-semilogx(freq,(180/pi)*angle(v6fq)+90,"m", freq,(180/pi)*angle(vcfq)+90,"r",freq,(180/pi)*angle(Vs)+90,"g");
-xlabel ("f[Hz]");
-ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Degrees]");
+semilogx(freq,v6phase,"m", freq,vcphase,"r",freq,vsphase,"g");
+xlabel ("     f[Hz]");
+ylabel ("[Degrees]");
+legend("v6phase","vcphase","vsphase");
 print (hph, "phase.eps", "-depsc");
 hold off;
 
