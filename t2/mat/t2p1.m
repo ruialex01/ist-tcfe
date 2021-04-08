@@ -352,6 +352,7 @@ f=[s(1), s(2), s(3), s(4), s(5), s(6), s(7)]
 %%This wil print the relative errors in a latex table on the report
 
 file6=fopen('error_tab1.tex', 'w');
+fprintf(file6,'\n Node & GNU Octave   & NGSpice & Relative Error \\\\ \\hline ');
      fprintf(file6,'\n Node 1 & 5.029246e+00         & %.11e & %.11e \\\\ \\hline ', s(1), g(1));
           fprintf(file6,'\n Node 2 & 4.783544e+00         & %.11e & %.11e \\\\ \\hline ', s(2), g(2));
                fprintf(file6,'\n Node 3 & 4.288147e+00        & %.11e & %.11e \\\\ \\hline ', s(3), g(3));
@@ -396,13 +397,14 @@ j=[p(1), p(2), p(3), p(4), p(5), p(6), p(7)]
 %%This wil print the relative errors in a latex table on the report
 
 file7=fopen('error_tab2.tex', 'w');
-     fprintf(file7,'\n Node 1 & 0.000000e+00        & %.11e & %.11e \\\\ \\hline ', j(1), n(1));
-          fprintf(file7,'\n Node 2 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(2), n(2));
-               fprintf(file7,'\n Node 3 & 0.000000e+00        & %.11e & %.11e \\\\ \\hline ', j(3), n(3));
-                    fprintf(file7,'\n Node 5 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(4), n(4));
+fprintf(file7,'\n Node & GNU Octave   & NGSpice & Relative Error \\\\ \\hline ');
+     fprintf(file7,'\n Node 1 & 0.000000e+00        & %.11e & - \\\\ \\hline ', j(1));
+          fprintf(file7,'\n Node 2 & 0.000000e+00         & %.11e & - \\\\ \\hline ', j(2));
+               fprintf(file7,'\n Node 3 & 0.000000e+00        & %.11e & - \\\\ \\hline ', j(3));
+                    fprintf(file7,'\n Node 5 & 0.000000e+00         & %.11e & - \\\\ \\hline ', j(4));
                          fprintf(file7,'\n Node 6 & 8.351528e+00       & %.11e & %.11e \\\\ \\hline ', j(5), n(5));
-                              fprintf(file7,'\n Node 7 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(6), n(6));
-                                   fprintf(file7,'\n Node 8 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(7), n(7));
+                              fprintf(file7,'\n Node 7 & 0.000000e+00         & %.11e & - \\\\ \\hline ', j(6));
+                                   fprintf(file7,'\n Node 8 & 0.000000e+00         & %.11e & - \\\\ \\hline ', j(7));
 fclose(file7)
 
 

@@ -1,6 +1,16 @@
 \section{Simulation Analysis}
 \label{sec:simulation}
 
+\paragraph{}
+In this section, we can find the results of each topic required in the simulation analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig NGSpice and the section is dividid in five different subsections - Subsection ~\ref{subsec:sim_first}, Subsection ~\ref{subsec:sim_second}, Subsection ~\ref{subsec:sim_third}, Subsection ~\ref{subsec:sim_fourth} and Subsection ~\ref{subsec:sim_fifth}, one for each topic of the simulation analysis.
+
+\paragraph{}
+Ngspice is a circuit-simulation program that makes it possible to have an accurate representation of how the circuit would behave if it was actually assembled. The different tables shown below ilustrate the simulated operating point results for the circuit under analysis. As it can be seen, the tables show the values of the voltage in all nodes, the currents in all of the branches and also the currents in independent voltage sources.
+
+\paragraph{}
+Sometimes, when looking at the simulation results there is one very interesting detail which is very important: Ngspice operates with the idea that the positive current flows from the positive pole to the negative pole in all components, sources included. This explains why, in some cases, in the the very same branch where a voltage source is located, the current given by Ngspice in the whole branch is the symetric of the one given specifically in the voltage source. Another important detail about this operating point analysis of the circuit is thta the node $n_A$ and the voltage source $V_{AB} = 0V$, which are absent from the circuit’s picture. This is because the Current-Controlled Voltage Source is dependent on current $I_D$ , but Ngspice requires a voltage source where this current flows through, which made necessary the use of an auxiliary voltage source in series with $R_6$ and, therefore, an auxiliary node.
+
+
 \subsection{Simulation - Topic I}
 \label{subsec:sim_first}
 
@@ -80,6 +90,4 @@ Regarding topic 4, the above figure is ploted by simulating the total response o
 \end{figure}
 
 \paragraph{}
-Furthermore, in step 5, we simulate the frequency response in node 6 (it is important to note that the frequency is presented in a logarithmic scale, the magnitude in dB and the phase in degrees) for the frequency range of 0.1 Hz to 1 MHz. Finally, we plot both vs(f) and v6(f), as presented in the figures above. By analysing both the plots, we can conclude that they are ... (escrever análise aqui). This happens because they correspond to different nodes and diferent voltages.
-
-\pagebreak
+Furthermore, in topic 5, we simulate the frequency response in node 6 (it is important to note that the frequency is presented in a logarithmic scale, the magnitude in dB and the phase in degrees) for the frequency range of 0.1 Hz to 1 MHz. Finally, we plot both vs(f) and v6(f), as presented in the figures above. By analysing both the plots, we can conclude that they are ... (FALTAM COISAS AQUI escrever análise aqui). This happens because they correspond to different nodes and diferent voltages.
