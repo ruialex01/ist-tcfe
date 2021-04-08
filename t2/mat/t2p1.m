@@ -102,9 +102,10 @@ X=[1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0, 0;
 
 Y=[Vs;0;0;0;0;0;0;0;0;Vx]
 
-w=X\Y
+p=X\Y
 
-ix=w(9)
+
+ix=p(9)
 
 req=abs(Vx/ix)
 
@@ -119,13 +120,13 @@ printf("A Constante do Tempo equivalente é %f \n", tau)
 
 file3=fopen('theo_second.tex', 'w');
 
-fprintf(file3, '\n Node Voltage 1 & %.11e \\\\ \\hline ', w(1));
-fprintf(file3, '\n Node Voltage 2 & %.11e \\\\ \\hline ', w(2));
-fprintf(file3, '\n Node Voltage 3 & %.11e \\\\ \\hline ', w(3));
-fprintf(file3, '\n Node Voltage 5 & %.11e \\\\ \\hline ', w(4));
-fprintf(file3, '\n Node Voltage 6 & %.11e \\\\ \\hline ', w(5));
-fprintf(file3, '\n Node Voltage 7 & %.11e \\\\ \\hline ', w(6));
-fprintf(file3, '\n Node Voltage 8 & %.11e \\\\ \\hline ', w(7));
+fprintf(file3, '\n Node Voltage 1 & %.11e \\\\ \\hline ', p(1));
+fprintf(file3, '\n Node Voltage 2 & %.11e \\\\ \\hline ', p(2));
+fprintf(file3, '\n Node Voltage 3 & %.11e \\\\ \\hline ', p(3));
+fprintf(file3, '\n Node Voltage 5 & %.11e \\\\ \\hline ', p(4));
+fprintf(file3, '\n Node Voltage 6 & %.11e \\\\ \\hline ', p(5));
+fprintf(file3, '\n Node Voltage 7 & %.11e \\\\ \\hline ', p(6));
+fprintf(file3, '\n Node Voltage 8 & %.11e \\\\ \\hline ', p(7));
 fprintf(file3, '\n Req, Equivalent Resistor & %f \\\\ \\hline ', req);
 fprintf(file3, '\n Time Constant & %f \\\\ \\hline ', tau);
 
@@ -151,7 +152,7 @@ print (hn, "natural.eps", "-depsc");
 
 file4=fopen('datafrom2.txt', 'w');
 
-fprintf(file4, '.ic v(n6)=%.11e v(n8)=%.11e\n', w(5), w(7));
+fprintf(file4, '.ic v(n6)=%.11e v(n8)=%.11e\n', p(5), p(7));
 
 fclose(file4);
 
@@ -381,13 +382,13 @@ h=[ 0.000000e+00,
 
 
 
-j=[w(1), w(2), w(3), w(4), w(5), w(6), w(7)]
+j=[p(1), p(2), p(3), p(4), p(5), p(6), p(7)]
 
 %%This cycle will calculate the relative error in percentage
 
 
 	for i=1:7 
-	n(i) = (abs(h(i)-w(i))/abs(h(i)))*100
+	n(i) = (abs(h(i)-p(i))/abs(h(i)))*100
 	endfor
 
 
@@ -403,3 +404,8 @@ file7=fopen('error_tab2.tex', 'w');
                               fprintf(file7,'\n Node 7 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(6), n(6));
                                    fprintf(file7,'\n Node 8 & 0.000000e+00         & %.11e & %.11e \\\\ \\hline ', j(7), n(7));
 fclose(file7)
+
+
+
+
+
