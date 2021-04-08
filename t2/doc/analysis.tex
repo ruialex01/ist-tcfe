@@ -180,7 +180,7 @@ The natural response tells us what the circuit does as its internal stored energ
 $ v_n(t)=V_x e^{-\frac{t}{\tau}}=V_x e^{-\frac{t}{RC}} $
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.4\textwidth]{natural.eps}
+\includegraphics[width=0.6\textwidth]{natural.eps}
 \caption{The natural solution, $V6_n(t)$, during time interval [0, 20] ms.}
 \label{fig:theo_third}
 \end{figure}
@@ -220,7 +220,7 @@ t = 20 ms = 0.020 s \\
 \label{subsec:fifth_topic}
 
 \paragraph{}
-The natural response considers the internal initial conditions. The forced response considers the external inputs. Given that, we get the total response by summing the two respondes, natural and forced. In fact, this is the principle of superposition in action.
+The natural response considers the internal initial conditions. The forced response considers the external inputs. Given that, we get the total response by summing the two responses, natural and forced. In fact, this is the principle of superposition in action (in the mathematical sense of differential equations).
 
 \[
 \left\{\begin{matrix}
@@ -230,23 +230,27 @@ f = 1 kHz = 1000 Hz \\
 \]
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.4\textwidth]{total.eps}
+\includegraphics[width=0.6\textwidth]{total.eps}
 \caption{The final total solution, $V6(t)$,  and $v_s(t)$ during time interval [-5, 20] ms.}
 \label{fig:theo_fifth}
 \end{figure}
 
 
-where $t$ is expressed in seconds (s) along the x-axis and \\
+Where $t$ is expressed in seconds (s) along the x-axis and 
 $V6(t)$, the total solution, and $v_s$ are expressed in Volts (V) along the y-axis.
 
- %TOTAL = NATURAL + FORCED
- % constante para -5,0 circuito com corrente contínua
+In the graphic above, it is ineteresting to note that, while the voltage emited by the source $V_s$ is constant, the node 6 will also have a constant voltage. This is because for $t<0$ the circuit will essentially behave as one of continuos current. After this time mark, the circuit reveals its alternate current nature and both the voltages of the source and of node 6 will vary sinousoidally.
+
+
 
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Theoretical - Topic VI}
 \label{subsec:sixth_topic}
+
+\paragraph{}In this subsection, an analysis of the variation of the magnitude and phase of the phasors of $V_c$ $V_6$ and $V_s$ is made in function of the frequency. The first graphic presents the study of the variation of the magnitude and the second the study of the fase. In both graphics, the frequency $f$ in the x-axis varies from 0.1Hz to 1MHz
+
 
 \[
 \left\{\begin{matrix}
@@ -257,20 +261,23 @@ v_c(f)=v_6(f)-v_8(f) \\
 
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.4\textwidth]{magnitude.eps}
+\includegraphics[width=0.6\textwidth]{magnitude.eps}
 \caption{Magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
-\label{fig:LALALAAL}
+\label{fig:magnitudetheo}
 \end{figure}
 
-where $f$ is expressed in Hertz (Hz) along the x-axis and \\
-the magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed with a logscale decibel (dB) along the y-axis.
+The frequency $f$ is expressed in Hertz (Hz) along the x-axis and 
+the magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed with a logscale decibel (dB) along the y-axis.\\
+When looking at this graph, a couple of things are important to highlight. First, $V_s$ will always have magnitude 0 because, given that its absolute value is 1 and we are using a logscale, $log(1)=0$. Second, we also note that the $v_c$ graph line does not resemble the one that represents $v_6$. This is because the voltage of the node 8 will also vary. 
+
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.4\textwidth]{phase.eps}
+\includegraphics[width=0.6\textwidth]{phase.eps}
 \caption{Phase $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
-\label{fig:LALALAAL}
+\label{fig:phasetheo}
 \end{figure}
 
-where $f$ is expressed in Hertz (Hz) along the x-axis and \\
-the phase of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed in degrees along the y-axis.
+The frequency $f$ is expressed in Hertz (Hz) along the x-axis and
+the phase of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed in degrees along the y-axis.\\
+in this graph, the first thing that comes to the eye is the fact that the phase of $V_s$ will always be constant and that, once again, the $v_c$ graph line does not resemble the one that represents $v_6$. Last but not least, this graph illustrates very well the fact that, even though the node voltage in 6 will suddenly change, this discontinuoty will not have an effect on $V_c$, which must have a continous voltage, given that it is a capacitor.
 
