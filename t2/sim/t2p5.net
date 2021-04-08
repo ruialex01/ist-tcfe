@@ -53,10 +53,6 @@ echo "********************************************"
 
 ac dec 10 0.1 1MEG
 
-*.param pi=3.141593
-
-set units=degrees
-
 hardcopy acm.ps db(v(n6)) db(v(n1))
 echo acm_FIG
 

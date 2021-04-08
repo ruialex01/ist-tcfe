@@ -304,6 +304,10 @@ vcfq(o)=v6fq(o)-v8fq(o);
 endfor
 
 
+
+
+
+
 v6magn=20*log10(abs(v6fq))
 vcmagn=20*log10(abs(vcfq))
 vsmagn=20*log10(abs(Vs))
