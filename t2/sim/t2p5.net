@@ -53,9 +53,16 @@ echo "********************************************"
 
 ac dec 10 0.1 1MEG
 
+*.param pi=3.141593
+
+set units=degrees
+
 hardcopy acm.ps db(v(n6)) db(v(n1))
 echo acm_FIG
-hardcopy acp.ps v(n6) v(n1)
+
+set units=degrees
+
+hardcopy acp.ps {phase(v(n6)*(180/pi))} {phase(v(n1)*(180/pi))}
 echo acp_FIG
 
 

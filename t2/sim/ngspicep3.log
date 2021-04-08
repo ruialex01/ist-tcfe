@@ -1,0 +1,28 @@
+
+Circuit: *title: t1 circuit
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+na                                           0
+n1                                -4.69154e-13
+n2                                -4.69154e-13
+n3                                -4.69154e-13
+n5                                -4.69154e-13
+n6                                     8.35153
+n7                                 1.80621e-13
+n8                                 2.69914e-13
+hd#branch                           0.00269914
+vab#branch                        -8.90898e-17
+
+
+No. of Data Rows : 2008
+
+The file "trans1.ps" may be printed on a postscript printer.
+trans1_FIG
+ngspice-31 done

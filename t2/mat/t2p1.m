@@ -25,6 +25,8 @@ Kd=data{2}(11)*1000
 fclose(fid);
 
 
+%auxiliary to the last topic
+vs_1=Vs;
 %%%%%%%%%%THEO - P1%%%%%%%%%%
 
 %%In this part, all of the node voltages will be calculated using the Nodal Analysis Method
@@ -226,7 +228,7 @@ fclose(file5);
 taux_1=-5e-3:1e-6:0;
 
 v6_1=s(5);
-vs_1=Vs;
+
 
 taux=0:1e-6:20e-3;
 
@@ -313,7 +315,7 @@ hold off;
 
 hph=figure ();
 hold on;
-semilogx(freq,(-180/pi)*angle(v6fq),"m", freq,(-180/pi)*angle(vcfq),"r",freq,-(180/pi)*angle(Vs),"g");
+semilogx(freq,(180/pi)*angle(v6fq)+90,"m", freq,(180/pi)*angle(vcfq)+90,"r",freq,(180/pi)*angle(Vs)+90,"g");
 xlabel ("f[Hz]");
 ylabel ("v6(f)-mangenta vc(f)-red vs(f)-green [Degrees]");
 print (hph, "phase.eps", "-depsc");
