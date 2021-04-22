@@ -1,0 +1,68 @@
+*Title: T3 Circuit
+
+*  Netlist
+
+.options savecurrents
+ 
+*The circuit components are defined below
+
+
+.MODEL mydiode D 
+
+.MODEL mydiode2 D
+
+
+
+
+.subckt CI n1 n2 n3 n4 L=10u N=10u
+
+L1 n1 n2  {L} 
+
+L2 n3 n4  {N}
+
+K1 L1 L2 1
+
+.ends CI  
+
+Vin n1 n2  0.0 ac 1.0 sin(0 230 50)
+
+*Vin n3 n4  0.0 ac 1.0 sin(0 13 50)
+
+D1 n3 n6  mydiode
+
+D2 n4 n6  mydiode
+
+D3 0 n3  mydiode
+
+D4 0 n4  mydiode
+
+D5 n7 n8  mydiode2
+
+D6 n8 n9  mydiode2
+
+D7 n9 n0  mydiode2
+
+R1 n6 0  10k
+
+R2 n6 n7  10k
+
+C1 n6 0  1u
+
+.control
+
+tran 1e-5 0.2
+
+hardcopy trans1.ps v(n6)
+echo trans1_FIG
+
+hardcopy trans2.ps v(n7)
+echo trans2_FIG
+
+hardcopy trans3.ps v(n7)-12
+echo trans3_FIG
+
+
+quit
+.endc
+.end
+
