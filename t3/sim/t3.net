@@ -1,32 +1,32 @@
 *Title: T3 Circuit
 
-*  Netlist
+*Netlist
 
 .options savecurrents
  
 *The circuit components are defined below
 
-
+*This is the model used in the envelope circuit, we still have to find a way of making von=0
 .MODEL mydiode D 
 
+*This is the model used in the regulator circuit, we still have to find a way of making von=4
 .MODEL mydiode2 D
 
 
-
-
-.subckt CI n1 n2 n3 n4 L=10u N=10u
-
-L1 n1 n2  {L} 
-
-L2 n3 n4  {N}
-
-K1 L1 L2 1
-
-.ends CI  
-
-Vin n1 n2  0.0 ac 1.0 sin(0 230 50)
-
+*The following line is only for testing purposes, upon the delivery of the lab it shall BE DELETED
 *Vin n3 n4  0.0 ac 1.0 sin(0 13 50)
+
+*In these following two lines, we have the first circuit where the AC source is located
+
+Vin n1 0  0.0 ac 1.0 sin(0 230 50)
+
+F1 n1 0 Vaux 0.0590
+
+*In these following lines, we have the second circuit where the voltage amplitude is lowered and it is converted to DC
+
+E1 n3 naux2 n1 0 0.0590
+
+Vaux n4 naux2 0
 
 D1 n3 n6  mydiode
 
@@ -40,13 +40,19 @@ D5 n7 n8  mydiode2
 
 D6 n8 n9  mydiode2
 
-D7 n9 n0  mydiode2
+D7 n9 0  mydiode2
+
+D8 0 n10  mydiode2
+
+D9 n10 n11  mydiode2
+
+D10 n11 n7  mydiode2
 
 R1 n6 0  10k
 
 R2 n6 n7  10k
 
-C1 n6 0  1u
+C1 n6 0  100u
 
 .control
 
