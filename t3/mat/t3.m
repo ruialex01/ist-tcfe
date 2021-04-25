@@ -21,9 +21,7 @@ vO = zeros(1, length(t));
 
 tOFF = 1/w * atan(1/w/R/C);
 
-vOnexp = A*cos(w*tOFF)*exp(-(t-tOFF)/R/C);
-
-
+vOnexp = A*cos(w*tOFF)*exp(-(t-tOFF)/R/C)
 
 figure
 %%%I CHANGED THIS TO A FULL-WAVE BRIDGE RECTIFIER, AM I RIGHT?
@@ -46,9 +44,46 @@ for i=1:length(t)
   endif
 endfor
 
-%%%PLOT (CHANGE SUBTITLES)
+%%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
 plot(t*1000, vO)
 title("Output voltage v_o(t)")
 xlabel ("t[ms]")
 legend("rectified","envelope")
 print ("venvlope.eps", "-depsc");
+
+
+%%%VOLTAGE REGULATOR CIRCUIT
+%%%1 RESISTANCE, n DIODES 
+
+n=NUMBER OF DIODES;
+vs=INITIAL VOLTAGE;
+R=RESISTANCE;
+eta=ETA;
+vt=XXX;
+vd=XXX;
+is=XXX;
+
+rd=eta*vt\is\exp(vd/eta/vt);
+vout=n*rd/(n*rd+R)*vs;
+
+%%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
+plot(t*1000, vout)
+title("voltage regulator (t)")
+xlabel ("t[ms]")
+legend("rectified","envelope")
+print ("venvlope.eps", "-depsc");
+
+
+%%%VOLTAGE RIPPLE (WITH FULL WAVE RETIFIER CIRCUIT)
+T=1/f;
+R=RESISTANCE;
+C=CAPACITANCE;
+vripple=A(1-exp(-T/2/R/C);
+
+%%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
+plot(t*1000, vripple)
+title("Ripple voltage (t)")
+xlabel ("t[ms]")
+legend("rectified","envelope")
+print ("venvlope.eps", "-depsc");
+
