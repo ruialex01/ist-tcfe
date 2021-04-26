@@ -7,10 +7,10 @@
 
 %%%Data
 
-A=AMPLITUDE;
-t=linspace(0, 1e-3, 100);
+A=14;
+f=50;
+t=linspace(0, 10/f, 100);
 %linspace(base,limit,n);
-f=FREQUENCY;
 w=2*pi*f;
 
 %%%Equations
@@ -34,6 +34,7 @@ for i=1:length(t)
 endfor
 
 %%%ENVELOPE DETECTOR
+
 for i=1:length(t)
   if t(i) < tOFF
     vO(i) = vS(i);
@@ -42,6 +43,7 @@ for i=1:length(t)
   else 
     vO(i) = vS(i);
   endif
+  tOFF=tOFF+1/f/2;
 endfor
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
@@ -55,19 +57,22 @@ print ("venvlope.eps", "-depsc");
 %%%VOLTAGE REGULATOR CIRCUIT
 %%%1 RESISTANCE, n DIODES 
 
-n=NUMBER OF DIODES;
-vs=INITIAL VOLTAGE;
-R=RESISTANCE;
-eta=ETA;
-vt=XXX;
-vd=XXX;
-is=XXX;
+n=17;
+vout(i)=zeros(1, length(t));
+vOUT(i)=zeros(1, length(t));
+R=10e3;
+eta=1;
+vt=25e-3;
+vd=0.7;
+is=1e-14;
 
 rd=eta*vt\is\exp(vd/eta/vt);
-vout=n*rd/(n*rd+R)*vs;
+vout(i)=n*rd/(n*rd+R)*vO(i);
+VOUT=n*vd;
+vOUT(i)=vout(i)+VOUT;
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
-plot(t*1000, vout)
+plot(t*1000, vOUT(i))
 title("voltage regulator (t)")
 xlabel ("t[ms]")
 legend("rectified","envelope")
