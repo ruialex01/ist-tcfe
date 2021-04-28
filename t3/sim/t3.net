@@ -6,15 +6,13 @@
  
 *The circuit components are defined below
 
-*This is the model used in the envelope circuit, we still have to find a way of making von=0
+*This is the model used in the envelope circuit
 .MODEL mydiode D 
 
-*This is the model used in the regulator circuit, we still have to find a way of making von=4
-.MODEL mydiode2 D
 
 
 *The following line is only for testing purposes, upon the delivery of the lab it shall BE DELETED
-*Vin n3 n4  0.0 ac 1.0 sin(0 13 50)
+*Vin n3 n4  0.0 ac 1.0 sin(0 13 50 0.005 )
 
 *In these following two lines, we have the first circuit where the AC source is located
 
@@ -36,17 +34,55 @@ D3 0 n3  mydiode
 
 D4 0 n4  mydiode
 
-D5 n7 n8  mydiode2
 
-D6 n8 n9  mydiode2
 
-D7 n9 0  mydiode2
 
-D8 0 n10  mydiode2
+D5 n7 n8  mydiode
 
-D9 n10 n11  mydiode2
+D6 n8 n9  mydiode
 
-D10 n11 n7  mydiode2
+D7 n9 n10  mydiode
+
+D8 n10 n11  mydiode
+
+D9 n11 n12  mydiode
+
+D10 n12 n13  mydiode
+
+D11 n13 n14  mydiode
+
+D12 n14 n15  mydiode
+
+D13 n15 n16  mydiode
+
+D14 n16 n17  mydiode
+
+D15 n17 n18  mydiode
+
+D16 n18 n19  mydiode
+
+D17 n19 n20  mydiode
+
+D18 n20 n21  mydiode
+
+D19 n21 n22  mydiode
+
+D20 n22 n23  mydiode
+
+D21 n23 n24  mydiode
+
+D22 n24 n25 mydiode
+
+D23 n25 n26 mydiode
+
+D24 n26 n27 mydiode
+
+D25 n27 n28 mydiode
+
+D26 n28 n29 mydiode
+
+D27 n29 0 mydiode
+
 
 R1 n6 0  10k
 
@@ -56,7 +92,30 @@ C1 n6 0  100u
 
 .control
 
-tran 1e-5 0.2
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+
+
+tran 2e-5 0.2
+
+meas tran yavg AVG v(n7) from=0 to=0.2 
+
+
+
+meas tran max MAX v(n7) from=0.1 to=0.2 
+
+meas tran min MIN v(n7) from=0.1 to=0.2 
+
+meas tran ripple pp v(n7) from=0.1 to=0.2 
+
 
 hardcopy trans1.ps v(n6)
 echo trans1_FIG

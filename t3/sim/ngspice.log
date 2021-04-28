@@ -1,0 +1,10 @@
+
+Circuit: *title: t3 circuit
+
+Error on line 19 :
+  vin n1 0 0.0 ac 1.0 cos(0 230 50)
+ unknown parameter (cos) 
+
+ngspice stopped due to error, no simulation run!
+
+ERROR: fatal error in ngspice, exit(1)

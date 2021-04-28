@@ -12,6 +12,9 @@ f=50;
 t=linspace(0, 10/f, 100);
 %linspace(base,limit,n);
 w=2*pi*f;
+R=1000
+C=100e-6
+
 
 %%%Equations
 
@@ -58,8 +61,8 @@ print ("venvlope.eps", "-depsc");
 %%%1 RESISTANCE, n DIODES 
 
 n=17;
-vout(i)=zeros(1, length(t));
-vOUT(i)=zeros(1, length(t));
+vout=zeros(1, length(t));
+vOUT=zeros(1, length(t));
 R=10e3;
 eta=1;
 vt=25e-3;
@@ -67,27 +70,26 @@ vd=0.7;
 is=1e-14;
 
 rd=eta*vt\is\exp(vd/eta/vt);
-vout(i)=n*rd/(n*rd+R)*vO(i);
+vout=n*rd/(n*rd+R)*vO;
 VOUT=n*vd;
-vOUT(i)=vout(i)+VOUT;
+vOUT=vout+VOUT;
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
-plot(t*1000, vOUT(i))
+plot(t*1000, vOUT)
 title("voltage regulator (t)")
 xlabel ("t[ms]")
 legend("rectified","envelope")
 print ("venvlope.eps", "-depsc");
 
-
 %%%VOLTAGE RIPPLE (WITH FULL WAVE RETIFIER CIRCUIT)
-T=1/f;
-R=RESISTANCE;
-C=CAPACITANCE;
-vripple=A(1-exp(-T/2/R/C);
+
+vripple=max(vOUT)-min(vOUT);
+
+printf("The output ripple is %d V",vripple)
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
-plot(t*1000, vripple)
-title("Ripple voltage (t)")
+plot(t*1000, vOUT-12 )
+title("vOUT-12 voltage (t)")
 xlabel ("t[ms]")
 legend("rectified","envelope")
 print ("venvlope.eps", "-depsc");
