@@ -9,7 +9,7 @@
 
 A=14;
 f=50;
-t=linspace(0, 10/f, 100);
+t=linspace(0, 1/2/f, 1000);
 %linspace(base,limit,n);
 w=2*pi*f;
 R=1000
@@ -26,7 +26,7 @@ tOFF = 1/w * atan(1/w/R/C);
 
 vOnexp = A*cos(w*tOFF)*exp(-(t-tOFF)/R/C)
 
-figure
+
 %%%I CHANGED THIS TO A FULL-WAVE BRIDGE RECTIFIER, AM I RIGHT?
 for i=1:length(t)
   if (vS(i) > 0)
@@ -40,21 +40,22 @@ endfor
 
 for i=1:length(t)
   if t(i) < tOFF
-    vO(i) = vS(i);
+    vO(i) = vOhr(i);
   elseif vOnexp(i) > vOhr(i)
     vO(i) = vOnexp(i);
   else 
-    vO(i) = vS(i);
+    vO(i) = vOhr(i);
   endif
-  tOFF=tOFF+1/f/2;
 endfor
 
+
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
+figure
 plot(t*1000, vO)
 title("Output voltage v_o(t)")
 xlabel ("t[ms]")
-legend("rectified","envelope")
-print ("venvlope.eps", "-depsc");
+legend("Output")
+print ("envelope.eps", "-depsc");
 
 
 %%%VOLTAGE REGULATOR CIRCUIT
@@ -63,23 +64,24 @@ print ("venvlope.eps", "-depsc");
 n=17;
 vout=zeros(1, length(t));
 vOUT=zeros(1, length(t));
-R=10e3;
+R2=10e3;
 eta=1;
 vt=25e-3;
 vd=0.7;
 is=1e-14;
 
-rd=eta*vt\is\exp(vd/eta/vt);
-vout=n*rd/(n*rd+R)*vO;
+rd=eta*vt/is/exp(vd/eta/vt);
+vout=n*rd/(n*rd+R2)*vO;
 VOUT=n*vd;
 vOUT=vout+VOUT;
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
+figure
 plot(t*1000, vOUT)
 title("voltage regulator (t)")
 xlabel ("t[ms]")
-legend("rectified","envelope")
-print ("venvlope.eps", "-depsc");
+legend("Voltage Regulator Output")
+print ("output.eps", "-depsc");
 
 %%%VOLTAGE RIPPLE (WITH FULL WAVE RETIFIER CIRCUIT)
 
@@ -88,9 +90,22 @@ vripple=max(vOUT)-min(vOUT);
 printf("The output ripple is %d V",vripple)
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
+figure
 plot(t*1000, vOUT-12 )
 title("vOUT-12 voltage (t)")
 xlabel ("t[ms]")
-legend("rectified","envelope")
-print ("venvlope.eps", "-depsc");
+legend("Output difference")
+print ("outputdiff.eps", "-depsc");
+
+
+%%%%%%%%%%%%Figure of Merit
+
+cost=(R+R2)*0.001+C*0.000001+0.1*(4+n)
+
+M=1/cost/(vripple+average+0.000001)
+
+printf("The merit figure is %f MU", M)
+
+
+
 
