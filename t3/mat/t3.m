@@ -8,10 +8,10 @@
 %%%Data
 
 A=14;
-f=50;
-t=linspace(0, 1/2/f, 1000);
+T=1/50;
+t=linspace(0, T/2, 1000);
 %linspace(base,limit,n);
-w=2*pi*f;
+w=2*pi*(1/T);
 R=1000
 C=100e-6
 
@@ -83,11 +83,51 @@ xlabel ("t[ms]")
 legend("Voltage Regulator Output")
 print ("output.eps", "-depsc");
 
+%%%Newton-Raphson to find tON
+
+function tON_root =solve_tON ()
+  delta = 1e-5;
+  x_next = 0.008695;
+
+  do 
+    x=x_next;
+    x_next = x-f(x)/fd(x);
+  until (abs(x_next-x) < delta)
+
+  tON_root = x_next;
+
+ return;
+endfunction
+
+tON=solve_tON ()
+
+%%%Average 
+
+
+%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [0,tOFF]
+
+sum1=n*rd/(n*rd+R2)*A/w*sin(w*tOFF)+n*vd*tOFF;
+
+
+%integral of vOUT=n*rd/(n*rd+R2)*vOnexp+n*vd for [tOFF,tON]
+
+sum2=n*rd/(n*rd+R2)*(-A*R*C*cos(tOFF*w)*(exp((tOFF-tON)/R/C)-1))+n*vd*(tON-tOFF)
+
+
+%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [tON,T/2]
+
+sum3=n*rd/(n*rd+R2)*A/w*(sin(w*T/2)-sin(w*tON))+n*vd*(T/2-tON);
+
+
+average=(sum1+sum2+sum3)/(T/2);
+
+printf("The average is %d V \n", average)
+
 %%%VOLTAGE RIPPLE (WITH FULL WAVE RETIFIER CIRCUIT)
 
 vripple=max(vOUT)-min(vOUT);
 
-printf("The output ripple is %d V",vripple)
+printf("The output ripple is %d V \n",vripple)
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
 figure
@@ -104,7 +144,7 @@ cost=(R+R2)*0.001+C*0.000001+0.1*(4+n)
 
 M=1/cost/(vripple+average+0.000001)
 
-printf("The merit figure is %f MU", M)
+printf("The merit figure is %f MU \n", M)
 
 
 
