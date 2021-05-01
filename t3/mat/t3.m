@@ -67,7 +67,7 @@ vOUT=zeros(1, length(t));
 R2=10e3;
 eta=1;
 vt=25e-3;
-vd=0.7;
+vd=0.706;
 is=1e-14;
 
 rd=eta*vt/is/exp(vd/eta/vt);
@@ -140,7 +140,7 @@ print ("outputdiff.eps", "-depsc");
 
 %%%%%%%%%%%%Figure of Merit
 
-cost=(R+R2)*0.001+C*0.000001+0.1*(4+n)
+cost=(R+R2)*0.001+C*1000000+0.1*(4+n)
 
 M=1/cost/(vripple+average+0.000001)
 
