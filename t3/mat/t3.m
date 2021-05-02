@@ -1,4 +1,4 @@
-
+% OCTAVE FILE
 % 1) Use a suitable theoretical model able to predict the output of the Envelope Detector and Voltage Regulator circuits
 % 2) Produce the same plots as in simulation by theoretical analysis
 % 3) Compute the output DC level and the voltage ripple 
