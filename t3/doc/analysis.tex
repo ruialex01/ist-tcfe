@@ -4,136 +4,132 @@
 \paragraph{}
 %In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig GNU octave and the section is dividid in six different subsections - Subsection ~\ref{subsec:first_topic}, Subsection ~\ref{subsec:second_topic}, Subsection ~\ref{subsec:third_topic}, Subsection ~\ref{subsec:fourth_topic}, Subsection ~\ref{subsec:fifth_topic} and Subsection ~\ref{subsec:sixth_topic} -, one for each topic of the theoretical analysis.
 
-\subsection{Theoretical - Topic I}
-\label{subsec:first_topic}
-
-\begin{center}
-   \begin{tabular}{|c||c|}
-      \hline    
-      \multicolumn{2}{|c|} {\bf } \\
-      \hline
-        \input{}
-   \end{tabular}
- \end{center}
-
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Theoretical - Topic II}
-\label{subsec:second_topic}
-
-
-\begin{center}
-   \begin{tabular}{|c||c|}
-      \hline    
-      \multicolumn{2}{|c|} {\bf } \\
-      \hline
-        \input{}
-   \end{tabular}
- \end{center}
- 
-
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\subsection{Theoretical - Topic III}
-\label{subsec:third_topic}
-
-\begin{figure}[H] \centering
-\includegraphics[width=0.6\textwidth]{}
-\caption{}
-\label{}
-\end{figure}
-
-
-
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\subsection{Theoretical - Topic IV}
-\label{subsec:fourth_topic}
-
-\paragraph{}
-The forced response is where the output (the voltage on the capacitor) is going to end up in the long run after all stored energy eventually dissipates. This occors by ignoring the presence of energy storage elements (in our circuit analysis, it ignores the capacitor and its initial voltage, $V_x$). As suggested, plotting the amplitude and phase shift of a sinusoid in a complex plane, we get a complex number in polar form that we can apply to the circuit analysis: a phasor voltage source, $V_s$ = 1. Besides that, we also replaced $C$ with its impedance $Z_C=\frac{1}{\omega C}$.
-
-
-\[
-\left\{\begin{matrix}
-f = 1 kHz = 1000 Hz \\
-t = 20 ms = 0.020 s \\
-\end{matrix}\right.
-\]
-
-
-\begin{center}
-   \begin{tabular}{|c||c|}
-      \hline    
-      \multicolumn{2}{|c|} {\bf Nodal Analysis of Phasors [in Volts]} \\
-      \hline
-        \input{theo_fourth}
-   \end{tabular}
- \end{center}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\subsection{Theoretical - Topic V}
-\label{subsec:fifth_topic}
-
-\paragraph{}
-The natural response considers the internal initial conditions. The forced response considers the external inputs. Given that, we get the total response by summing the two responses, natural and forced. In fact, this is the principle of superposition in action (in the mathematical sense of differential equations).
-
 \[
 \left\{\begin{matrix}
 v_t=v_n+v_f\\
 f = 1 kHz = 1000 Hz \\
+
+A=14;
+T=1/50;
+t=linspace(0, T/2, 1000);
+%linspace(base,limit,n);
+w=2*pi*(1/T);
+R=1000
+C=100e-6
 \end{matrix}\right.
 \]
 
-\begin{figure}[H] \centering
-\includegraphics[width=0.6\textwidth]{total.eps}
-\caption{The final total solution, $V6(t)$,  and $v_s(t)$ during time interval [-5, 20] ms.}
-\label{fig:theo_fifth}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Envelope Detector Circuit}
+\label{subsec:envelope}
 
+\paragraph{}
+The voltage source $v_S$ produces a sinusoidal wave and is defined by the following expression: $v_S=Acos(\omega t)$.
 
-Where $t$ is expressed in seconds (s) along the x-axis and 
-$V6(t)$, the total solution, and $v_s$ are expressed in Volts (V) along the y-axis.
-
-In the graphic above, it is ineteresting to note that, while the voltage emited by the source $V_s$ is constant, the node 6 will also have a constant voltage. This is because for $t<0$ the circuit will essentially behave as one of continuos current. After this time mark, the circuit reveals its alternate current nature and both the voltages of the source and of node 6 will vary sinousoidally.
-
-
-
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Theoretical - Topic VI}
-\label{subsec:sixth_topic}
-
-\paragraph{}In this subsection, an analysis of the variation of the magnitude and phase of the phasors of $V_c$ $V_6$ and $V_s$ is made in function of the frequency. The first graphic presents the study of the variation of the magnitude and the second the study of the fase. In both graphics, the frequency $f$ in the x-axis varies from 0.1Hz to 1MHz
-
+The envelope detector circuit includes a full-wave bridge rectifier, whose voltage output $v0_{rect}$ corresponds to the absolute value of the voltage source $v_S$.
 
 \[
+v0_rect =
 \left\{\begin{matrix}
-f =\in [0.1 , 1] MHz \\
-v_c(f)=v_6(f)-v_8(f) \\
+v_S, v_S \ge 0\\
+-v_S, v_S \le 0\\
 \end{matrix}\right.
 \]
 
+Finally, the envelope detector circuit voltage $v_0$ is the highest between $v0_rect$, the full-wave bridge rectifier voltage, and the voltage $v0_{exp}$ induced when the capacitor $C$ discharges through the resistor $R$, described by the following equation: $vO_{exp}=Acos(\omega t_{OFF})e^(\frac{-({tON}-{tOFF})}{RC})$.
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\textwidth]{magnitude.eps}
-\caption{Magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
-\label{fig:magnitudetheo}
+\includegraphics[width=0.6\textwidth]{envelope.eps}
+\caption{The final envelope detector circuit voltage $v_0$ during a half-period interval.}
+\label{fig:envelope}
 \end{figure}
 
-The frequency $f$ is expressed in Hertz (Hz) along the x-axis and 
-the magnitude of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed with a logscale decibel (dB) along the y-axis.\\ \\
-When looking at this graph, a couple of things are important to highlight. First, $V_s$ will always have magnitude 0 because, given that its absolute value is 1 and we are using a logscale, $log(1)=0$. Second, we also note that the $v_c$ graph line does not resemble the one that represents $v_6$. This is because the voltage of the node 8 will also vary. 
+where $t$ is expressed in miliseconds (ms) along the x-axis and 
+$v_0)$, the envelope output voltage, is expressed in Volts (V) along the y-axis.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Voltage Regulator Circuit}
+\label{subsec:regulator}
+
+The voltage regulator attenuates oscillations in the input signal without frequency dependence and takes advantage of the non-linear characteristic of the $N$ diodes included in the positive voltage limiter. 
+
+The voltage analysis of the regulator applies the incremental analysis method, separating the DC and incremental components.
+
+The diode incremental resistance is calculated using the following expression: $r_d=\frac{\eta v_t}{I_s e^(\frac{v_d}{\eta v_t}}$.
+
+Applying the voltage divider rule, the AC increment $v_{out}$ is defined using the following relation: $vout=\frac{N r_d}{N rd+R2}vO$.
+
+On the other hand, the DC voltage $V_{OUT}$ is obatined multypling the diode voltage $v_d$ by the number of diodes $N$ used in the voltage regulator circuit: $V_{OUT}=N v_d$.
+
+\[
+v0_rect =
+\left\{\begin{matrix}
+n=17;
+R2=10e3;
+eta=1;
+vt=25e-3;
+vd=0.706;
+I_s=1e-14;
+\end{matrix}\right.
+\]
+
+The final voltage of the regulator circuit $v_{OUT}$ is obtained adding the results of the incremental analysis and the DC analysis: $v_{OUT}=v_{out}+V_{OUT}$.
 
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\textwidth]{phase.eps}
-\caption{Phase $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz.}
-\label{fig:phasetheo}
+\includegraphics[width=0.6\textwidth]{output.eps}
+\caption{The final voltage $v_{OUT}$ of the voltage regulator circuit during a half-period interval.}
+\label{fig:output}
 \end{figure}
 
-The frequency $f$ is expressed in Hertz (Hz) along the x-axis and
-the phase of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ is expressed in degrees along the y-axis.\\ \\
-In this graph, the first thing that comes to the eye is the fact that the phase of $V_s$ will always be constant and that, once again, the $v_c$ graph line does not resemble the one that represents $v_6$. 
+where $t$ is expressed in miliseconds (ms) along the x-axis and 
+$v_{OUT}$, the voltage of the regulator, is expressed in Volts (V) along the y-axis.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Voltage Ripple}
+\label{subsec:ripple}
+
+The voltage ripple can be improved using a full-wave rectifier circuit in the envelope detector circuit. 
+
+The value of the voltage ripple $v_{ripple}$ can be calculated relating the maximum and the minimum values of the final voltage of the regulator circuit $v_{OUT}$, using the following expression: $v_{ripple}=max(v_{OUT})-min(v_{OUT})$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Output DC Level}
+\label{subsec:dclevel}
+
+The $t_{ON}$ is calculated using the Newton-Raphson iterative method, starting with a function obtained through the following equation: $Acos(\omega t_{ON})=Acos(\omega t_{OFF})e^(\frac{-(t_{ON}-t_{OFF})}{RC})$.
+
+The DC level output average is obtained integrating the sinusoidal and exponential functions during a half-period interval. The calculations are shown below.
+
+MAKE THIS IN LATEX LLANGUAGE!!!!!!!!!!!!!!
+$t\in[0,t_{OFF})$
+
+\int _0^t_{OFF} $v_{OUT}$
+%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [0,tOFF]
+
+sum1=n*rd/(n*rd+R2)*A/w*sin(w*tOFF)+n*vd*tOFF;
+
+
+%integral of vOUT=n*rd/(n*rd+R2)*vOnexp+n*vd for [tOFF,tON]
+
+sum2=n*rd/(n*rd+R2)*(-A*R*C*cos(tOFF*w)*(exp((tOFF-tON)/R/C)-1))+n*vd*(tON-tOFF)
+
+
+%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [tON,T/2]
+
+sum3=n*rd/(n*rd+R2)*A/w*(sin(w*T/2)-sin(w*tON))+n*vd*(T/2-tON);
+
+average=(sum1+sum2+sum3)/(T/2);
+
+MAKE THIS IN LATEX LLANGUAGE!!!!!!!!!!!!!!
+
+The Output DC Level accuracy can be evaluated through comparing the final voltage of the circuit $v_{OUT}$ and the $12 V$ constant function. 
+
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\textwidth]{outputdiff.eps}
+\caption{The voltage $v_{OUT}-12$ during a half-period interval.}
+\label{fig:outputdiff}
+\end{figure}
+
+Where $t$ is expressed in seconds (s) along the x-axis and 
+$v_{OUT}-12)$, the output voltage difference, is expressed in Volts (V) along the y-axis.
