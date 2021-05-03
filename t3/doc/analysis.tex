@@ -3,19 +3,17 @@
 
 \paragraph{}
 THIS IS NOT ACTUAL
-In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem.
+In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem.\\
 \[
 \left\{\begin{matrix}
 v_t=v_n+v_f\\
 f = 1 kHz = 1000 Hz \\
-NEED TO BE IMPROVED
-A=14;
-T=1/50;
-t=linspace(0, T/2, 1000);
-%linspace(base,limit,n);
-w=2*pi*(1/T);
-R=1000
-C=100e-6
+NEED TO BE IMPROVED \\
+A=14;\\
+T=1/50;\\
+w=2*pi*(1/T);\\
+R=1000\\
+C=100e-6\\
 \end{matrix}\right.
 \]
 
@@ -64,13 +62,13 @@ On the other hand, the DC voltage $V_{OUT}$ is obatined multypling the diode vol
 \[
 %Atençao a isto -->>>>>>>v0_rect =
 \left\{\begin{matrix}
-NEED TO BE IMPROVED
-n=17;
-R2=10e3;
-eta=1;
-vt=25e-3;
-vd=0.706;
-I_s=1e-14;
+NEED TO BE IMPROVED\\
+n=17;\\
+R2=10e3;\\
+eta=1;\\
+vt=25e-3;\\
+vd=0.706;\\
+I_s=1e-14;\\
 \end{matrix}\right.
 \]
 
@@ -108,18 +106,18 @@ The value of the voltage ripple $v_{ripple}$ can be calculated relating the maxi
 
 The $t_{ON}$ is calculated using the Newton-Raphson iterative method, starting with a function obtained through the following equation: $Acos(\omega t_{ON})=Acos(\omega t_{OFF})e^(\frac{-(t_{ON}-t_{OFF})}{RC})$.
 
-The DC level output average is obtained integrating the sinusoidal and exponential functions during a half-period interval. The calculations are shown below.
+The DC level output average is obtained integrating the sinusoidal and exponential functions during a half-period interval. The calculations are shown below.\\
 
 $t\in[0,t_{OFF})\\
 \int_{0}^{t_{OFF}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}sin(\omega t_{OFF})+N v_d t_{OFF}\\$
 
 $t\in[t_{OFF},t_{ON})\\
-\int_{t_{OFF}}^{t_{ON}}=\frac{N r_d}{N r_d + R_2}(-A R C cos(\omega t_{OFF})(e^{\frac{-({tON}-{tOFF})}{RC}}-1))+N v_d (t_{ON} - t_{OFF})$
+\int_{t_{OFF}}^{t_{ON}}=\frac{N r_d}{N r_d + R_2}(-A R C cos(\omega t_{OFF})(e^{\frac{-({tON}-{tOFF})}{RC}}-1))+N v_d (t_{ON} - t_{OFF})\\$
 
-%$t\int[t_{ON},\frac{T}{2})\\
-%\int_{t_{ON}}^{\frac{T}{2}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}(sin(\omega \frac{T}{2})-sin(\omega t_{ON}))+N v_d (\frac{T}{2}-t_{ON})$
+$t\in[t_{ON},\frac{T}{2}]\\
+\int_{t_{ON}}^{\frac{T}{2}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}(sin(\omega \frac{T}{2})-sin(\omega t_{ON}))+N v_d (\frac{T}{2}-t_{ON})\\$
 
-%$\overline{V}=\frac{\int_{0}^{t_{OFF}}+\int_{t_{OFF}}^{t_{ON}}+\int_{t_{ON}}^{\frac{T}{2}}}{\frac{T}{2}}$
+$\overline{V}=\frac{\int_{0}^{t_{OFF}}+\int_{t_{OFF}}^{t_{ON}}+\int_{t_{ON}}^{\frac{T}{2}}}{\frac{T}{2}}$
 
 \begin{center}
    \begin{tabular}{|c||c|}
