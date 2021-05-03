@@ -2,13 +2,14 @@
 \label{sec:analysis}
 
 \paragraph{}
-%In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig GNU octave and the section is dividid in six different subsections - Subsection ~\ref{subsec:first_topic}, Subsection ~\ref{subsec:second_topic}, Subsection ~\ref{subsec:third_topic}, Subsection ~\ref{subsec:fourth_topic}, Subsection ~\ref{subsec:fifth_topic} and Subsection ~\ref{subsec:sixth_topic} -, one for each topic of the theoretical analysis.
+THIS IS NOT ACTUAL
+In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig GNU octave and the section is dividid in six different subsections - Subsection ~\ref{subsec:first_topic}, Subsection ~\ref{subsec:second_topic}, Subsection ~\ref{subsec:third_topic}, Subsection ~\ref{subsec:fourth_topic}, Subsection ~\ref{subsec:fifth_topic} and Subsection ~\ref{subsec:sixth_topic} -, one for each topic of the theoretical analysis.
 
 \[
 \left\{\begin{matrix}
 v_t=v_n+v_f\\
 f = 1 kHz = 1000 Hz \\
-
+NEED TO BE IMPROVED
 A=14;
 T=1/50;
 t=linspace(0, T/2, 1000);
@@ -64,6 +65,7 @@ On the other hand, the DC voltage $V_{OUT}$ is obatined multypling the diode vol
 \[
 v0_rect =
 \left\{\begin{matrix}
+NEED TO BE IMPROVED
 n=17;
 R2=10e3;
 eta=1;
@@ -92,6 +94,14 @@ The voltage ripple can be improved using a full-wave rectifier circuit in the en
 
 The value of the voltage ripple $v_{ripple}$ can be calculated relating the maximum and the minimum values of the final voltage of the regulator circuit $v_{OUT}$, using the following expression: $v_{ripple}=max(v_{OUT})-min(v_{OUT})$.
 
+\begin{center}
+   \begin{tabular}{|c||c|}
+      \hline    
+      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE RIPPLE BELOW \\
+      \hline
+        \input{vripple}
+   \end{tabular}
+ \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Output DC Level}
@@ -101,27 +111,25 @@ The $t_{ON}$ is calculated using the Newton-Raphson iterative method, starting w
 
 The DC level output average is obtained integrating the sinusoidal and exponential functions during a half-period interval. The calculations are shown below.
 
-MAKE THIS IN LATEX LLANGUAGE!!!!!!!!!!!!!!
-$t\in[0,t_{OFF})$
+$t\in[0,t_{OFF})\\
+\int_{0}^{t_{OFF}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}sin(\omega t_{OFF})+N v_d t_{OFF}\\$
 
-\int _0^t_{OFF} $v_{OUT}$
-%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [0,tOFF]
+$t\in[t_{OFF},t_{ON})\\
+\int_{t_{OFF}}^{t_{ON}}=\frac{N r_d}{N r_d + R_2}(-A R C cos(\omega t_{OFF})(e^{\frac{-({tON}-{tOFF})}{RC}}-1))+N v_d (t_{ON} - t_{OFF})$
 
-sum1=n*rd/(n*rd+R2)*A/w*sin(w*tOFF)+n*vd*tOFF;
+$t\in[t_{ON},\frac{T}{2)]\\
+\int_{t_{ON}}^{\frac{T}{2}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}(sin(\omega \frac{T}{2})-sin(\omega t_{ON}))+N v_d (\frac{T}{2}-t_{ON})$
 
+$\overline{V}=\frac{\int_{0}^{t_{OFF}}+\int_{t_{OFF}}^{t_{ON}}+\int_{t_{ON}}^{\frac{T}{2}}}{\frac{T}{2}}$
 
-%integral of vOUT=n*rd/(n*rd+R2)*vOnexp+n*vd for [tOFF,tON]
-
-sum2=n*rd/(n*rd+R2)*(-A*R*C*cos(tOFF*w)*(exp((tOFF-tON)/R/C)-1))+n*vd*(tON-tOFF)
-
-
-%integral of vOUT=n*rd/(n*rd+R2)*vOhr+n*vd for [tON,T/2]
-
-sum3=n*rd/(n*rd+R2)*A/w*(sin(w*T/2)-sin(w*tON))+n*vd*(T/2-tON);
-
-average=(sum1+sum2+sum3)/(T/2);
-
-MAKE THIS IN LATEX LLANGUAGE!!!!!!!!!!!!!!
+\begin{center}
+   \begin{tabular}{|c||c|}
+      \hline    
+      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE AVERAGE BELOW \\
+      \hline
+        \input{average}
+   \end{tabular}
+ \end{center}
 
 The Output DC Level accuracy can be evaluated through comparing the final voltage of the circuit $v_{OUT}$ and the $12 V$ constant function. 
 

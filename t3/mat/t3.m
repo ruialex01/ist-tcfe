@@ -121,6 +121,13 @@ sum3=n*rd/(n*rd+R2)*A/w*(sin(w*T/2)-sin(w*tON))+n*vd*(T/2-tON);
 
 average=(sum1+sum2+sum3)/(T/2);
 
+
+file1=fopen('average.tex', 'w');
+
+fprintf(file1, '\n THE OUTPUT VOLTAGE AVERAGE LEVEL IS & %d V \\\\ \\hline ', average);
+
+fclose(file1);
+
 printf("The average is %d V \n", average)
 
 %%%VOLTAGE RIPPLE (WITH FULL WAVE RETIFIER CIRCUIT)
@@ -128,6 +135,14 @@ printf("The average is %d V \n", average)
 vripple=max(vOUT)-min(vOUT);
 
 printf("The output ripple is %d V \n",vripple)
+
+
+file2=fopen('ripple.tex', 'w');
+
+fprintf(file2, '\n THE OUTPUT VOLTAGE RIPPLE IS & %d V \\\\ \\hline ', vripple);
+
+fclose(file2);
+
 
 %%%PLOT (CHANGE SUBTITLES, LEGEND AND PRINTS)
 figure
