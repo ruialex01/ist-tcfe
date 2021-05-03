@@ -132,7 +132,6 @@ print max
 print min
 print ripple
 print average
-print v(n4)-v(n6)
 
 echo  "op_END"
 
