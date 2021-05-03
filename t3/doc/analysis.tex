@@ -3,8 +3,7 @@
 
 \paragraph{}
 THIS IS NOT ACTUAL
-In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig GNU octave and the section is dividid in six different subsections - Subsection ~\ref{subsec:first_topic}, Subsection ~\ref{subsec:second_topic}, Subsection ~\ref{subsec:third_topic}, Subsection ~\ref{subsec:fourth_topic}, Subsection ~\ref{subsec:fifth_topic} and Subsection ~\ref{subsec:sixth_topic} -, one for each topic of the theoretical analysis.
-
+In this section, we can find the results of each topic required in the theoretical analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem.
 \[
 \left\{\begin{matrix}
 v_t=v_n+v_f\\
@@ -63,7 +62,7 @@ Applying the voltage divider rule, the AC increment $v_{out}$ is defined using t
 On the other hand, the DC voltage $V_{OUT}$ is obatined multypling the diode voltage $v_d$ by the number of diodes $N$ used in the voltage regulator circuit: $V_{OUT}=N v_d$.
 
 \[
-v0_rect =
+%Atençao a isto -->>>>>>>v0_rect =
 \left\{\begin{matrix}
 NEED TO BE IMPROVED
 n=17;
@@ -97,9 +96,9 @@ The value of the voltage ripple $v_{ripple}$ can be calculated relating the maxi
 \begin{center}
    \begin{tabular}{|c||c|}
       \hline    
-      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE RIPPLE BELOW \\
+      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE RIPPLE BELOW} \\
       \hline
-        \input{vripple}
+        \input{ripple}
    \end{tabular}
  \end{center}
 
@@ -117,15 +116,15 @@ $t\in[0,t_{OFF})\\
 $t\in[t_{OFF},t_{ON})\\
 \int_{t_{OFF}}^{t_{ON}}=\frac{N r_d}{N r_d + R_2}(-A R C cos(\omega t_{OFF})(e^{\frac{-({tON}-{tOFF})}{RC}}-1))+N v_d (t_{ON} - t_{OFF})$
 
-$t\in[t_{ON},\frac{T}{2)]\\
-\int_{t_{ON}}^{\frac{T}{2}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}(sin(\omega \frac{T}{2})-sin(\omega t_{ON}))+N v_d (\frac{T}{2}-t_{ON})$
+%$t\int[t_{ON},\frac{T}{2})\\
+%\int_{t_{ON}}^{\frac{T}{2}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}(sin(\omega \frac{T}{2})-sin(\omega t_{ON}))+N v_d (\frac{T}{2}-t_{ON})$
 
-$\overline{V}=\frac{\int_{0}^{t_{OFF}}+\int_{t_{OFF}}^{t_{ON}}+\int_{t_{ON}}^{\frac{T}{2}}}{\frac{T}{2}}$
+%$\overline{V}=\frac{\int_{0}^{t_{OFF}}+\int_{t_{OFF}}^{t_{ON}}+\int_{t_{ON}}^{\frac{T}{2}}}{\frac{T}{2}}$
 
 \begin{center}
    \begin{tabular}{|c||c|}
       \hline    
-      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE AVERAGE BELOW \\
+      \multicolumn{2}{|c|} {\bf THIS SHOULD PRINT THE AVERAGE BELOW} \\
       \hline
         \input{average}
    \end{tabular}
