@@ -15,7 +15,7 @@ Another difference from the Octave model, is that the ideal diode model used in 
 \label{fig:sim_envelope}
 \end{figure}
 
-In the graphic above, it is possible to see that
+In the graphic above, it is possible to see that, even though it is not the final result of the whole converter, it is already very close to $12V$. It is important to note that, if we zoom in, there will be a certain level of ripple that may affect our desired result, given that the signal hasn't gone throught the voltage regulator yet. Still on this topic, a particularity of Ngspice is the rising line at the very beginning which clearly stands for some transient the software uses.
 
 \subsection{Circuit Output}
 
@@ -38,7 +38,6 @@ In the graphic above, the output voltage is represented. Looking at it is enough
 The graphic above essentialy shows the ripple of the circuit, which is basically how much the output voltage deviates from $12V$ and, once again, the results are pretty satisfying, with the line being very close to zero for most of the 10 periods. Still, below we can find a table with more accurate ripple data at a numerical level, which will confirm the theory that the simulation was well-succeeded.
 
 
-
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
@@ -48,3 +47,5 @@ The graphic above essentialy shows the ripple of the circuit, which is basically
   \caption{}
  \label{tab:op}
 \end{table}
+
+ From the table above, we can see that the average has a pretty good result being pratically $12V$. When it comes to the ripple, it also has a very good result, with an order of significance in the hundredths.
