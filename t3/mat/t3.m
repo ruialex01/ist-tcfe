@@ -194,7 +194,7 @@ fclose(file6)
 
 
 file7=fopen('error_tab2.tex', 'w');
-fprintf(file7,"Merit Figure & %f ", M);     
+fprintf(file7,"Merit Figure & %f \\\\ \\hline", M);     
 fclose(file7)
 
 

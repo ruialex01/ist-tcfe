@@ -2,7 +2,7 @@
 \label{sec:erroranalysis}
 
 
-\subsection{Topic I}
+\subsection{Envelope Detector Circuit}
 \label{subsec:first_topic_error}
 
 \begin{figure}[H]
@@ -22,10 +22,11 @@
 \label{fig:compar1}
 \end{figure}
 
+\paragraph{}
 In first set of graphics, we have the comparation of the envelope circuits. The graphics do match our expectations in terms of results, with both already having very close numbers to $12V$
 
 
-\subsection{Topic II}
+\subsection{Voltage Regulator Circuit}
 \label{subsec:second_topic_error}
 \begin{figure}[H]
 
@@ -44,9 +45,10 @@ In first set of graphics, we have the comparation of the envelope circuits. The 
 \label{fig:compar2}
 \end{figure}
 
+\paragraph{}
 In this second set of graphics, we have the comparation of the output between Octave and Ngspice. Once again, the results are very sastisfying.
 
-\subsection{Topic III}
+\subsection{DC Output Level}
 \label{subsec:third_topic_error}
 
 
@@ -67,9 +69,10 @@ In this second set of graphics, we have the comparation of the output between Oc
 \label{fig:compar3}
 \end{figure}
 
+\paragraph{}
 In this last set of graphics, we have the comparation between the output difference (relative to $12V$) obtained by Octave and Ngspice, which also correspond to what was required (as close to zero as possible).
 
-\subsection{Topic IV}
+\subsection{Relative Errors}
 \label{subsec:fourth_topic_error}
 
 \begin{center}
@@ -81,11 +84,12 @@ In this last set of graphics, we have the comparation between the output differe
    \end{tabular}
 \end{center}
 
+\paragraph{}
 In the table above, we have the comparation between Octave and Ngspice of the maximum output values, the minimum output values, the voltage ripple and the average. The percentual relative error is also included to make the interpretation of these values easier.
 With the exception of the Voltage Ripple, it is safe to say that all the values are very good. When it comes to the voltage ripple, while it is true that the relative error is of 5 times of difference, it is important to note that they are still very small values. The possible explanation for this discrepancy is that Ngspice uses a diode model which does not have fixed parameters (Namely $V_{D}$), making it very hard to match the Octave results.
 
-\subsection{Topic V}
-\label{subsec:Figure of Merit}
+\subsection{Figure of Merit}
+\label{subsec:Figure_of_Merit}
 
 \begin{center}
    \begin{tabular}{|c||c|}
@@ -96,4 +100,5 @@ With the exception of the Voltage Ripple, it is safe to say that all the values 
    \end{tabular}
  \end{center}
 
+\paragraph{}
 To end our report, we present the figure of merit. It is important to remind that this figure is obtained upon the devices and values used in Ngspice and not the ones used in Octave. During our work, we struggled a bit trying to understand what the ideal value would be, given that we did not have any reference however, we did our best to make it as high as possible.
