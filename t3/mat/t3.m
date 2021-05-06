@@ -164,7 +164,7 @@ ngspice=23;
 
 cost=(Rngspice+R2ngspice)*0.001+Cngspice*1000000+0.1*(4+ngspice)
 
-M=1/cost/(vripple+average+0.000001)
+M=1/cost/(ripplengspice+(averagengspice-12)+0.000001)
 
 
 %%%%%%%%%%%Error
