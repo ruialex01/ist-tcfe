@@ -7,7 +7,7 @@
 
 %%%Data
 
-A=14;
+A=12.5;
 T=1/50;
 t=linspace(0, T/2, 1000);
 %linspace(base,limit,n);
@@ -155,12 +155,47 @@ print ("outputdiff.eps", "-depsc");
 
 %%%%%%%%%%%%Figure of Merit
 
-cost=(R+R2)*0.001+C*1000000+0.1*(4+n)
+Rngspice=50e3;
+Cngspice=150e-6;
+R2ngspice=10;
+ripplengspice=0.01679523;
+averagengspice=12.00008;
+ngspice=23;
+
+cost=(Rngspice+R2ngspice)*0.001+Cngspice*1000000+0.1*(4+ngspice)
 
 M=1/cost/(vripple+average+0.000001)
 
+
+%%%%%%%%%%%Error
+
+maxngspice=12.14333;
+minngspice=12.12654;
+ripplengspice=0.01679523;
+averagengspice=12.00008;
+
+max_error=abs(max(vOUT)-maxngspice)/(max(vOUT))*100
+min_error=abs(min(vOUT)-minngspice)/(min(vOUT))*100
+vripple_error=abs(vripple-ripplengspice)/(vripple)*100
+average_error=abs(average-averagengspice)/(average)*100
+
+max_vOUT=max(vOUT);
+min_vOUT=min(vOUT);
+
 printf("The merit figure is %f MU \n", M)
 
+file6=fopen('error_tab1.tex', 'w');
+fprintf(file6,'\n DATA & Octave & Ngspice & Percentual Relative Error \\\\ \\hline');
+fprintf(file6,'\n Max & %f & %f &  %f  \\\\ \\hline ', max_vOUT , maxngspice, max_error  );
+fprintf(file6,'\n Min & %f & %f & %f  \\\\ \\hline', min_vOUT, minngspice, min_error );
+fprintf(file6,'\n Voltage Ripple & %f & %f & %f  \\\\ \\hline', vripple, ripplengspice, vripple_error );
+fprintf(file6,'\n Average Output Voltage & %f & %f & %f  \\\\ \\hline', average , averagengspice, average_error );   
+fclose(file6)
+
+
+file7=fopen('error_tab2.tex', 'w');
+fprintf(file7,"Merit Figure & %f ", M);     
+fclose(file7)
 
 
 
