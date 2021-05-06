@@ -124,7 +124,7 @@ average=(sum1+sum2+sum3)/(T/2);
 
 file1=fopen('average.tex', 'w');
 
-fprintf(file1, '\n THE OUTPUT VOLTAGE AVERAGE LEVEL IS & %d V \\\\ \\hline ', average);
+fprintf(file1, '\n The Output Voltage AVERAGE LEVEL is & %d V \\\\ \\hline ', average);
 
 fclose(file1);
 
@@ -139,7 +139,7 @@ printf("The output ripple is %d V \n",vripple)
 
 file2=fopen('ripple.tex', 'w');
 
-fprintf(file2, '\n THE OUTPUT VOLTAGE RIPPLE IS & %d V \\\\ \\hline ', vripple);
+fprintf(file2, '\n The Output Voltage RIPPLE is & %d V \\\\ \\hline ', vripple);
 
 fclose(file2);
 
