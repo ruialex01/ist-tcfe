@@ -2,7 +2,7 @@
 \label{sec:analysis}
 
 \paragraph{}
-In this section, we can find the results of an AC-DC converter build according to theoretical principles in order to be the subject of a theoretical analysis. The numeric results or graphics are presented alongside the formulas and methods used to claculate them. All of the results were obtained usig GNU octave and the section is organized in four different subsections, divding the converter into two circuits - the envelope detector circuit in Subsection ~\ref{subsec:envelope} and the voltage regulator circuit in Subsection ~\ref{subsec:regulator} - and analysing the final values of the ripple voltage - in Subsection ~\ref{subsec:ripple} - and the output DC level - in Subsection ~\ref{subsec:dclevel}.
+In this section, we can find the results of an AC-DC converter build according to theoretical principles in order to be the subject of a theoretical analysis. The numeric results or graphics are presented alongside the formulae and methods used to calculate them. All of the results were obtained usig GNU octave and the section is organized in four different subsections, dividing the converter into two circuits - the envelope detector circuit in Subsection ~\ref{subsec:envelope} and the voltage regulator circuit in Subsection ~\ref{subsec:regulator} - and analysing the final values of the ripple voltage - in Subsection ~\ref{subsec:ripple} - and the output DC level - in Subsection ~\ref{subsec:dclevel}.
 
 
 
@@ -11,7 +11,7 @@ In this section, we can find the results of an AC-DC converter build according t
 \label{subsec:envelope}
 
 \paragraph{}
-We start to define some of the parameters needed in the composition of a envelope detector circuit, suchs as the resistance of resistor $R$ and the capacitance of the capacitor $C$. It is important to point out that, in this specific envelope circuit used in the theorical approach, we considered the diodes to be the ideal model. We also present the voltage source $v_S$ characteristic values, such as the frequency $f$ (and the period T, as the inverse frequency value) and the amplitude $A$.
+We start by defining some of the parameters needed in the composition of an envelope detector circuit, suchs as the resistance of resistor $R$ and the capacitance of the capacitor $C$. It is important to point out that, in this specific envelope circuit used in the theorical approach, we considered the diodes to be the ideal model. We also present the voltage source $v_S$ characteristic values, such as the frequency $f$ (and the period T, as the inverse frequency value) and the amplitude $A$.
 
 \[
 \left\{\begin{matrix}
@@ -61,7 +61,7 @@ and $v_0$, the envelope output voltage, is expressed in Volts (V) along the y-ax
 \paragraph{}
 The voltage regulator attenuates oscillations in the input signal without frequency dependence and takes advantage of the non-linear characteristic of the $N$ diodes included in the positive voltage limiter. 
 
-We start to define some of the parameters needed in the composition of a voltage regulator circuit, suchs as the resistor $R_2$ value and the number of diodes $n$ of the voltage limiter. We also present the diode's characteristic values, such as the emission coefficient $\eta$, the reverse saturation current $I_S$, the thermical voltage $v_T$ and the diode voltage $v_D$.
+We start by defining some of the parameters needed in the composition of a voltage regulator circuit, suchs as the resistor $R_2$ value and the number of diodes $n$ of the voltage limiter. We also present the diode's characteristic values, such as the emission coefficient $\eta$, the reverse saturation current $I_S$, the thermical voltage $v_T$ and the diode voltage $v_D$.
 
 \[
 \left\{\begin{matrix}
