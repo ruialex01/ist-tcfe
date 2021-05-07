@@ -2,7 +2,7 @@
 \label{sec:analysis}
 
 \paragraph{}
-In this section, we can find the results of an AC-DC converter build according to theoretical principles in order to be the subject of a theoretical analysis. The numeric results or graphics are presented alongside the formulae and methods used to calculate them. All of the results were obtained usig GNU octave and the section is organized in four different subsections, dividing the converter into two circuits - the envelope detector circuit in Subsection ~\ref{subsec:envelope} and the voltage regulator circuit in Subsection ~\ref{subsec:regulator} - and analysing the final values of the ripple voltage - in Subsection ~\ref{subsec:ripple} - and the output DC level - in Subsection ~\ref{subsec:dclevel}.
+In this section, we can find the results of an AC-DC converter build according to theoretical principles in order to be the subject of a theoretical analysis. The numeric results or graphics are presented alongside the formulae and methods used to calculate them. All of the results were obtained using GNU octave and the section is organized in four different subsections, dividing the converter into two circuits - the envelope detector circuit in Subsection ~\ref{subsec:envelope} and the voltage regulator circuit in Subsection ~\ref{subsec:regulator} - and analysing the final values of the ripple voltage - in Subsection ~\ref{subsec:ripple} - and the output DC level - in Subsection ~\ref{subsec:dclevel}.
 
 
 
@@ -42,7 +42,7 @@ v_S, \hspace{1cm} v_S \ge 0\\
 \end{matrix}\right.
 \]
 
-Finally, the envelope detector circuit voltage $v_0$ is the highest between $v0_{rect}$, the full-wave bridge rectifier voltage, and the voltage $v0_{exp}$ induced when the capacitor $C$ discharges through the resistor $R$ and described by the following equation: $vO_{exp}=Acos(\omega t_{OFF})e^(\frac{-({tON}-{tOFF})}{RC})$.
+Finally, the envelope detector circuit voltage $v_0$ is the highest between $v0_{rect}$, the full-wave bridge rectifier voltage, and the voltage $v0_{exp}$ induced when the capacitor $C$ discharges through the resistor $R$ and described by the following equation: $vO_{exp}=Acos(\omega t_{OFF})e^{\frac{-({tON}-{tOFF})}{RC}}$.
 
 
 \begin{figure}[H] \centering
@@ -78,7 +78,7 @@ I_s=1\times10^(-14)\\
 The voltage analysis of the regulator applies the incremental analysis method, separating the DC and incremental components.
 
 \paragraph{}
-The diode incremental resistance is calculated using the following expression: $r_d=\frac{\eta v_t}{I_s e^(\frac{v_d}{\eta v_t}}$.
+The diode incremental resistance is calculated using the following expression: $r_d=\frac{\eta v_t}{I_s e^{\frac{v_d}{\eta v_t}}}$.
 
 Applying the voltage divider rule, the AC increment $v_{out}$ is defined using the following relation: $vout=\frac{N r_d}{N rd+R2}vO$.
 
@@ -120,11 +120,11 @@ The value of the voltage ripple $v_{ripple}$ can be calculated relating the maxi
 \label{subsec:dclevel}
 
 \paragraph{}
-The $t_{ON}$ is calculated using the Newton-Raphson iterative method, starting with a function obtained through the following equation: $Acos(\omega t_{ON})=Acos(\omega t_{OFF})e^(\frac{-(t_{ON}-t_{OFF})}{RC})$.
+The $t_{ON}$ is calculated using the Newton-Raphson iterative method, starting with a function obtained through the following equation: $Acos(\omega t_{ON})=Acos(\omega t_{OFF})e^{\frac{-(t_{ON}-t_{OFF})}{RC}}$.
 
 The DC level output average is obtained integrating the sinusoidal and exponential functions during a half-period interval. The calculations are shown below.\\
 
-$t\in[0,t_{OFF})]\\
+$t\in[0,t_{OFF}]\\
 \int_{0}^{t_{OFF}}=\frac{N r_d}{N r_d + R_2}\frac{A}{\omega}sin(\omega t_{OFF})+N v_d t_{OFF}\\$\\
 
 $t\in[t_{OFF},t_{ON}]\\

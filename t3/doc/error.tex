@@ -23,7 +23,7 @@
 \end{figure}
 
 \paragraph{}
-In first set of graphics, we have the comparation of the envelope circuits. The graphics do match our expectations in terms of results, with both already having very close numbers to $12V$, although with some differences between them, mainly when it comes to the ripple.
+In first set of graphics, we have the comparison of the envelope circuits. The graphics do match our expectations in terms of results, with both already having very close numbers to $12V$, although with some differences between them, mainly when it comes to the ripple.
 
 
 \subsection{Voltage Regulator Circuit}
@@ -46,7 +46,7 @@ In first set of graphics, we have the comparation of the envelope circuits. The 
 \end{figure}
 
 \paragraph{}
-In this second set of graphics, we have the comparation of the output between Octave and Ngspice. Once again, the results are very sastisfying.
+In this second set of graphics, we have the comparison of the output between Octave and Ngspice. Once again, the results are very sastisfying.
 
 \subsection{DC Output Level}
 \label{subsec:third_topic_error}
@@ -61,7 +61,7 @@ In this second set of graphics, we have the comparation of the output between Oc
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[trim= 0cm 0cm 0cm 10cm, clip, width=1.1\linewidth, height=9cm]{trans3aux.pdf}
-\caption{Ngspice. It is importanto to note that this graphic is in $mV$}
+\caption{Ngspice. It is important to note that this graphic is in $mV$}
 \label{fig:simthirdcompare}
 \end{subfigure}
 
@@ -70,7 +70,7 @@ In this second set of graphics, we have the comparation of the output between Oc
 \end{figure}
 
 \paragraph{}
-In this last set of graphics, we have the comparation between the output difference (relative to $12V$) obtained by Octave and Ngspice, which also correspond to what was required (as close to zero as possible).
+In this last set of graphics, we have the comparison between the output difference (relative to $12V$) obtained by Octave and Ngspice, which also correspond to what was required (as close to zero as possible).
 
 \subsection{Relative Errors}
 \label{subsec:fourth_topic_error}
@@ -78,14 +78,14 @@ In this last set of graphics, we have the comparation between the output differe
 \begin{center}
    \begin{tabular}{|c||c|c|c|}
       \hline    
-      \multicolumn{4}{|c|} {\bf Comparation of various data between Octave and Ngspice} \\
+      \multicolumn{4}{|c|} {\bf Comparison of various data between Octave and Ngspice} \\
       \hline
         \input{error_tab1}
    \end{tabular}
 \end{center}
 
 \paragraph{}
-In the table above, we have the comparation between Octave and Ngspice of the maximum output values, the minimum output values, the voltage ripple and the average. The percentual relative error is also included to make the interpretation of these values easier.
+In the table above, we have the comparison between Octave and Ngspice of the maximum output values, the minimum output values, the voltage ripple and the average. The percentual relative error is also included to make the interpretation of these values easier.
 With the exception of the Voltage Ripple, it is safe to say that all the values are very good. When it comes to the voltage ripple, while it is true that the relative error is of 5 times of difference, it is important to note that they are still very small values. The possible explanation for this discrepancy is that Ngspice uses a diode model which does not have fixed parameters (Namely $V_{D}$), making it very hard to match the Octave results.
 
 \subsection{Figure of Merit}
