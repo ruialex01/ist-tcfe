@@ -1,7 +1,6 @@
 \section{Simulation Analysis}
 \label{sec:simulation}
 
-\paragraph{}
 In this section, we can find the results of each topic required in the simulation analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obatined usig NGSpice and the section is divided in two different subsections. 
 
 In this part of the lab, we tried to build the circuit in such a way that it would be as similar as possible as the one used in the Octave theoretical part. The most important difference between both approaches is that in Ngspice we had to use more diodes in the regulator circuit than in Octave. This is because while in Octave we used the standard diode voltage ($0.7 V$), requiring 17 diodes, in Ngspice that wasn't possible because diodes have varying voltages. Given that, our Ngspice voltage regulator circuit is made of 23 diodes.
@@ -10,19 +9,31 @@ Another difference from the Octave model, is that the ideal diode model used in 
 
 \subsection{Envelope Circuit Output}
 
+
+For this envelope circuit we used the following values:
+\[
+\left\{\begin{matrix}
+f = 50 Hz\\
+n=13.5304 V\\
+R=50k\Omega\\
+C=150 \mu F
+\end{matrix}\right.
+\]
+
 \begin{figure}[H] \centering
 \includegraphics[trim= 0cm 0cm 0cm 10cm, clip, width=0.7\textwidth]{trans1.pdf}
 \caption{The final envelope detector circuit voltage $v_0$ during 10 periods}
 \label{fig:sim_envelope}
 \end{figure}
 
-\paragraph{}
+
 In the graphic above, it is possible to see that, even though it is not the final result of the whole converter, it is already very close to $12V$. It is important to note that, if we zoom in, there will be a certain level of ripple that may affect our desired result, given that the signal hasn't gone throught the voltage regulator yet. Still on this topic, a particularity of Ngspice is the rising line at the very beginning which clearly stands for some transient the software uses.
 
 \subsection{Circuit Output}
 
-\paragraph{}
+
 In this part the total output of the circuit is analysed.
+The voltage regulator had its resistor set with a value of $10 Ohms$ and a total number of 23 diodes.
 
 \begin{figure}[H]\centering
 \includegraphics[trim= 0cm 0cm 0cm 10cm, clip, width=0.7\textwidth]{trans2.pdf}

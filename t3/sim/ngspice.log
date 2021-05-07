@@ -1,0 +1,65 @@
+
+Circuit: *title: t3 circuit
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+n1                                           0
+n3                                 5.62214e-19
+naux2                              5.62214e-19
+n4                                 5.62214e-19
+n6                                -1.87138e-22
+n7                                -1.87138e-22
+n8                                 4.53662e-20
+n9                                 9.09187e-20
+n10                                1.36471e-19
+n11                               -8.36298e-20
+n12                               -3.80757e-20
+n13                                7.47846e-21
+n14                                5.30318e-20
+n15                                3.64238e-19
+n16                                3.37689e-19
+n17                                3.11139e-19
+n18                               -8.92152e-20
+n19                               -4.89571e-19
+n20                               -5.16122e-19
+n21                               -2.40967e-19
+n22                                3.41879e-20
+n23                                3.09343e-19
+n24                                9.58903e-20
+n25                                6.93403e-20
+n26                                3.80546e-19
+n27                               -5.91856e-20
+n28                               -3.48064e-19
+n29                               -1.74032e-19
+vaux#branch                       -9.42951e-47
+e1#branch                          9.42951e-47
+vin#branch                         5.54719e-48
+
+
+No. of Data Rows : 10008
+average             =  1.200008e+01 from=  0.000000e+00 to=  2.000000e-01
+max                 =  1.214333e+01 at=  1.954656e-01
+min                 =  1.212654e+01 at=  1.045056e-01
+ripple              =  1.679523e-02 from=  1.000000e-01 to=  2.000000e-01
+op_TAB
+max = 1.214333e+01
+min = 1.212654e+01
+ripple = 1.679523e-02
+average = 1.200008e+01
+op_END
+
+The file "trans1.ps" may be printed on a postscript printer.
+trans1_FIG
+
+The file "trans2.ps" may be printed on a postscript printer.
+trans2_FIG
+
+The file "trans3.ps" may be printed on a postscript printer.
+trans3_FIG
+ngspice-31 done

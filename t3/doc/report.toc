@@ -1,0 +1,38 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {paragraph}{}{2}{section*.2}%
+\contentsline {paragraph}{}{2}{section*.3}%
+\contentsline {section}{\numberline {2}Theoretical Introduction}{3}{section.2}%
+\contentsline {paragraph}{}{3}{section*.5}%
+\contentsline {paragraph}{}{3}{section*.6}%
+\contentsline {paragraph}{}{3}{section*.7}%
+\contentsline {section}{\numberline {3}Theoretical Analysis}{3}{section.3}%
+\contentsline {paragraph}{}{3}{section*.8}%
+\contentsline {subsection}{\numberline {3.1}Envelope Detector Circuit}{4}{subsection.3.1}%
+\contentsline {paragraph}{}{4}{section*.9}%
+\contentsline {paragraph}{}{4}{section*.10}%
+\contentsline {subsection}{\numberline {3.2}Voltage Regulator Circuit}{5}{subsection.3.2}%
+\contentsline {paragraph}{}{5}{section*.12}%
+\contentsline {paragraph}{}{5}{section*.13}%
+\contentsline {paragraph}{}{5}{section*.14}%
+\contentsline {paragraph}{}{5}{section*.15}%
+\contentsline {subsection}{\numberline {3.3}Voltage Ripple}{6}{subsection.3.3}%
+\contentsline {paragraph}{}{6}{section*.17}%
+\contentsline {subsection}{\numberline {3.4}The Output DC Level}{6}{subsection.3.4}%
+\contentsline {paragraph}{}{6}{section*.18}%
+\contentsline {section}{\numberline {4}Simulation Analysis}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Envelope Circuit Output}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Circuit Output}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Relative Error and Graphic Analysis}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Envelope Detector Circuit}{10}{subsection.5.1}%
+\contentsline {paragraph}{}{10}{section*.24}%
+\contentsline {subsection}{\numberline {5.2}Voltage Regulator Circuit}{11}{subsection.5.2}%
+\contentsline {paragraph}{}{11}{section*.26}%
+\contentsline {subsection}{\numberline {5.3}DC Output Level}{11}{subsection.5.3}%
+\contentsline {paragraph}{}{12}{section*.28}%
+\contentsline {subsection}{\numberline {5.4}Relative Errors}{12}{subsection.5.4}%
+\contentsline {paragraph}{}{12}{section*.29}%
+\contentsline {subsection}{\numberline {5.5}Figure of Merit}{12}{subsection.5.5}%
+\contentsline {paragraph}{}{12}{section*.30}%
+\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}%
+\contentsline {paragraph}{}{12}{section*.31}%
