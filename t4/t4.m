@@ -62,7 +62,15 @@ ge2 = 1/RE2
 AV2 = gm2/(gm2+gpi2+go2+ge2)
 
 
-
 ZI2 = (gm2+gpi2+go2+ge2)/gpi2/(gpi2+go2+ge2)
 
 ZO2 = 1/(gm2+gpi2+go2+ge2)
+
+
+
+
+
+
+
+
+
