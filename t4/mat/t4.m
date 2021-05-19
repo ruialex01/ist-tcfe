@@ -11,6 +11,13 @@ VBEON=0.7
 VCC=12
 RS=100
 
+CI=1e-3
+CE=1e-3
+CO=1e-6
+
+
+
+
 RB=1/(1/RB1+1/RB2)
 VEQ=RB2/(RB1+RB2)*VCC
 IB1=(VEQ-VBEON)/(RB+(1+BFN)*RE1)
@@ -67,10 +74,12 @@ ZI2 = (gm2+gpi2+go2+ge2)/gpi2/(gpi2+go2+ge2)
 ZO2 = 1/(gm2+gpi2+go2+ge2)
 
 
+%Vo/vi for medium frequencies
 
+gain_medium=AV1simple*AV2
 
+%lower cut-off frequency
 
-
-
+f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
 
 
