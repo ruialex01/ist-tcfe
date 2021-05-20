@@ -16,10 +16,14 @@ Rout emit2 vcc 100
 .control
 op
 
-*need a different setup to measure output impedance
+*using a voltage source V = 1 V and applying Ohm's law with impedances V=Z*I -> Z=V/I=1/I
 
 
-print i(Vin)
+print 1/i(Vin)
+
+echo "outimpedance_TAB"
+print 1/i(Vin)
+echo "outimpedance_END"
 
 quit
 .endc 
