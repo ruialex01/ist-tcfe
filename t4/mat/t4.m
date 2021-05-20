@@ -78,8 +78,34 @@ ZO2 = 1/(gm2+gpi2+go2+ge2)
 
 gain_medium=AV1simple*AV2
 
-%lower cut-off frequency
+%%%%%%%%%%%Lower Cut-Off Frequency%%%%%%%%%%%%%%%
 
 f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
+
+%%%%%%%%%%%%%%Frequency Analysis Graph%%%%%%%%%%%
+
+%%%%%%%%%%%%%%End of Frequency Analysis Graph%%%%
+
+%%%%%%%%Theoretical Analysis Tables%%%%%%%%%%%%%%
+%%%%%%%%Gain Stage table%%%%%%%%%%%%%%%%%%%%%%%%%
+
+file1=fopen('gain_stage_values.tex', 'w');
+fprintf(file1,'\n Voltage Gain     &  %f   \\\\ \\hline', AV1);
+fprintf(file1,'\n Input Impedance  &  %f   \\\\ \\hline', ZI1);
+fprintf(file1,'\n Output Impedance &  %f   \\\\ \\hline', ZO1);
+fclose(file1)
+
+
+%%%%%%%%Output Stage Table%%%%%%%%%%%%%%%%%%%%%%%
+
+file2=fopen('output_stage_values.tex', 'w');
+fprintf(file2,'\n Voltage Gain     &  %f   \\\\ \\hline', AV2);
+fprintf(file2,'\n Input Impedance  &  %f   \\\\ \\hline', ZI2);
+fprintf(file2,'\n Output Impedance &  %f   \\\\ \\hline', ZO2);
+fclose(file2)
+
+%%%%%%%End of Stage Tables %%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
