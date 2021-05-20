@@ -68,15 +68,23 @@ let lower_bond=vecmax(vdb(out))-3
 meas ac f1 WHEN vdb(out)=lower_bond RISE=1
 meas ac f2 WHEN vdb(out)=lower_bond CROSS=LAST
 
-echo "freq_TAB"
+*print results
+
+echo "cutofffreq_TAB"
 print f1
 print f2
 print f2-f1
+echo "cutofffreq_END"
+
+echo "outvoltagegain_TAB"
 print vdb(out)[40]
+echo "outvoltagegain_END"
 
-echo "freq_END"
+echo "inputimp_TAB"
+print v(in2)[40]/(v(in)[40]-v(in2)[40])*100/1000
+echo "inputimp_END"
 
-*need a different setup to measure output impedance
+*need a different setup to measure output impedance (t4p2.net)
 
 .endc 
 
