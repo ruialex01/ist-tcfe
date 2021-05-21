@@ -76,6 +76,10 @@ ZI=ZI1
 ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
 %%%%%%%%%%%Lower Cut-Off Frequency%%%%%%%%%%%%%%%
 
+CI=1e-3
+CE=1e-3
+CO=1e-6
+
 f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
 
 %%%%%%%%%%%%%%Frequency Analysis Graph%%%%%%%%%%%
