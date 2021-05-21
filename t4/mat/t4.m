@@ -11,13 +11,6 @@ VBEON=0.7
 VCC=12
 RS=100
 
-CI=1e-3
-CE=1e-3
-CO=1e-6
-
-
-
-
 RB=1/(1/RB1+1/RB2)
 VEQ=RB2/(RB1+RB2)*VCC
 IB1=(VEQ-VBEON)/(RB+(1+BFN)*RE1)
@@ -71,15 +64,16 @@ gpi2 = gm2/BFP
 ge2 = 1/RE2
 
 AV2 = gm2/(gm2+gpi2+go2+ge2)
-
 ZI2 = (gm2+gpi2+go2+ge2)/gpi2/(gpi2+go2+ge2)
 ZO2 = 1/(gm2+gpi2+go2+ge2)
 
 
-%Vo/vi for medium frequencies
-
-gain_medium=AV1simple*AV2
-
+%total
+gB = 1/(1/gpi2+ZO1)
+AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
+AV_DB = 20*log10(abs(AV))
+ZI=ZI1
+ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
 %%%%%%%%%%%Lower Cut-Off Frequency%%%%%%%%%%%%%%%
 
 f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
@@ -111,11 +105,3 @@ fclose(file2)
 
 
 
-=======
-%total
-gB = 1/(1/gpi2+ZO1)
-AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
-AV_DB = 20*log10(abs(AV))
-ZI=ZI1
-ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
->>>>>>> 0a9853e81437021c4f40351c97adc65b0e54ec48:t4/t4.m
