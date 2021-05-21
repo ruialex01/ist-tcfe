@@ -39,7 +39,6 @@ RL out 0 8
 
 .control
 
-print all
 
 * time analysis
 tran 1e-5 1e-2
@@ -60,6 +59,7 @@ plot vp(out)
 hardcopy vo2f.ps vdb(out)
 
 *input impedance in kohm
+<<<<<<< HEAD:t4/t4p1.net
 print v(in2)[40]/(v(in)[40]-v(in2)[40])*100/1000
 
 
@@ -75,6 +75,12 @@ print f2-f1
 print vdb(out)[40]
 
 echo "freq_END"
+=======
+*print all
+
+plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
+>>>>>>> 0a9853e81437021c4f40351c97adc65b0e54ec48:t4/t4.net
 
 *need a different setup to measure output impedance
 
