@@ -39,7 +39,9 @@ tran 1e-5 1e-2
 
 print -v(coll)[40]/Vaux#branch[40]
 
-
+echo "outimp_TAB"
+print -v(coll)[40]/Vaux#branch[40]
+echo "outimp_END"
 
 quit
 .endc 

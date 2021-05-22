@@ -19,9 +19,9 @@ Rout emit2 vcc 100
 * time analysis
 tran 1e-5 1e-2
 
-echo "imp_TAB"
+echo "outimp2_TAB"
 print v(aux)[40]/Vin#branch[40]
-echo "imp_END"
+echo "outimp2_END"
 
 
 

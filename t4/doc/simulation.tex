@@ -1,1 +1,95 @@
+\pagebreak
 
+\section{Simulation Analysis}
+\label{sec:simulation}
+
+\paragraph{}
+In this section, we can find the results of the topics required in the simulation analysis. The numeric results or graphics are presented alongside a short explanation of the interpretation of the problem. All of the results were obtained using NGSpice and the section is divided in three different subsections. 
+
+\subsection{Output Voltage Gain}
+
+\paragraph{}
+The output stage of the common collector amplifier allows the circuit to be compatible with the speaker impedance limits. It is possible to analyse the output voltage of this second part of the amplifier circuit relating it with the variation of the frequency. The NGSpice analysis results in the plot shown below.
+
+
+\begin{figure}[H]\centering
+\includegraphics[trim= 0cm 0cm 0cm 10cm, clip, width=0.7\textwidth]{vo2f.pdf}
+\caption{The Output Voltage of the Output Stage of a Common Collector Amplifier.}
+\label{fig:sim_output}
+\end{figure}
+
+where $f$ is expressed in Hertz (Hz) along the x-axis\\
+and $v_{dB_{out}}$, the output voltage of the amplifier, is expressed in  in Volts (V) using a decibel scale along y-axis.
+
+\paragraph{}
+The interpretation of the graphic allows us to see that the output voltage tends to become constant when closer to its maximum values. In fact, it is possible to compute the output voltage gain as an approximation of the maximum output voltage level.
+
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf NGSpice Formula} & {\bf Output Voltage Gain (V)} \\ \hline
+    \input{outvoltagegain_TAB}
+  \end{tabular}
+ \label{tab:outvoltagegain}
+\end{table}
+
+%%%%%
+
+\subsection{Bandwidth and Cut-Off Frequencies}
+
+\paragraph{}
+Also from the intepretation of the plot presented in the previous usbsection, we can calculate the cut-off frequencies. In this case, since we are using an electric circuit simulation tool like NGSpice, we are able to compute values for two existing cut-off frequencies. They are calculated as 3dB cut off frequencies, which means that their correspondent output voltage is the same and it is 3dB lower than the maximum output voltage level. From the lower and upper cut-off frequencies it is possible to calculate the bandwidth. 
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Variable} & {\bf Frequency Value (Hz)} \\ \hline
+    \input{cutofffreq_TAB}
+  \end{tabular}
+ \label{tab:cutofffreq}
+\end{table}
+
+where $f_1$ is the lower cut-off frequency,\\
+a$f_1$ is the upper cut-off frequency and\\
+$f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off frequencies).
+
+%%%%%
+
+\subsection{Input and Output Impedances}
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf NGSpice Formula} & {\bf Input Impedance Value ($\Omega$): $a,b$ from $Z_{in}=a+bj$}\\ \hline
+    \input{inputimp_TAB}
+  \end{tabular}
+ \label{tab:inputimp}
+\end{table}
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    \input{outimp_TAB}
+  \end{tabular}
+ \label{tab:outimp}
+\end{table}
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    \input{inputimp2_TAB}
+  \end{tabular}
+ \label{tab:inputimp2}
+\end{table}
+
+\begin{table}[H] \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    \input{outimp2_TAB}
+  \end{tabular}
+ \label{tab:outimp2}
+\end{table}
