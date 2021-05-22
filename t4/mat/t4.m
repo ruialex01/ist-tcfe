@@ -151,15 +151,9 @@ voltage_gain=10^(37.93/20)
 
 merit=(2.180e6*voltage_gain)/(cost*(1.005e4))
 
-
-
-
-
-
-
-
-
-
+file3=fopen('merit.tex', 'w');
+fprintf(file3,"Merit Figure & %f \\\\ \\hline", merit);     
+fclose(file3)
 
 
 
