@@ -1,22 +1,25 @@
 \section{Relative Error and Graphic Analysis}
-\label{sec:erroranalysis}
+\label{error}
 
-\subsection{Frequency Responde Analysis}
+\subsection{Frequency Response Analysis}
 \label{subsec:freqresp}
 
-\begin{figure}[H]
+\paragraph{}
+A frequency response analysis was performed using both NGSpice for simulation interpretation and GNU Octave for theorethical analysis. The graphics ploted by each one of the tools are not as similar as they would be without the several approximations made during our analysis. The causes for the absence of values for a range of frequencies in the GNU Octave graphic are already explained in the respective section. Therefore, it is important to note that the values for the maximum output gain voltage levels are really similar between the theorethical and simulation analysis. Besides that, also the lower cut-off frequencies are really close between the two analysis, making both graphics close to each other when looking to the right side of the x-axis, verifying to a good approximation to high frequency values. 
 
+\begin{figure}[H]
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[width=0.9\linewidth, height=8cm]{gain.eps} 
-\caption{Phase of $v_s(f)$,  $v_c(f)$  and $v_6(f)$ during frequency interval [0.1 , 1] MHz, obtained using GNU Octave.}
+\caption{The Output Voltage of the Output Stage of a Common Collector Amplifier, obtained using GNU Octave.}
 \label{fig:theo_third}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[width=0.8\linewidth, height=8cm]{vo2f.pdf}
-\caption{Phase of $v_s(f)$ and $v_6(f)$ during frequency interval [0.1 , 1] MHz, obtained using Ngspice.}
+\caption{The Output Voltage of the Output Stage of a Common Collector Amplifier, obtained using Ngspice.}
 \label{fig:total}
 \end{subfigure}
 \end{figure}
+
 
 \subsection{Input and Output Impedances Analysis}
 \label{subsec:freqresp}
@@ -24,7 +27,7 @@
 \begin{center}
    \begin{table}[H]
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{cc|c|c|c|c|}
+\begin{tabular}{c|c|c|c|c|c|}
 \cline{3-6}
 \multicolumn{2}{c}{} & \textbf{NGSpice Value} & \textbf{Octave Value} & \textbf{Relative Error} & \textbf{Percentual Error {[}\%{]}} \\ \hline
 \multicolumn{1}{|c|}{\multirow{2}{*}{Gain Stage}} & Input Impedance & 574.5327 & 523.575168 & 0.08869387591 & 8.869387591 \\ \cline{2-6} 
@@ -35,10 +38,13 @@
 \end{tabular}%
 }
 \end{table}
- \end{center}
+\end{center}
 
 \paragraph{}
-In the table above, we have the comparison between Octave and NGSpice of the Output Voltage Gain, the Input Impedance and the Output Impedance. The percentual error is also included to make the interpretation easier. As we can see, the percentual relative errors presented are very high and thus cannot be ignored. A possible explanation for these discrepancies is that NGSpice uses a very complex transistor model, similarly to what happened in the previous laboratory assignment with the diode model, which does not have fixed parameters, and so it becames very hard for Octave to match the results.
+In the table above, we have the comparison between Octave and NGSpice values for the of the Output Voltage Gain and all the input and output impedances of the two stages of the common collector amplifier. Both the relative error and percentual error are included to make the interpretation easier. 
+
+\paragraph{}
+As we can see, some of the percentual errors are very high and thus cannot be ignored. In fact, some of the parameters defined for NGSpice circuit's components can influence in some way the impedances results being measured by those circuits. Besides that, all the formulas involved in the input and output impedances calculation process were really complex and could have minor approximations that have a final result of major differnece between the theorethical values and the simulation measured ones. A possible general explanation for these discrepancies is also that NGSpice uses a very complex transistor model, similarly to what happened in the previous laboratory assignment with the diode model, which does not have fixed parameters, and so it becames very hard for Octave to match the results. 
 
 \subsection{Figure of Merit}
 \label{subsec:Figure_of_Merit}
