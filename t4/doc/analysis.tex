@@ -1,0 +1,182 @@
+\section{Theoretical Analysis}
+
+This theoretical analysis has, as its main purpose, showing how this circuit would behave in theory. this section is divided in two, given that this circuit, as explained in the theoretical introduction, is mainly composed of the two different stages - the gain stage and the output stage. However, there will also be a third subsection which will include the frequency response analysis for the whole circuit.
+
+
+
+\subsection{The Gain Stage}
+
+\paragraph{}As already explained in the very first section of this report, the final objective of this lab assignment is to make an amplifier. Given so, this stage will have, as its main goal, to get a voltage gain as high as possible. In this subsection, the OP analysis of circuit will be made (DC current) and the gain, plus the input and output impedances,  will be calculated.
+
+
+\subsubsection{OP Analysis}
+
+\paragraph{}The first subject being analyzed is how does the circuit behave when the current is continuous (DC). This part is crucial when it comes to the study of the rest of the topics, such as the impedances, given that the incremental parameters of the transistors will be calculated based on the values obtained in the OP analysis.
+
+
+\[ 
+\left\{\begin{matrix}
+R_{B1}=\\
+R_{B2}=\\
+R_B=\frac{R_{B1}R_{B2}}{R_{B1}+R_{B2}}\\
+V_{BEON}=\approx 0.7 V\\
+I_E=(1+\beta_F)I_B\\
+V_E=R_E I_E\\
+V_C=R_C I_C\\
+V_O=V_{CC}-V_C\\
+\end{matrix}\right.
+\]
+
+
+\subsubsection{Voltage Gain}
+
+
+\paragraph{}In order to compute the voltage gain, the values of transistor's incremental parameters are required, given by the expressions below: 
+
+\begin{equation}
+    g_m=\frac{I_C}{V_T}
+\end{equation}
+
+\begin{equation}
+    r_\pi=\frac{\beta_F}{g_m}
+\end{equation}
+
+\begin{equation}
+    r_o\approx\frac{V_A}{I_C}
+\end{equation}
+
+
+\begin{equation}
+    \frac{v_o}{v_i}=-g_m(R_C||r_o)\frac{r_\pi||R_{B1}||R_{B2}}{R_S+r_\pi||R_{B1}||R_{B2}}v_S
+\end{equation}
+
+In which $v_S$ is the voltage supplied by the source. 
+
+
+
+\subsubsection{Input and Output Impedances}
+
+\paragraph{}Yet another very important property of this stage to be studied are the impendances, both the input and output ones. The relevance of the impedance, specially the output one, is that it gives an indication about the type of components that can be connected to it. Thus, through deductions made in the theoretical class, the final expressions that give the required values are the following:
+
+
+%\begin{equation}
+%    Z_I=\frac{(r_o+R+R_E)(r_\pi+R_B+R_E)+g_m R_E r_o r_\pi-R^2_E}{r_o+R+R_E}
+%\end{equation}
+
+%\begin{equation}
+%    Z_O=R_C||\frac{r_o[(R_B+r_\pi)||R_E]}{r_o||r_%\pi+ R_B||R_E\frac{r_\pi+R_B}{g_m r_\pi}}
+%\end{equation}
+
+\begin{equation}
+    Z_I=R_{B1}||R_{B2}||r_\pi
+\end{equation}
+
+\begin{equation}
+    Z_O=R_C||r_o
+\end{equation}
+
+
+\paragraph{}And so, the final results for this stage were obatined:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|} 
+\hline
+\multicolumn{2}{|l|}{\textbf{Gain Stage Computations}}  \\ 
+\hline
+Data             & Values                               \\ 
+\hline
+        \input{gain_stage_values}
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The Output Stage}
+
+\paragraph{}As it can be seen from the output impedance obtained in the previous stage, it has a very high value to be connected to the $8\Omega$ of the speaker in the end of the circuit. Therefore, the reasoning of this stage is precisely to solve that issue: to force the output impedance of the amplifier to have a reasonable value to be connected to an $8 \Omega$  speaker.
+
+
+\subsubsection{OP Analysis}
+
+\paragraph{}Just like it was done for the Gain Stage, the operating point analysis for the output stage is also required. The fact that, such as the Gain Stage, this present stage also has a transisor, makes this analysis specially important given that the transistor's incremental parameters depend on the values obtained in this subsection.
+
+\subsubsection{Voltage Gain}
+
+\paragraph{}As it was previously explained, the main justification for the existence of this Output Stage is to make the output impedance compatible with the $8\Omega$ speaker. Given so, the voltage gain of this stage is expected to be 1, because it should simply transport the voltage gain of the previous stage to the already mentioned speaker.
+
+\paragraph{}It will be more convenient to work with admitances, therefore:
+
+\begin{equation}
+    g_\pi=\frac{1}{r_\pi}
+\end{equation}
+
+\begin{equation}
+    g_E=\frac{1}{R_E}
+\end{equation}
+
+\begin{equation}
+    g_o=\frac{1}{r_o}
+\end{equation}
+
+\paragraph{}By using the Kirchhoff Current Law (KCL), the expression for the voltage gain of this output can be deduced:
+
+\begin{equation}
+    \frac{v_o}{v_i}=\frac{g_m}{g_\pi+g_E+g_o+g_m}
+\end{equation}
+
+
+
+\subsubsection{Input and Output Impedances}
+
+\paragraph{}Of all the computations already made for this stage, the impedances are certainly the most important ones. As it was already mentioned, the output impedance of this stage is supposed to be compatible with the $8\Omega$ speaker so, by using the expressions deducted in class, the formulas that follow next were obtained:
+
+\begin{equation}
+    Z_I=\frac{g_\pi+g_E+g_o+g_m}{g_\pi(g_\pi+g_E+g_o)}
+\end{equation}
+
+\begin{equation}
+    Z_O=\frac{1}{g_\pi+g_E+g_o+g_m}
+\end{equation}
+
+
+\paragraph{}This way, the final results for this stage were obatined:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|} 
+\hline
+\multicolumn{2}{|l|}{\textbf{Output Stage Computations}}  \\ 
+\hline
+Data             & Values                               \\ 
+\hline
+        \input{output_stage_values}
+\end{tabular}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Frequency Response Analysis}
+
+\paragraph{}Something that is of great interest to analyze an amplifier is how its voltage gain will vary accordingly with the frequency. As a consequence of that, this subsection will look forward to study the frequency response of the whole circuit, varying the frequency from an initial value of $10 Hz$ to a final value of $10 MHz$. It is important to add that, in this final topic of the theoretical analysis, a total number of 10 points per decade will be considered.
+
+
+\begin{equation}
+    \frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\times Av_{Gain Stage}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\frac{(r_\pi||R_{B1}||R_{B2})}{(R_S+r_\pi||R_{B1}||R_{B2})}
+    v_S(-g_m(R_C||r_o)
+\end{equation}
+
+
+
+
+
+
+
+

@@ -4,9 +4,9 @@ VT=25e-3
 BFN=178.7
 VAFN=69.7
 RE1=100
-RC1=1000
+RC1=800
 RB1=80000
-RB2=20000
+RB2=18000
 VBEON=0.7
 VCC=12
 RS=100
@@ -51,7 +51,7 @@ ZO1 = 1/(1/ro1+1/RC1)
 %ouput stage
 BFP = 227.3
 VAFP = 37.2
-RE2 = 100
+RE2 = 750
 VEBON = 0.7
 VI2 = VO1
 IE2 = (VCC-VEBON-VI2)/RE2
@@ -76,15 +76,48 @@ ZI=ZI1
 ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
 %%%%%%%%%%%Lower Cut-Off Frequency%%%%%%%%%%%%%%%
 
-CI=1e-3
-CE=1e-3
+CI=50e-6
+CE=50e-6
 CO=1e-6
 
 f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
 
+
+
 %%%%%%%%%%%%%%Frequency Analysis Graph%%%%%%%%%%%
 
+
+freq=logspace(10,1e8,70);
+
+for o = 1:70
+
+if(freq(o)>f_low)
+y(o)=AV_DB
+else
+y(o)=-o
+endif
+
+endfor
+
+
+ht=figure ();
+hold on;
+
+plot(freq,y,"g");
+
+xlim([0,1e8]);
+ylim([0,80]);
+xlabel ("Frequency [Hz]");
+ylabel ("Gain [dB]");
+legend("vo(f)/vi(f)");
+print (ht, "gain.eps", "-depsc");
+hold off;
+
 %%%%%%%%%%%%%%End of Frequency Analysis Graph%%%%
+
+
+
+
 
 %%%%%%%%Theoretical Analysis Tables%%%%%%%%%%%%%%
 %%%%%%%%Gain Stage table%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,6 +138,28 @@ fprintf(file2,'\n Output Impedance &  %f   \\\\ \\hline', ZO2);
 fclose(file2)
 
 %%%%%%%End of Stage Tables %%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%Merit Figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+c_resistors=(RS+RE1+RC1+RB1+RB2+RE2+8)*0.001
+c_capacitors=(CI+CE+CO)*1e6
+c_transistors=0.2
+
+cost=c_resistors+c_capacitors+c_transistors
+
+voltage_gain=10^(37.93/20)
+
+merit=(2.180e6*voltage_gain)/(cost*(1.005e4))
+
+
+
+
+
+
+
+
+
+
 
 
 
