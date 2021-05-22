@@ -1,3 +1,13 @@
 \section{Relative Error and Graphic Analysis}
 \label{sec:erroranalysis}
 
+\begin{center}
+   \begin{tabular}{|c||c|c|c|}
+      \hline    
+      \multicolumn{4}{|c|} {\bf Comparison of various data between Octave and Ngspice} \\
+      \hline
+        \input{error_tab}
+   \end{tabular}
+\end{center}
+
+\par In the table above, we have the comparison between Octave and NGSpice of the Output Voltage Gain, the Input Impedance and the Output Impedance. The percentual error is also included to make the interpretation easier. As we can see, the percentual relative errors presented are very high and thus cannot be ignored. A possible explanation for these discrepancies is that NGSpice uses a very complex transistor model, similarly to what happened in the previous laboratory assignment with the diode model, which does not have fixed parameters, and so it becames very hard for Octave to match the results.
