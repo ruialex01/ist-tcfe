@@ -20,7 +20,7 @@ Rout emit2 vcc 100
 tran 1e-5 1e-2
 
 echo "outimp2_TAB"
-print v(aux)[40]/Vin#branch[40]
+print -v(aux)[40]/Vin#branch[40]
 echo "outimp2_END"
 
 
