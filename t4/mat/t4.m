@@ -104,10 +104,10 @@ endfor
 ht=figure ();
 hold on;
 
-semilogx(freq,y,"g", freq, a, "w", 'Linewidth', 8);
+semilogx(freq,y,"r", freq, a, "w", 'Linewidth', 8);
 
 xlim([0,1e8]);
-ylim([0,80]);
+ylim([0,51]);
 xlabel ("Frequency [Hz]");
 ylabel ("Gain [dB]");
 legend("vo(f)/vi(f)");
@@ -140,6 +140,13 @@ fclose(file2)
 
 %%%%%%%End of Stage Tables %%%%%%%%%%%%%%%%%%%%%%
 
+file3=fopen('total_gain.tex', 'w');
+fprintf(file3,'\nTotal Voltage Gain     &  %f   \\\\ \\hline', AV);
+fprintf(file3,'\nTotal Voltage Gain (in dB)   &  %f   \\\\ \\hline', AV_DB);
+fclose(file3)
+
+
+
 %%%%%%%Merit Figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 c_resistors=(RS+RE1+RC1+RB1+RB2+RE2+8)*0.001
@@ -152,9 +159,9 @@ voltage_gain=10^(37.93/20)
 
 merit=(2.180e6*voltage_gain)/(cost*(1.005e4))
 
-file3=fopen('merit.tex', 'w');
-fprintf(file3,"Merit Figure & %f \\\\ \\hline", merit);     
-fclose(file3)
+file4=fopen('merit.tex', 'w');
+fprintf(file4,"Merit Figure & %f \\\\ \\hline", merit);     
+fclose(file4)
 
 
 
