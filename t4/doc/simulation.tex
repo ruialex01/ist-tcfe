@@ -58,10 +58,16 @@ $f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off fr
 
 \subsection{Input and Output Impedances}
 
+\paragraph{}
+The impedances of the common collector amplifier are really important values to obtain when trying to interpretate the viability of the amplifier circuit. And that's why it is really important to calculate the input impedance and the output impedance for both the gain and output stages of the amplifier. After all the values are computed, the circuit can be approved as a common colector amplifier if all the impedances are within the limits allowed by the driver (input audio source) and the load (speaker).
+
+\paragraph{}
+The following values were obtained using different NGSpice circuits built specifically to calculate each one of the impedances. Alternate voltage sources with different parameters were used in order to aplly the Ohm's law with impedances and compute the impedance for each case studied. In both output stage's impedances and also in the output impedance of the gain stage, an auxiliary capacitor was applyed to the circuits  in series with the voltage source in order to cancel the DC variations of the circuit and get a straight analysis exclusively from sinusoidal components.
+
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf NGSpice Formula} & {\bf Input Impedance Value ($\Omega$): $a,b$ from $Z_{in}=a+bj$}\\ \hline
+    {\bf NGSpice Formula} & {\bf Gain Stage Input Impedance ($\Omega$): $a,b$ from $Z_{in}=a+bj$}\\ \hline
     \input{inputimp_TAB}
   \end{tabular}
  \label{tab:inputimp}
@@ -70,7 +76,7 @@ $f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off fr
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    {\bf NGSpice Formula} & {\bf Gain Stage Output Impedance ($\Omega$)}\\ \hline
     \input{outimp_TAB}
   \end{tabular}
  \label{tab:outimp}
@@ -79,7 +85,7 @@ $f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off fr
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    {\bf NGSpice Formula} & {\bf Output Stage Input Impedance ($\Omega$)}\\ \hline
     \input{inputimp2_TAB}
   \end{tabular}
  \label{tab:inputimp2}
@@ -88,8 +94,11 @@ $f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off fr
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf NGSpice Formula} & {\bf Output Impedance Value ($\Omega$)}\\ \hline
+    {\bf NGSpice Formula} & {\bf Output Stage Output Impedance ($\Omega$)}\\ \hline
     \input{outimp2_TAB}
   \end{tabular}
  \label{tab:outimp2}
 \end{table}
+
+
+\pagebreak
