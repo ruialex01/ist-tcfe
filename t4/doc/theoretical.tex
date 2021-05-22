@@ -1,19 +1,15 @@
 \section{Theoretical Introduction}
 \label{sec:theoretical}
 
-\paragraph{}
-An audio amplifier is an electronic amplifier designed to take input as the low strenght audio signals and generate the output signal that consists of the high strenght value. Audio amplifiers are found in all manners of sound systems including sound reinforcement, public address, home audio systems and musical instrument amplifiers. It is the final electronic stage in a typical audio playback chain before the signal is sent to the speakers.
 
-\paragraph{} 
-The preceding stages in such a chain are low power audio amplifiers which perform tasks like pre-amplification of the signal (this is usually associated with record turntable signals, microphones signals and electric instrument signals, for example), equalization (adjusting the balance between frequency components within an electronic signal), tone controls, mixing different input signals or adding electronic effects such as reverb. The inputs can also consist of a several number of audio sources like record players, CD players, digital audio players or cassette players. Most of the audio power amplifiers require these low-level inputs, which are line level. Amplification of the signal produced is necessary and must be amplified before they can be processed in either analog or digital circuits.
+\paragraph{}When it comes to this amplifier, it is exactly of the same type of the first one mentioned in the introduction, it is the circuit of a speaker. As such, the objective of this lab assignment is to build a circuit that has an input source of  $10mV$ and an output speaker of $8\Omega$.
 
-\paragraph{} 
-The main goal of audio amplifiers is to reproduce input audio signals at sound-producing output levels, with desired volume and power levels - faithfully, efficiently and at low distortion. Audio frequencies ranges from about 20 Hz to 20 kHz, so the amplifier must have good frequency response over this range. Power capabilities vary widely depending on the application, from the miliwatts in headphones, to a few watts in TV or PC audio, to ten of watts for "mini" home stereos and automotive audio, to hundred of watts and beyond for more powerful home and commercial sound systems - and to fill theaters or auditoriums with sound.
+\paragraph{}In very broad terms, this circuit is going to be divided in two: a gain stage that will amplify the input sound signal as much as possible and an output stage, which will make the amplifier's output impedance compatible with impedance of the speaker.  
 
-\paragraph{} 
-A straightforward analog implementation of an audio amplifier uses transistors in linear mode in order to create an output voltage that is a scaled copy of the input voltage. The forward voltage gain is usually high (at least 40 dB). If the forward gain is part of a feedback loop, the overall loop gain will also be high. Feedback is often used because high loop gain improves performance - supressing distortion caused by nonlinearities in the forward path and reducing power supply noise by increasing the power-supply rejection (PSR).
+\begin{figure}[h] \centering
+	\includegraphics[width=0.8\linewidth]{circuit.pdf}
+	\caption{Fourth laboratory circuit.}
+	\label{fig:circuit}
+\end{figure}
 
-\paragraph{}
-The Audio Amplifier circuit presented above consists of two stages: a Gain Stage that, as the name suggests, its main goal is to maximize the voltage gain; and an Output Stage, which is the stage that is connected to the speaker. The Output Stage gives further improvement to the power gain and transfers this power to the speaker with minimum loss.
 
-\pagebreak
