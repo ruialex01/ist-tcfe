@@ -19,22 +19,11 @@ Rout emit2 vcc 100
 * time analysis
 tran 1e-5 1e-2
 
-<<<<<<< HEAD
-*using a voltage source V = 1 V and applying Ohm's law with impedances V=Z*I -> Z=V/I=1/I
-
-
-print 1/i(Vin)
-
-echo "outimpedance_TAB"
-print 1/i(Vin)
-echo "outimpedance_END"
-=======
 echo "imp_TAB"
 print v(aux)[40]/Vin#branch[40]
 echo "imp_END"
 
 
->>>>>>> febbbf73965b8f1cf18f50255b3b2099d0e1e23f
 
 quit
 .endc 
