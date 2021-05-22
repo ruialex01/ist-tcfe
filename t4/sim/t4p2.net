@@ -15,16 +15,16 @@ C emit2 aux 0.1m
 Q2 0 0 emit2 BC557A
 Rout emit2 vcc 100
 
+
+
 .control
-* time analysis
+
 tran 1e-5 1e-2
 
-echo "outimp2_TAB"
-print -v(aux)[40]/Vin#branch[40]
-echo "outimp2_END"
-
-
+echo "outimpoutput_TAB"
+print -v(aux)[40]/i(Vin)[40]
+echo "outimpoutput_END"
 
 quit
 .endc 
-.end
+.end 

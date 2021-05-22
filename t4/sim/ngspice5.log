@@ -1,0 +1,28 @@
+
+Circuit: .options savecurrents
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+in                                           0
+in2                                          0
+base                                   1.52118
+coll                                   5.53933
+emit                                  0.815768
+emit2                                  6.23561
+out                                          0
+vaux#branch                                  0
+vcc#branch                          -0.0158927
+
+
+No. of Data Rows : 2008
+inputimpgain_TAB
+-v(in)[40]/i(vaux)[40] = 5.745327e+02
+inputimpgain_END
+ngspice-31 done

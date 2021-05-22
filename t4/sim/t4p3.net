@@ -32,16 +32,12 @@ Vaux aux 0 0.0 ac 1.0 sin(0 90000 50)
 .control
 
 
-
 * time analysis
 tran 1e-5 1e-2
 
-
-print -v(coll)[40]/Vaux#branch[40]
-
-echo "outimp_TAB"
-print -v(coll)[40]/Vaux#branch[40]
-echo "outimp_END"
+echo "outimpgain_TAB"
+print -v(coll)[40]/i(Vaux)[40]
+echo "outimpgain_END"
 
 quit
 .endc 

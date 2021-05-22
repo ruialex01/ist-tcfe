@@ -27,9 +27,9 @@ RL out 0 8
 * time analysis
 tran 1e-5 1e-2
 
-echo "inputimp2_TAB"
-print v(aux)[40]/Vaux#branch[40]
-echo "inputimp2_END"
+echo "inputimpoutput_TAB"
+print v(aux)[40]/i(Vaux)[40]
+echo "inputimpoutput_END"
 
 quit
 .endc 

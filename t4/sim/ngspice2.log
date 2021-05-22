@@ -1,0 +1,23 @@
+
+Circuit: .options savecurrents
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vcc                                         12
+aux                                          0
+emit2                                 0.862365
+vin#branch                                   0
+vcc#branch                           -0.111376
+
+
+No. of Data Rows : 1013
+outimpoutput_TAB
+-v(aux)[40]/i(vin)[40] = 3.175952e+00
+outimpoutput_END
+ngspice-31 done

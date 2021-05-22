@@ -44,9 +44,9 @@ RL out 0 8
 tran 1e-5 2e-2
 
 *input impedance in kohm
-echo "inputimp14_TAB"
-print -v(in)[40]/Vaux#branch[40]
-echo "inputimp14_END"
+echo "inputimpgain_TAB"
+print -v(in)[40]/i(Vaux)[40]
+echo "inputimpgain_END"
 
 quit
 .endc 
