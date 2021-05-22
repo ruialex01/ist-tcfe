@@ -86,15 +86,16 @@ f_low=1/(min([ZI1*CI,ZO2*CO,1/gm1*CE]))/2/pi()
 
 %%%%%%%%%%%%%%Frequency Analysis Graph%%%%%%%%%%%
 
-
-freq=logspace(10,1e8,70);
+freq=logspace(1,8,70);
 
 for o = 1:70
 
 if(freq(o)>f_low)
 y(o)=AV_DB
+a(o)=50
 else
-y(o)=-o
+y(o)=2
+a(o)=2
 endif
 
 endfor
@@ -103,7 +104,7 @@ endfor
 ht=figure ();
 hold on;
 
-plot(freq,y,"g");
+semilogx(freq,y,"g", freq, a, "w", 'Linewidth', 8);
 
 xlim([0,1e8]);
 ylim([0,80]);
