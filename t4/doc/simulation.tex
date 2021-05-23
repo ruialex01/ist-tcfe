@@ -39,7 +39,7 @@ The interpretation of the graphic allows us to see that the output voltage tends
 \subsection{Bandwidth and Cut-Off Frequencies}
 
 \paragraph{}
-Also from the intepretation of the plot presented in the previous usbsection, we can calculate the cut-off frequencies. In this case, since we are using an electric circuit simulation tool like NGSpice, we are able to compute values for two existing cut-off frequencies. They are calculated as 3dB cut off frequencies, which means that their correspondent output voltage is the same and it is 3dB lower than the maximum output voltage level. From the lower and upper cut-off frequencies it is possible to calculate the bandwidth. 
+Also from the intepretation of the plot presented in the previous subsection, we can calculate the cut-off frequencies. In this case, since we are using an electric circuit simulation tool like NGSpice, we are able to compute values for the two existing cut-off frequencies. They are calculated as 3dB cut off frequencies, which means that their correspondent output voltage is the same and it is 3dB lower than the maximum output voltage level. From the lower and upper cut-off frequencies it is possible to calculate the bandwidth. 
 
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
@@ -51,7 +51,7 @@ Also from the intepretation of the plot presented in the previous usbsection, we
 \end{table}
 
 where $f_1$ is the lower cut-off frequency,\\
-a$f_1$ is the upper cut-off frequency and\\
+$f_2$ is the upper cut-off frequency and\\
 $f_2-f_1$ is the bandwith (the difference between the upper and lower cut-off frequencies).
 
 %%%%%
@@ -67,7 +67,7 @@ The following values were obtained using different NGSpice circuits built specif
 \begin{table}[H] \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf NGSpice Formula} & {\bf Gain Stage Input Impedance ($\Omega$): $a,b$ from $Z_{in}=a+bj$}\\ \hline
+    {\bf NGSpice Formula} & {\bf Gain Stage Input Impedance ($\Omega$)}\\ \hline
     \input{inputimpgain_TAB}
   \end{tabular}
  \label{tab:inputimp}

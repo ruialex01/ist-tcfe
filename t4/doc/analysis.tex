@@ -1,8 +1,8 @@
 \section{Theoretical Analysis}
 \label{analysis}
 
-
-This theoretical analysis has, as its main purpose, showing how this circuit would behave in theory. This section is divided in two given that this circuit, as explained in the theoretical introduction, is mainly composed of two different stages - the gain stage and the output stage. However, there will also be a third subsection which will include the frequency response analysis for the whole circuit.
+\paragraph{}
+This theoretical analysis has, as its main purpose, showing how this circuit would behave in theory. This section is divided in two given that this circuit, as explained in the theoretical introduction, is mainly composed of two different stages - the gain stage and the output stage. However, there will also be a third subsection in which we will include the frequency response analysis for the whole circuit.
 
 
 
@@ -18,8 +18,8 @@ This theoretical analysis has, as its main purpose, showing how this circuit wou
 
 \[ 
 \left\{\begin{matrix}
-R_{B1}=\\
-R_{B2}=\\
+R_{B1}=XXXXXXXXXXXXXXXXXXXXXXXXXXX\\
+R_{B2}=XXXXXXXXXXXXXXXXXXXXXXXXXXX\\
 R_B=\frac{R_{B1}R_{B2}}{R_{B1}+R_{B2}}\\
 V_{BEON}=\approx 0.7 V\\
 I_E=(1+\beta_F)I_B\\
@@ -58,7 +58,7 @@ In which $v_S$ is the voltage supplied by the source.
 
 \subsubsection{Input and Output Impedances}
 
-\paragraph{}Yet another very important property of this stage to be studied are the impendances, both the input and output ones. The relevance of the impedance, specially the output one, is that it gives an indication about the type of components that can be connected to it. Thus, through deductions made in the theoretical class, the final expressions that give the required values are the following:
+\paragraph{}Yet another very important property of this stage to be studied are the impendances, both the input and output ones. The relevance of the impedance, specially the output one, is that it gives an indication about the type of components that can be connected to it. Thus, through deductions made in the theoretical classes, the final expressions that give the required values are the following:
 
 
 %\begin{equation}
@@ -92,7 +92,7 @@ Data             & Values                               \\
 \end{tabular}
 \end{table}
 
-\paragraph{}Analyzing the table above with detail, there are two specific values that are of great interest to this report: the voltage gain and the output impedance. When coming to the voltage gain, this stage had as its major function, to obtain a very high value, to amplify the sound as much as possible. It can be said that this objective was fulfilled. Looking now at the output impedance, a value of  $730.96 \Omega$ was computed. This value creates a problem: this stage has an astonishingly high output impedance value to be connected to an $8 \Omega$ speaker. Given so, there is only one way to keep both the present Gain Stage and the $8 \Omega$ speaker, which is by adding an intermediate stage which will lower the output impedance while maintaining the voltage gain. This intermediate stage is the output stage and its computations are going to be presented right next. 
+\paragraph{}Analyzing the table above with detail, there are two specific values that are of great interest to this report: the voltage gain and the output impedance. When coming to the voltage gain, this stage had as its major function, to obtain a very high value, to amplify the sound as much as possible. It can be said that this objective was fulfilled. Looking now at the output impedance, a value of  $730.96 \Omega$ was computed. This value creates a problem: this stage has an astonishingly high output impedance value to be connected to an $8 \Omega$ speaker. Given so, there is only one way to keep both the present Gain Stage and the $8 \Omega$ speaker, which is by adding an intermediate stage which will lower the output impedance while maintaining the voltage gain. This intermediate stage is the output stage and its computations are going to be presented in the following subsection. 
 
 
 
@@ -147,7 +147,7 @@ V_O=V_I + V_{BEON}\\
 
 \subsubsection{Input and Output Impedances}
 
-\paragraph{}Of all the computations already made for this stage, the impedances are certainly the most important ones. As it was already mentioned, the output impedance of this stage is supposed to be compatible with the $8\Omega$ speaker so, by using the expressions deducted in class, the formulas that follow next were obtained:
+\paragraph{}Of all the computations already made for this stage, the impedances are certainly the most important ones. As it was already mentioned, the output impedance of this stage is supposed to be compatible with the $8\Omega$ speaker so, by using the expressions deducted in theorethical classes, the formulas that follow next were obtained:
 
 \begin{equation}
     Z_I=\frac{g_\pi+g_E+g_o+g_m}{g_\pi(g_\pi+g_E+g_o)}
@@ -158,7 +158,7 @@ V_O=V_I + V_{BEON}\\
 \end{equation}
 
 
-\paragraph{}This way, the final results for this stage were obatined:
+\paragraph{}This way, the final results for this stage were obtained:
 
 \begin{table}[H]
 \centering
@@ -183,16 +183,17 @@ Data             & Values                               \\
 \subsection{Frequency Response Analysis}
 
 \paragraph{}Something that is of great interest to analyze an amplifier is how its voltage gain will vary accordingly with the frequency. As a consequence of that, this subsection will look forward to study the frequency response of the whole circuit, varying the frequency from an initial value of $10 Hz$ to a final value of $10 MHz$. It is important to add that, in this final topic of the theoretical analysis, a total number of 10 points per decade will be considered.
-\paragraph{}When varying the frequency, at some point, the voltage gain will have a constant value and thus have a graphical representation similar to a an upland. This way, there will be two frequency, commonly referred to as the cut-off frequencies, that will delimit the already mentioned upland, which will correspond to a gain approximately $3dB$ lower than the constant voltage gain. However, the graphical representation of the frequency response in this report will be somewhat different from the what was just described. In this report, the higher cut-off frequency will be considered as infinite and, when it comes to the lower cut-off frequency, even though it will be calculated, the shape of the graph line for points lower than it will not. The reason why the choice to ignore the graph of the points located between $10Hz$ and the lower cut-off frequency was made is simply because of the difficulty of its computation, added to the fact that they are of no interest to the amplifier. This will result in a graphic made of a single constant function that will vary from the lower cut-off frequency to $100MHz$.  
+\paragraph{}When varying the frequency, at some point, the voltage gain will have a constant value and thus have a graphical representation similar to a an upland. This way, there will be two frequencies, commonly referred to as the cut-off frequencies, that will delimit the already mentioned upland, which will correspond to a gain approximately $3dB$ lower than the constant voltage gain. However, the graphical representation of the frequency response in this report will be somewhat different from what was just described. In this report, the higher cut-off frequency will be considered as infinite and, when it comes to the lower cut-off frequency, even though it will be calculated, the shape of the graph line for points lower than it will not be presented. The reason to ignore the graphic representation of the points located between $10Hz$ and the lower cut-off frequency was made simply due to the difficulty of its computation, added to the fact that they are of no interest to the amplifier. This will result in a graphic made of a single constant function that will vary from the lower cut-off frequency to $100MHz$.  
 \paragraph{}Similarly to what was done in the previous subsections, the formula already deduced in the theoretical classes to compute the value of the constant voltage gain value mentioned in the previous paragraph is presented:
 \begin{equation}
-    \frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\times Av_{Gain Stage}= \\ =\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\frac{(r_\pi||R_{B1}||R_{B2})}{(R_S+r_\pi||R_{B1}||R_{B2})}
+    \frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\times Av_{Gain Stage}=
+    \linebreak \frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\frac{(r_\pi||R_{B1}||R_{B2})}{(R_S+r_\pi||R_{B1}||R_{B2})}
     v_S(-g_m(R_C||r_o)
 \end{equation}
 \paragraph{} Just as a side note, the variables included in the previous formula, such as $g_{e2}$, $g_{o2}$ and $g_{m2}$ are relative to the output stage while the ones that do not have the "2" belong to the Gain Stage.
 \paragraph{}Yet another formula of extreme importance to this topic is the one that will calculate the value of the lower cut-off frequency:
 \begin{equation}
-	f_{Lower \; Cut-Off}=\frac{1}{min[Z_{I1}C_I,Z_{O2}C_O,1/g_{m1}C_E] 2 /pi}
+	f_{Lower \; Cut-Off}=\frac{1}{min[Z_{I1}C_I,Z_{O2}C_O,1/g_{m1}C_E] 2 \pi}
 \end{equation} 
 
 \begin{figure}[H] \centering
@@ -211,4 +212,4 @@ Data             & Values                               \\
 	\end{tabular}
 \end{table}
 
-
+XXXXXXXXXXXXXXXXXXXXXXXRUI; FALTA COLOCAR AS TABELAS E O GRÁFICO NO SÍTIO PRETENDIDOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
