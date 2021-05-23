@@ -4,7 +4,23 @@
 \paragraph{}
 This theoretical analysis has, as its main purpose, showing how this circuit would behave in theory. This section is divided in two given that this circuit, as explained in the theoretical introduction, is mainly composed of two different stages - the gain stage and the output stage. However, there will also be a third subsection in which we will include the frequency response analysis for the whole circuit.
 
-
+The values for the multiple components of the circuit can be found below:
+\[ 
+\left\{\begin{matrix}
+	R_{in}= 100 \Omega\\	
+	R_{B1}= 80000 \Omega\\
+	R_{B2}= 18000 \Omega\\
+	R_E= 100\Omega\\
+	R_C= 800\Omega\\
+	R_{out}= 750 \Omega\\
+	R_L= 8\Omega\\
+	C_i=50 uF\\
+	C_b=50 uF\\
+	C_o=1 uF\\
+	
+	V_{BEON}=\approx 0.7 V\\
+\end{matrix}\right.
+\]
 
 \subsection{The Gain Stage}
 
@@ -18,14 +34,14 @@ This theoretical analysis has, as its main purpose, showing how this circuit wou
 
 \[ 
 \left\{\begin{matrix}
-R_{B1}=XXXXXXXXXXXXXXXXXXXXXXXXXXX\\
-R_{B2}=XXXXXXXXXXXXXXXXXXXXXXXXXXX\\
-R_B=\frac{R_{B1}R_{B2}}{R_{B1}+R_{B2}}\\
-V_{BEON}=\approx 0.7 V\\
-I_E=(1+\beta_F)I_B\\
-V_E=R_E I_E\\
-V_C=R_C I_C\\
-V_O=V_{CC}-V_C\\
+	R_{B1}= 80000 \Omega\\
+	R_{B2}= 18000 \Omega\\
+	R_B=\frac{R_{B1}R_{B2}}{R_{B1}+R_{B2}}\\
+	V_{BEON}=\approx 0.7 V\\
+	I_E=(1+\beta_F)I_B\\
+	V_E=R_E I_E\\
+	V_C=R_C I_C\\
+	V_O=V_{CC}-V_C\\
 \end{matrix}\right.
 \]
 
@@ -108,16 +124,19 @@ Data             & Values                               \\
 
 \paragraph{}Just like it was done for the Gain Stage, the operating point analysis for the output stage is also required. The fact that, such as the Gain Stage, this present stage also has a transistor, makes this analysis specially important given that the transistor's incremental parameters depend on the values obtained in this subsection. To do it, the following equations are going to be used.
 
+
 \[ 
 \left\{\begin{matrix}
-V_{CC}=12 V\\
-V_{BEON}=\approx 0.7 V\\
-R_E= \omega\\
-R_E I_E + V_{BEON} + V_I - V_CC = 0\\
-V_O = V_{CC} - R_E I_E\\
-V_O=V_I + V_{BEON}\\
+	V_{CC}=12 V\\
+	V_{BEON}=\approx 0.7 V\\
+	R_{out}= 750 \Omega\\
+	R_{out} I_{out} + V_{BEON} + V_I - V_CC = 0\\
+	V_O = V_{CC} - R_{out} I_{out}\\
+	V_O=V_I + V_{BEON}\\
 \end{matrix}\right.
 \]
+
+\paragraph{}It is important to note that $V_I$ is the voltage supplied by the Gain Stage.
 
 \subsubsection{Voltage Gain}
 
@@ -185,22 +204,31 @@ Data             & Values                               \\
 \paragraph{}Something that is of great interest to analyze an amplifier is how its voltage gain will vary accordingly with the frequency. As a consequence of that, this subsection will look forward to study the frequency response of the whole circuit, varying the frequency from an initial value of $10 Hz$ to a final value of $10 MHz$. It is important to add that, in this final topic of the theoretical analysis, a total number of 10 points per decade will be considered.
 \paragraph{}When varying the frequency, at some point, the voltage gain will have a constant value and thus have a graphical representation similar to a an upland. This way, there will be two frequencies, commonly referred to as the cut-off frequencies, that will delimit the already mentioned upland, which will correspond to a gain approximately $3dB$ lower than the constant voltage gain. However, the graphical representation of the frequency response in this report will be somewhat different from what was just described. In this report, the higher cut-off frequency will be considered as infinite and, when it comes to the lower cut-off frequency, even though it will be calculated, the shape of the graph line for points lower than it will not be presented. The reason to ignore the graphic representation of the points located between $10Hz$ and the lower cut-off frequency was made simply due to the difficulty of its computation, added to the fact that they are of no interest to the amplifier. This will result in a graphic made of a single constant function that will vary from the lower cut-off frequency to $100MHz$.  
 \paragraph{}Similarly to what was done in the previous subsections, the formula already deduced in the theoretical classes to compute the value of the constant voltage gain value mentioned in the previous paragraph is presented:
-\begin{equation}
-    \frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\times Av_{Gain Stage}=
-    \linebreak \frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\frac{(r_\pi||R_{B1}||R_{B2})}{(R_S+r_\pi||R_{B1}||R_{B2})}
-    v_S(-g_m(R_C||r_o)
+\begin{equation}	
+    \frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\times Av_{Gain Stage} 	
 \end{equation}
+\paragraph{}Which will become:
+\begin{equation}
+	\frac{v_o(f)}{v_i(f)}=\frac{g_B+g_{m2}}{g_B+g_{e2}+g_{o2}+g_{m2}}\frac{(r_\pi||R_{B1}||R_{B2})}{R_S+r_\pi||R_{B1}||R_{B2}}v_S(-g_m(R_C||r_o)
+\end{equation}
+
+
+
 \paragraph{} Just as a side note, the variables included in the previous formula, such as $g_{e2}$, $g_{o2}$ and $g_{m2}$ are relative to the output stage while the ones that do not have the "2" belong to the Gain Stage.
 \paragraph{}Yet another formula of extreme importance to this topic is the one that will calculate the value of the lower cut-off frequency:
 \begin{equation}
 	f_{Lower \; Cut-Off}=\frac{1}{min[Z_{I1}C_I,Z_{O2}C_O,1/g_{m1}C_E] 2 \pi}
 \end{equation} 
 
+\paragraph{}And so, just like it was explained a few paragraphs above, the frequency-response graphic is the following:
+
 \begin{figure}[H] \centering
 	\includegraphics[width=0.6\textwidth]{gain.eps}
 	\caption{The voltage gain}
 	\label{fig:voltage_gain}
 \end{figure}
+
+\paragraph{}Concluding this theoretical analysis of the amplifier, the table below has the voltage gain of the whole circuit, also including its representation in decibels(which is the one used in the graphic above). 
 
 \begin{table}[H]
 	\centering
@@ -212,4 +240,4 @@ Data             & Values                               \\
 	\end{tabular}
 \end{table}
 
-XXXXXXXXXXXXXXXXXXXXXXXRUI; FALTA COLOCAR AS TABELAS E O GRÁFICO NO SÍTIO PRETENDIDOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
