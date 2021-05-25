@@ -78,7 +78,7 @@ echo "freq_END"
 =======
 *print all
 
-plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+plot abs(v(in2)/vin#branch/(-1000))
 print v(in2)[40]/vin#branch[40]/(-1000)
 >>>>>>> 0a9853e81437021c4f40351c97adc65b0e54ec48:t4/t4.net
 
