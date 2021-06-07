@@ -5,7 +5,7 @@
 \label{subsec:freqresp}
 
 \paragraph{}
-A frequency response analysis was performed using both NGSpice for simulation interpretation and GNU Octave for theorethical analysis. The graphics ploted by each one of the tools are, as we can see, very similar to eachother. Once again, it is a confirmation of the good results that we were able to obtain during the implementation of both the circuit simulation and the theoretical analysis perfomed with GNU Octave.
+A frequency response analysis was performed using both NGSpice for simulation interpretation and GNU Octave for theoretical analysis. The graphics plotted by each one of the tools are, as we can see, very similar to each other. Once again, it is a confirmation of the good results that we were able to obtain during the implementation of both the circuit simulation and the theoretical analysis performed with GNU Octave.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5\textwidth}
@@ -20,7 +20,7 @@ A frequency response analysis was performed using both NGSpice for simulation in
 \end{subfigure}
 \end{figure}
 
-Taking a closer look at both figures side by side, we can see that they are, in fact, very similar. The only small difference we can find is, by taking a closer look, that they have different values for the maximum voltage gain, even though both are very close to the required 40 dB. A quick explanation for this small error is that, while in Octave we use an ideal OP-AMP model, NGSpice uses a real OP-AMP model, that takes into account that the output impedance is not null.
+Taking a closer look at both figures side by side, we can see that they are, in fact, very similar. The only small difference we can find is that they have different values for the maximum voltage gain, even though both are very close to the required 40 dB. A quick explanation for this small error is that, while in Octave we use an ideal OP-AMP model, NGSpice uses a real OP-AMP model, which takes into account that the output impedance is not null.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5\textwidth}
@@ -35,7 +35,7 @@ Taking a closer look at both figures side by side, we can see that they are, in 
 \end{subfigure}
 \end{figure}
 
-Once again, we can see that both figures are very similar to eachother.
+Once again, we can see that both figures are very similar to each other.
 
 \begin{center}
    \begin{table}[H]
@@ -60,7 +60,7 @@ Output Impedance & 824.902 Ohm & 822.637 Ohm & $2.745780711 \times 10^{-3}$ & 0.
 In the table above, we have the comparison between the values obtained using Octave and NGSpice. Both the relative error and percentual error are included to make the interpretation easier. 
 
 \paragraph{}
-Even though most of the erros presented are really small, which proves the accuracy of the results obtained, these small discrepancies can be explained by the fact that, when we use GNU Octave, we are considering an ideal OP-AMP model, which assumes that the output impedance is zero. In fact, it´s not zero, and NGSpice uses a model that takes that into consideration, and so these differences between the models used by both NGSpice and Octave are, most likely, the main factor of the errors observed. 
+Even though most of the errors presented are very small, which proves the accuracy of the results obtained, these small discrepancies can be explained by the fact that, when we use GNU Octave, we are considering an ideal OP-AMP model, which assumes that the output impedance is zero. In fact, it´s not zero, and NGSpice uses a model that takes that into consideration, and so these differences between the models used by both NGSpice and Octave are, most likely, the main factor of the errors observed. 
 
 \subsection{Figure of Merit}
 \label{subsec:Figure_of_Merit}
